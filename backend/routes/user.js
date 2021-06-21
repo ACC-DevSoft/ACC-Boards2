@@ -8,5 +8,5 @@ const Auth = require("../middleware/auth");
 const UserAuth = require("../middleware/user");
 
 router.post("/registerUser", async(req, res) =>{
-    if (!req.body.name || !req.body.email )
+
 });
