@@ -24,7 +24,6 @@ router.post("/create",Auth, async (req, res) => {
   try{
     const saveboard = await board.save()
     res.status(200).send('board created')
-    console.log(saveboard)
   } catch(err) {
     res.status(400).send("Error: board no create" + err)
   }
@@ -35,6 +34,7 @@ router.put('/list', Auth, async (req, res) => {
   const board = await Board.find({workspace: req.body.workspace})
   if(!board) return res.status(400).send('workspace invalid')
   res.status(200).send(board)
-})
+});
+
 
 module.exports = router
