@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Auth = require("../middleware/auth")
+
+const Auth = require("../middleware/auth");
+const Admin = require("../middleware/admin");
 
 const Role = require("../models/role");
-router.post("/registerRole", Auth, async(req, res) =>{
+router.post("/registerRole", Auth, Admin, async(req, res) =>{
     if(!req.body.name ||  !req.body.description)return res.status(400).send("Incomplete data.");
 
     const roleExist = await Role.findOne({name: req.body.name});
@@ -20,13 +22,13 @@ router.post("/registerRole", Auth, async(req, res) =>{
     return res.status(200).send({ result });
 });
 
-router.get("/listRole", Auth, async (req, res) => {
+router.get("/listRole", Auth, Admin, async (req, res) => {
   const role = await Role.find();
   if (!role) return res.status(401).send("No roles");
   return res.status(200).send({ role });
 });
 
-router.put("/updateRole", Auth, async (req, res) =>{
+router.put("/updateRole", Auth,  Admin, async (req, res) =>{
     if(!req.body._id || !req.body.name  || !req.body.description) return res.status(400).send("Incomplete Data!");
     
     const role =  await Role.findByIdAndUpdate(req.body._id,{
@@ -37,7 +39,7 @@ router.put("/updateRole", Auth, async (req, res) =>{
     return res.status(200).send({role});
 });
 
-router.put("/deactivateRole", Auth, async (req, res)=>{
+router.put("/deactivateRole", Auth,  Admin, async (req, res)=>{
     if(!req.body._id || !req.body.name  || !req.body.description) return res.status(400).send("Incomplete data.");
     const role = await Role.findByIdAndUpdate(req.body._id,{
     name: req.body.name,
@@ -48,7 +50,7 @@ router.put("/deactivateRole", Auth, async (req, res)=>{
     return res.status(200).send({role});
 });
 
-router.put("/activateRole", Auth, async (req, res)=>{
+router.put("/activateRole", Auth,  Admin, async (req, res)=>{
     if(!req.body._id || !req.body.name  || !req.body.description) return res.status(400).send("Incomplete data.");
     
     const role = await Role.findByIdAndUpdate(req.body._id,{
@@ -59,6 +61,5 @@ router.put("/activateRole", Auth, async (req, res)=>{
     if(!role) return res.status(400).send("Process Failed: Error deleting role.");
     return res.status(200).send({role});
 });
-
 
 module.exports = router;
