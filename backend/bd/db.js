@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const dbConnection = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://ACC:1234@cluster0.1uok1.mongodb.net/ACCBOARDS?retryWrites=true&w=majority",
+    await mongoose.connect(process.env.BD_CONNECTION,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
