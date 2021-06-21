@@ -6,8 +6,8 @@ const boardSchema = new mongoose.Schema({
     description: String,
     tasks: Array,
     techleader: { type: mongoose.Schema.ObjectId, ref: "user" },
-    date: {type: Date, default: new Date.now},
-    status:'To-do'
+    date: {type: Date, default: Date.now},
+    status:String
 })
 
 const board = mongoose.model('board', boardSchema)
