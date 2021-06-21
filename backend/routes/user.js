@@ -10,3 +10,5 @@ const UserAuth = require("../middleware/user");
 router.post("/registerUser", async(req, res) =>{
 
 });
+
+module.exports = router

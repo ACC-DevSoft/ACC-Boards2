@@ -6,7 +6,9 @@ router.post("/create", async (req, res) => {
   if (!req.body.name || !req.body.description || !req.body.techleader || !req.body.workspace) {
     return res.status(400).send("Incomplete Data");
   }
+  const workspace = await Workspace.findById(req.body.workspace)
   const board = new Board({
+    workspace:workspace._id,
     name: req.body.name,
     description: req.body.description,
     tasks:[],
@@ -20,3 +22,5 @@ router.post("/create", async (req, res) => {
     res.status(400).send("Error: board no create")
   }
 });
+
+module.exports = router
