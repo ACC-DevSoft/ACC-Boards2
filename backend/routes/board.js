@@ -30,4 +30,11 @@ router.post("/create",Auth, async (req, res) => {
   }
 });
 
+router.put('/list', Auth, async (req, res) => {
+  if(!req.body.workspace) return res.status(400).send("Incomplete Data");
+  const board = await Board.find({workspace: req.body.workspace})
+  if(!board) return res.status(400).send('workspace invalid')
+  res.status(200).send(board)
+})
+
 module.exports = router
