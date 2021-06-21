@@ -8,7 +8,7 @@ router.post("/login", async (req, res) => {
   if (!user) return res.status(400).send("Incorrect email or password");
 
   const hash = await bcrypt.compare(req.body.password, user.password);
-  if (!user.active || !hash)
+  if (!user.status || !hash)
     return res.status(400).send("Incorrect email or password");
 
   try {

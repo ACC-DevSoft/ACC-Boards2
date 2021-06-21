@@ -7,12 +7,12 @@ const User = require("./routes/user");
 const Task = require("./routes/tasks");
 const Board = require("./routes/board")
 const Role = require('./routes/role');
-
+const Auth = require("./routes/auth")
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-
+app.use("/api/auth/", Auth)
 app.use("/api/user/", User);
 app.use("/api/board/",Task);
 app.use('/api/board/', Board);
