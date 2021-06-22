@@ -37,8 +37,8 @@ router.post("/registerUser", async (req, res) => {
     email: req.body.email,
     password: hash,
     roleId: role._id,
-    //assignedTask: task._id,
-    //workSpaces: workSpace._id,
+    workSpacesId:[],
+    assignedTask: [],
     status: true,
   });
 

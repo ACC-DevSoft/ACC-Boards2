@@ -5,8 +5,8 @@ const workspaceSchema = new mongoose.Schema({
     Admin: String,
     name: String,
     description: String,
-    members: String,
-    boards: String, 
+    members: [String],
+    boards: [String], 
     status: Boolean,
     date: {type: Date, default: Date.now}
 });
