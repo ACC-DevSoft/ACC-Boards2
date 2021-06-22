@@ -4,6 +4,7 @@ const moment = require("moment");
 
 const userSchema = new mongoose.Schema({
   name: String,
+  userName: String,
   email: String,
   password: String,
   roleId: { type: mongoose.Schema.ObjectId, ref: "role" },
