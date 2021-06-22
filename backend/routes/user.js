@@ -9,11 +9,14 @@ const Auth = require("../middleware/auth");
 const UserAuth = require("../middleware/user");
 
 router.post("/registerUser", async (req, res) => {
-  if (!req.body.name || !req.body.email || !req.body.password)
+  if (!req.body.name || !req.body.email || !req.body.password || !req.body.userName)
     return res.status(400).send("Incomplete data");
 
-  let user = await User.findOne({ email: req.body.email });
+  let user= await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("The user is already registered");
+
+  let userNickname = await User.findOne({ userName: req.body.userName });
+  if (userNickname) return res.status(400).send("The user is already registered");
 
   const role = await Role.findOne({ name: "USER" });
   if (!role)
@@ -23,6 +26,7 @@ router.post("/registerUser", async (req, res) => {
 
   user = new User({
     name: req.body.name,
+    userName: req.body.userName,
     email: req.body.email,
     password: hash,
     roleId: role._id,
