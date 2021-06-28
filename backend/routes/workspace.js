@@ -36,14 +36,9 @@ router.post("/newWorkSpace",Auth, async (req, res)=>{
 });
 
 router.get("/listWorkSpaces/:_id?", Auth, async (req, res) => {
-    // const workSpaceById = await Workspace.find({Admin: req.body._id});
-    // console.log(workSpaceById);
-    // res.send(workSpaceById);
-
   const workSpaces = await Workspace.find({ Admin: req.body._id });
   console.log(workSpaces);
-    // .populate("","_id")
-    // .exec();
+ 
   if (!workSpaces) return res.status(401).send("No Work Spaces");
   return res.status(200).send({ workSpaces });
 });
