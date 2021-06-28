@@ -12,10 +12,8 @@ router.post("/newWorkSpace",Auth, async (req, res)=>{
     
     // consultar los espacios de trabajo por usuario
     // const workSpaceById = await Workspace.find({Admin: req.body._id});        
-    const workSpaceById = await Workspace.find({Admin: req.body._id});
-    
-    // const workSpaceExist = await  workSpaceById.indexOf(4);
-    // .includes({name: req.body.name});
+    const workSpaceById = await Workspace.find({Admin: user._id});
+  
     const workSpaceExist = await Workspace.findOne({name: req.body.name});
     console.log(workSpaceExist);
     if(workSpaceExist) return res.status(400).send("the workSpace already exists");
