@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const moment = require('moment');
 
 const workspaceSchema = new mongoose.Schema({
-    Admin: String,
+    Admin: {type: mongoose.Schema.ObjectId, ref: 'user'},
     name: String,
     description: String,
     members: [String],
