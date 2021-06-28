@@ -64,13 +64,10 @@ router.delete("/deleteTask/:id", Auth, async (req, res) => {
 	const validId = mongoose.Types.ObjectId.isValid(id);
 	if (!validId) return res.status(401).send("Process failed: Invalid id");
 
-	const task = await Task.findByIdAndUpdate(
-		id,
-		{ status: false },
-		{ new: true }
-	);
+	const task = await Task.findByIdAndDelete(id);
 
-	res.status(200).json({ task });
+	if (!task) return res.status(401).send("Process failed: Task not found");
+	return res.status(200).json({ message: "Task deleted" });
 });
 
 module.exports = router;
