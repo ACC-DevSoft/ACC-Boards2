@@ -3,9 +3,10 @@ const router = express.Router();
 const Board = require("../models/board")
 const Auth = require("../middleware/auth")
 const User = require("../models/user")
+const Scrum = require("../middleware/scrumMaster")
 // const Workspace = require("../models/workspace")
 
-router.post("/create",Auth, async (req, res) => {
+router.post("/create",Auth, Scrum, async (req, res) => {
   if (!req.body.name || !req.body.description || !req.body.techleader || !req.body.workspace) {
     return res.status(400).send("Incomplete Data");
   }
