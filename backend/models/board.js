@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const boardSchema = new mongoose.Schema({
-    workspace: { type: mongoose.Schema.ObjectId, ref: "user" },
+    workspace: String,
     name: String,
     description: String,
     tasks: Array,
