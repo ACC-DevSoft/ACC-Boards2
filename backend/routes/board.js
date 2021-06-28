@@ -3,9 +3,10 @@ const router = express.Router();
 const Board = require("../models/board")
 const Auth = require("../middleware/auth")
 const User = require("../models/user")
+const Scrum = require("../middleware/scrumMaster")
 // const Workspace = require("../models/workspace")
 
-router.post("/create",Auth, async (req, res) => {
+router.post("/create",Auth, Scrum, async (req, res) => {
   if (!req.body.name || !req.body.description || !req.body.techleader || !req.body.workspace) {
     return res.status(400).send("Incomplete Data");
   }
@@ -29,7 +30,7 @@ router.post("/create",Auth, async (req, res) => {
   }
 });
 
-router.get('/list/:workspace', async (req, res) => {
+router.get('/list/:workspace', Auth, Scrum, async (req, res) => {
   if(!req.params.workspace) return res.status(400).send("Incomplete Data");
   const board = await Board.find({workspace: req.params.workspace})
   if(!board || board==[]) return res.status(400).send(' Not found boards on ' + req.params.workspace)
@@ -37,7 +38,7 @@ router.get('/list/:workspace', async (req, res) => {
 });
 
 
-router.put('/update', async (req, res) => {
+router.put('/update',Auth, Scrum, async (req, res) => {
   if (!req.body.board) return res.status(400).send('Incomplete Data')
   let findBoard = await Board.findById(req.body.board)
   if(!findBoard) return res.status(400).send('Board no exist')
@@ -59,7 +60,7 @@ router.put('/update', async (req, res) => {
   res.status(200).send('Board Update: ' + board)
 })
 
-router.delete('/delete/:board', async (req, res) => {
+router.delete('/delete/:board',Auth, Scrum, async (req, res) => {
   if (!req.params.board) return res.status(400).send('Incomplete Data')
   const findBoard = await Board.findById(req.params.board)
   if(!findBoard) return res.status(400).send('Board no exist')
