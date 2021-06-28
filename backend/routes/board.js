@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Board = require("../models/board")
 const Auth = require("../middleware/auth")
-const User = require("../models/user")
+const User = require("../models/user");
+const fs = require("fs");
 
 router.post("/create",Auth, async (req, res) => {
   if (!req.body.name || !req.body.description || !req.body.techleader || !req.body.workspace) {
@@ -58,7 +59,7 @@ router.put('/update', async (req, res) => {
 
 router.delete('/delete/:board', async (req, res) => {
   if (!req.params.board) return res.status(400).send('Incomplete Data')
-  let findBoard = await Board.findById(req.params.board)
+  const findBoard = await Board.findById(req.params.board)
   if(!findBoard) return res.status(400).send('Board no exist')
   const board = await Board.findByIdAndDelete(req.params.board)
   if(!board) return res.status(400).send('Board no delete')
