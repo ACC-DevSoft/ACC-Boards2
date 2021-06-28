@@ -4,6 +4,7 @@ const router = expres.Router();
 const User = require('../models/user');
 const Workspace = require('../models/workspace');
 const Auth = require("../middleware/auth");
+const Admin = require("../middleware/admin")
 
 router.post("/newWorkSpace",Auth, async (req, res)=>{
     if(!req.body._id || !req.body.name) return res.status(400).send('Incomplete Data.');
