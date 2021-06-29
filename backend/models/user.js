@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   roleId: { type: mongoose.Schema.ObjectId, ref: "role" },
   workSpacesId: [{ type: mongoose.Schema.ObjectId, ref: "worksSpaces" }],
-  assignedTaskId: { type: mongoose.Schema.ObjectId, ref: "task" },
+  assignedTaskId: [{ type: mongoose.Schema.ObjectId, ref: "task" }],
   date: { type: Date, default: Date.now },
   status: Boolean,
 });

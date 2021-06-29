@@ -38,7 +38,7 @@ router.post("/registerUser", async (req, res) => {
     password: hash,
     roleId: role._id,
     workSpacesId:[],
-    assignedTask: [],
+    assignedTaskId: [],
     status: true,
   });
 
