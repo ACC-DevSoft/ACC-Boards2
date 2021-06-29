@@ -1,5 +1,6 @@
 const expres  = require('express');
 const router = expres.Router();
+const mongoose = require('mongoose');
 
 const User = require('../models/user');
 const Workspace = require('../models/workspace');
@@ -29,6 +30,7 @@ router.post("/newWorkSpace",Auth, async (req, res)=>{
     });
     const result = await workSpace.save(); 
     if(!result) return res.status().send("Failed to add workSpace");
+
     user.workSpacesId.push(result);
     await user .save(); 
     return res.status(200).send({ result });
@@ -42,8 +44,34 @@ router.get("/listWorkSpaces/:_id?", Auth, async (req, res) => {
   return res.status(200).send({ workSpaces });
 });
 
-// members of workspace
+router.put("/updateWorkSpace",Auth, async (req, res)=>{
+  if(!req.body._id ||!req.body.name) return res.status(400).send('Incomplete data');
+   
+  const validId = mongoose.Types.ObjectId.isValid(req.body._id);
+  if(!validId) return res.status(400).send("Process Failed: Invalid Id.");
 
+  if(req.body.description == " "){
+    req.body.description = " ";
+  } else{
+    req.body.description = req.body.description;
+    }
+
+  const workSpaceFind  = await Workspace.findById(req.body._id);
+  const workSpace =  await Workspace.findByIdAndUpdate(req.body._id, {
+    members: workSpaceFind.members,
+    boards: workSpaceFind.boards,
+    Admin: workSpaceFind.Admin,
+    name: req.body.name,
+    description:req.body.description,
+    status: true,
+  });
+
+  const result = await workSpace.save();
+  if(!result) return res.status(400).send('Failed to update work-Space');
+  return res.status(200).send({result});
+});
+
+// members of workspace
 router.post('/addMember/:username?', Auth, async (req, res)=>{
   if(!req.body.username) return res.send('No hay nombre de usuario');
   
