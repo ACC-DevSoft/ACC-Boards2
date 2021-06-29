@@ -31,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
+import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     RegisterUserComponent,
     UpdateRoleComponent,
     RegisterRoleComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ListWorkspaceComponent,
+    WorkspacesComponent
   ],
   imports: [
     BrowserModule,
