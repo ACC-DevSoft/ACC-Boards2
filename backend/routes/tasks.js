@@ -27,7 +27,7 @@ router.post("/addTask", [Auth], async (req, res) => {
 	// 	imageUrl = url + "uploads/" + moment().unix() + path.extname(reqImg.path);
 	// }
 	const board = await Board.findById(req.body.board);
-	if (!board) return res.status(401).send("Board was not founded");
+	if (!board) return res.status(401).send("Board was not found");
 
 	const task = new Task({
 		name: req.body.name,

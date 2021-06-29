@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Juan Romero\",\r\n    \"email\": \"juan@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"name\": \"ana Romero\",\r\n    \"userName\": \"ana.romero\",\r\n    \"email\": \"ana@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,6 +37,158 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "List user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQyMGQ0YmQ5YjkxYTA1ODg3ODE4ODYiLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0OTM2ODE3fQ.eH38Ce_2PWV3uII3OLlZYJZu5HxPl_ScLcg7Ok20RoM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3025/api/user/listUsers/p",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3025",
+							"path": [
+								"api",
+								"user",
+								"listUsers",
+								"p"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQyMGQ0YmQ5YjkxYTA1ODg3ODE4ODYiLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0OTM2ODE3fQ.eH38Ce_2PWV3uII3OLlZYJZu5HxPl_ScLcg7Ok20RoM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"60d1ed1b96b31927f091e6d6\",\r\n    \"name\": \"Pablo Romero\",\r\n    \"email\": \"pepe@gmail.com\",\r\n    \"userName\": \"pablo.romero.1\",\r\n    \"password\": \"1234\",\r\n    \"roleId\": \"60d20dbbd9b91a058878188d\",\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3025/api/user/updateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3025",
+							"path": [
+								"api",
+								"user",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQyMGQ0YmQ5YjkxYTA1ODg3ODE4ODYiLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0OTM2ODE3fQ.eH38Ce_2PWV3uII3OLlZYJZu5HxPl_ScLcg7Ok20RoM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"60da9589c2669551cc03a255\",\r\n    \"name\": \"ana Romero\",\r\n    \"email\": \"ana@gmail.com\",\r\n    \"userName\": \"ana.romero\",\r\n    \"password\": \"1234\",\r\n    \"roleId\": \"60d0bccb57fa52478c80d685\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3025/api/user/deleteUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3025",
+							"path": [
+								"api",
+								"user",
+								"deleteUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQyMGQ0YmQ5YjkxYTA1ODg3ODE4ODYiLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0OTM2ODE3fQ.eH38Ce_2PWV3uII3OLlZYJZu5HxPl_ScLcg7Ok20RoM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"userName\": \"admin\",\r\n    \"password\": \"1234\",\r\n    \"roleId\": \"60d0bc7657fa52478c80d682\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3025/api/user/registerAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3025",
+							"path": [
+								"api",
+								"user",
+								"registerAdmin"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -51,7 +203,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQwZDMxYTRmZjgwNDA4NzBlYWIzMmUiLCJuYW1lIjoiSnVhbiBSb21lcm8iLCJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0MzAzOTEyfQ.FieqZdAJFUIZbGpuJy9_YV_mgJBBQoqKzd_wU1Zyh20",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQxZjBhZjUxYWRmODA5MmNiYTcyNDciLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0MzcxNTQ2fQ.uRpTAdaIGcZsOAvp8yJweOfHrA_eMCPsFx-8qgXTpTk",
 									"type": "string"
 								}
 							]
@@ -91,7 +243,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQwZDMxYTRmZjgwNDA4NzBlYWIzMmUiLCJuYW1lIjoiSnVhbiBSb21lcm8iLCJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0MzAzOTEyfQ.FieqZdAJFUIZbGpuJy9_YV_mgJBBQoqKzd_wU1Zyh20",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQxZjBhZjUxYWRmODA5MmNiYTcyNDciLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0MzcxNTQ2fQ.uRpTAdaIGcZsOAvp8yJweOfHrA_eMCPsFx-8qgXTpTk",
 									"type": "string"
 								}
 							]
@@ -122,7 +274,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQwZDMxYTRmZjgwNDA4NzBlYWIzMmUiLCJuYW1lIjoiSnVhbiBSb21lcm8iLCJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0MzAzOTEyfQ.FieqZdAJFUIZbGpuJy9_YV_mgJBBQoqKzd_wU1Zyh20",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQxZjBhZjUxYWRmODA5MmNiYTcyNDciLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0MzcxNTQ2fQ.uRpTAdaIGcZsOAvp8yJweOfHrA_eMCPsFx-8qgXTpTk",
 									"type": "string"
 								}
 							]
@@ -131,7 +283,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_id\": \"60d0ec01e6dfd62430c6ffe8\",\r\n    \"name\": \"TEST1\",\r\n    \"description\": \"user test1\"\r\n}",
+							"raw": "{\r\n    \"_id\": \"60d20dbbd9b91a058878188d\",\r\n    \"name\": \"TEST1\",\r\n    \"description\": \"user test2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -162,7 +314,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQwZDMxYTRmZjgwNDA4NzBlYWIzMmUiLCJuYW1lIjoiSnVhbiBSb21lcm8iLCJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0MzAzOTEyfQ.FieqZdAJFUIZbGpuJy9_YV_mgJBBQoqKzd_wU1Zyh20",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQxZjBhZjUxYWRmODA5MmNiYTcyNDciLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0MzcxNTQ2fQ.uRpTAdaIGcZsOAvp8yJweOfHrA_eMCPsFx-8qgXTpTk",
 									"type": "string"
 								}
 							]
@@ -171,7 +323,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_id\": \"60d0ec01e6dfd62430c6ffe8\",\r\n    \"name\": \"TEST1\",\r\n    \"description\": \"user test1\"\r\n}",
+							"raw": "{\r\n    \"_id\": \"60d20dbbd9b91a058878188d\",\r\n    \"name\": \"TEST1\",\r\n    \"description\": \"user test2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -202,7 +354,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQwZDMxYTRmZjgwNDA4NzBlYWIzMmUiLCJuYW1lIjoiSnVhbiBSb21lcm8iLCJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0MzAzOTEyfQ.FieqZdAJFUIZbGpuJy9_YV_mgJBBQoqKzd_wU1Zyh20",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQxZjBhZjUxYWRmODA5MmNiYTcyNDciLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjNzY1N2ZhNTI0NzhjODBkNjgyIiwiaWF0IjoxNjI0MzcxNTQ2fQ.uRpTAdaIGcZsOAvp8yJweOfHrA_eMCPsFx-8qgXTpTk",
 									"type": "string"
 								}
 							]
@@ -211,7 +363,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_id\": \"60d0ec01e6dfd62430c6ffe8\",\r\n    \"name\": \"TEST1\",\r\n    \"description\": \"user test1\"\r\n}",
+							"raw": "{\r\n    \"_id\": \"60d20dbbd9b91a058878188d\",\r\n    \"name\": \"TEST1\",\r\n    \"description\": \"user test2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -246,7 +398,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"juan@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"email\": \"pepe@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -327,7 +479,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQwZDMxYTRmZjgwNDA4NzBlYWIzMmUiLCJuYW1lIjoiSnVhbiBSb21lcm8iLCJlbWFpbCI6Imp1YW5AZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0MzAzOTEyfQ.FieqZdAJFUIZbGpuJy9_YV_mgJBBQoqKzd_wU1Zyh20",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGQyMGQ0YmQ5YjkxYTA1ODg3ODE4ODYiLCJuYW1lIjoiUGVwZSBSb21lcm8iLCJlbWFpbCI6InBlcGVAZ21haWwuY29tIiwicm9sZUlkIjoiNjBkMGJjY2I1N2ZhNTI0NzhjODBkNjg1IiwiaWF0IjoxNjI0Mzc4OTY2fQ.R05duwUpp8xmSMwoOjpipzi9ass-xadbSEYqUA2u1X4",
 									"type": "string"
 								}
 							]
@@ -336,7 +488,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"workspace\":\"workspace\",\r\n    \"name\":\"board1\",\r\n    \"description\":\"board1 des\",\r\n    \"techleader\":\"Juan Romero\"\r\n}",
+							"raw": "{\r\n    \"workspace\":\"workspace\",\r\n    \"name\":\"board1\",\r\n    \"description\":\"board1 description\",\r\n    \"techleader\":\"Juan Romero\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -435,7 +587,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": []
+									"src": "/C:/Users/maria.a.barrios/OneDrive - Accenture/Pictures/modelo.png"
 								}
 							]
 						},
