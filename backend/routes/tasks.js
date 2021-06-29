@@ -15,17 +15,17 @@ const UploadImg = require("../middleware/file-img");
 
 const router = express.Router();
 
-router.post("/addTask", [Auth], async (req, res) => {
+router.post("/addTask", [mult, UploadImg, Auth], async (req, res) => {
 	if (!req.body.name || !req.body.description)
 		return res.status(401).send("Data incomplete");
 	let imageUrl = "";
-	// let reqImg = req.files.image;
-	// if (req.files !== undefined && reqImg.type) {
-	// 	const url = req.protocol + "://" + req.get("host") + "/";
-	// 	let serverImg = "./uploads/" + moment().unix() + path.extname(reqImg.path);
-	// 	fs.createReadStream(reqImg.path).pipe(fs.createWriteStream(serverImg));
-	// 	imageUrl = url + "uploads/" + moment().unix() + path.extname(reqImg.path);
-	// }
+	 let reqImg = req.files.image;
+	 if (req.files !== undefined && reqImg.type) {
+	 	const url = req.protocol + "://" + req.get("host") + "/";
+	 	let serverImg = "./uploads/" + moment().unix() + path.extname(reqImg.path);
+	 	fs.createReadStream(reqImg.path).pipe(fs.createWriteStream(serverImg));
+	 	imageUrl = url + "uploads/" + moment().unix() + path.extname(reqImg.path);
+	 }
 	const board = await Board.findById(req.body.board);
 	if (!board) return res.status(401).send("Board was not found");
 

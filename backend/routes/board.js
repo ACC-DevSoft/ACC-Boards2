@@ -37,7 +37,7 @@ router.post("/create",Auth, async (req, res) => {
   }
 });
 
-router.get('/list/:workspace', Auth, Scrum, async (req, res) => {
+router.get('/list/:workspace?', Auth, Scrum, async (req, res) => {
   if(!req.params.workspace) return res.status(400).send("Incomplete Data");
   const board = await Board.find({workspace: req.params.workspace})
   if(!board || board==[]) return res.status(400).send(' Not found boards on ' + req.params.workspace)
