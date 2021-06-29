@@ -17,8 +17,8 @@ app.use("/api/role/", Role);
 app.use("/api/auth/", Auth)
 app.use("/api/user/", User);
 app.use("/api/workSpace/", WorkSpace);
-app.use("/api/board/",Task);
 app.use('/api/board/', Board);
+app.use("/api/board/",Task);
 
 app.listen(process.env.PORT, () =>
   console.log("Backend server running on port: " + process.env.PORT)

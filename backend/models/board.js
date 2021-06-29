@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 
 const boardSchema = new mongoose.Schema({
-    workspace: String,
+    workspace: {type: mongoose.Schema.ObjectId, ref: 'workspace'},
     name: String,
     description: String,
     tasks: Array,
     techleader: { type: mongoose.Schema.ObjectId, ref: "user" },
+    status:String,
     date: {type: Date, default: Date.now},
-    status:String
 })
 
 const board = mongoose.model('board', boardSchema)
