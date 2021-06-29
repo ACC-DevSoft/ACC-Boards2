@@ -42,6 +42,29 @@ router.get("/listWorkSpaces/:_id?", Auth, async (req, res) => {
   return res.status(200).send({ workSpaces });
 });
 
+// members of workspace
+
+router.post('/addMember/:username?', Auth, async (req, res)=>{
+  if(!req.body.username) return res.send('No hay nombre de usuario');
+  
+  const workSpace = await Workspace.findById(req.body._id);
+  console.log(workSpace);
+  if(!workSpace) return res.send('no se encontro espacio de trabajo.');
+
+  // search members
+  const user = await User.findOne({userName: req.body.username});
+  if(!user) return res.status(400).send("No se encontro el nombre de usuario");
+  console.log(user._id);
+
+  workSpace.members.push(user);
+  const result = await workSpace.save();
+  if(!result) return res.status(400).send('No se pudo agregar el usuario');
+  console.log(result);
+  user.workSpacesId.push(result);
+  await user .save(); 
+  res.status(200).send('Usuario agregado con exito.');
+
+});
 
 module.exports = router;
 
