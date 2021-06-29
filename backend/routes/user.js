@@ -66,7 +66,7 @@ router.get("/listUsers/:userName?", Auth, UserAuth, Admin, async (req, res) => {
 router.put("/updateUser", Auth, UserAuth, Admin, async (req, res) => {
   if (
     !req.body.name ||
-    !reqbody.userName ||
+    !req.body.userName ||
     !req.body.email ||
     !req.body.password ||
     !req.body.roleId
@@ -75,12 +75,12 @@ router.put("/updateUser", Auth, UserAuth, Admin, async (req, res) => {
 
   const hash = await bcrypt.hash(req.body.password, 10);
 
-  const user = new User.findByIdAndUpdate(req.body._id, {
+  const user = await User.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
     userName: req.body.userName,
     email: req.body.email,
     password: hash,
-    roleId: role._id,
+    roleId: req.body.roleId,
     status: req.body.status,
   });
 
@@ -90,8 +90,9 @@ router.put("/updateUser", Auth, UserAuth, Admin, async (req, res) => {
 
 router.put("/deleteUser", Auth, UserAuth, Admin, async (req, res) => {
   if (
+    !req.body._id ||
     !req.body.name ||
-    !reqbody.userName ||
+    !req.body.userName ||
     !req.body.email ||
     !req.body.password ||
     !req.body.roleId
@@ -100,12 +101,12 @@ router.put("/deleteUser", Auth, UserAuth, Admin, async (req, res) => {
 
   const hash = await bcrypt.hash(req.body.password, 10);
 
-  const user = new User.findByIdAndUpdate(req.body._id, {
+  const user = await User.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
     userName: req.body.userName,
     email: req.body.email,
     password: hash,
-    roleId: role._id,
+    roleId: req.body.roleId,
     status: false,
   });
 
@@ -116,7 +117,7 @@ router.put("/deleteUser", Auth, UserAuth, Admin, async (req, res) => {
 router.post("/registerAdmin", Auth, UserAuth, Admin, async (req, res) => {
   if (
     !req.body.name ||
-    !reqbody.userName ||
+    !req.body.userName ||
     !req.body.email ||
     !req.body.password ||
     !req.body.roleId
@@ -136,7 +137,7 @@ router.post("/registerAdmin", Auth, UserAuth, Admin, async (req, res) => {
     userName: req.body.userName,
     email: req.body.email,
     password: hash,
-    roleId: role._id,
+    roleId: req.body.roleId,
     status: true,
   });
 
