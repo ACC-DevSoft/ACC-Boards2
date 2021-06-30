@@ -1,0 +1,15 @@
+.card-container{
+    max-width: 220px;
+    min-height: 92.7vh;
+    max-height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #696868;
+    border-radius: 0px;
+}
+mat-card-title{
+    padding-top: 20px;
+    text-align: center;
+}
+mat-card-content{
+    min-height: 350px;
+}
