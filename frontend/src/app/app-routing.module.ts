@@ -12,6 +12,8 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { AuthGuard } from "./guard/auth.guard";
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
+import { SaveBoardComponent } from "./board/save-board/save-board.component";
+
 
 const routes: Routes = [
   {
@@ -30,7 +32,13 @@ const routes: Routes = [
   {
     path: 'workSpaces',
     component:WorkspacesComponent,
+  },
+
+  {
+    path: 'saveBoard',
+    component:SaveBoardComponent,
   }
+
 ];
 
 @NgModule({

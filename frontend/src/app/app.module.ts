@@ -34,6 +34,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
+import { SaveBoardComponent } from "./board/save-board/save-board.component";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { WorkspacesComponent } from './work-space/workspaces/workspaces.componen
     RegisterRoleComponent,
     UpdateUserComponent,
     ListWorkspaceComponent,
-    WorkspacesComponent
+    WorkspacesComponent,
+    SaveBoardComponent
   ],
   imports: [
     BrowserModule,
