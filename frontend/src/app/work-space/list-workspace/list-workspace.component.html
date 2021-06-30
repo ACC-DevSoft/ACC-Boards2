@@ -1,51 +1,69 @@
-<mat-card class="card-container">
-    <mat-card-title>DASHBOARD</mat-card-title>
-    <hr>
-    <mat-card-content>
-        <div class="">
-            <mat-expansion-panel >
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        My Work Spaces
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                    <mat-panel-description>
-                       <ul>
-                           <li>item</li>
-                           <li>item</li>
-                           <li>item</li>
-                       </ul>
-                    </mat-panel-description>
-            </mat-expansion-panel>
-        </div>
-        <div class="">
-            <mat-expansion-panel >
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    My Boards
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-                <mat-panel-description>
-                    item
-                </mat-panel-description>
-            </mat-expansion-panel>
-        </div>
-    </mat-card-content>  
-    <hr>
-    <mat-card-actions>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Redial</span>
-        </button>
-        <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-        </button>
-        <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
-        </button>
-    </mat-menu>
-    </mat-card-actions>
-</mat-card>
+<div class="space_container">
+    <div class="space_container_lateralbar">
+        <mat-card class="card-container">
+            <mat-card-title class="mat-card-title--slidebar">DASHBOARD</mat-card-title>
+            <hr>
+            <mat-card-content class="mat-card-content">
+                <div class="">
+                    <mat-expansion-panel >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> 
+                                My Work Spaces
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                            <mat-panel-description>
+                               <ul>
+                                   <li>item</li>
+                                   <li>item</li>
+                                   <li>item</li>
+                               </ul>
+                            </mat-panel-description>
+                    </mat-expansion-panel>
+                </div>
+                <div class="">
+                    <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            My Boards
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                        <mat-panel-description>
+                            item
+                        </mat-panel-description>
+                    </mat-expansion-panel>
+                </div>
+            </mat-card-content>  
+            <hr>
+            <mat-card-actions>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>dialpad</mat-icon>
+                    <span>Redial</span>
+                </button>
+                <button mat-menu-item disabled>
+                    <mat-icon>voicemail</mat-icon>
+                    <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>Disable alerts</span>
+                </button>
+            </mat-menu>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="space_container_workspaces">
+        <!-- <div multi="true" *ngIf="workspaceData.length">
+            <mat-card  class="card-container--workspaces" *ngFor="let workspace of workspaceData" digeToggle="false">
+                <mat-card-subtitle>{{ workspace.name }}</mat-card-subtitle>
+                <div>
+                    <img mat-card-image class="card_container--image_img" src=`{{ workspace.image }}` alt="Photo of a Shiba Inu">
+                </div>
+            </mat-card>
+        </div> -->
+        
+    </div>
+</div>
+
+
+    
