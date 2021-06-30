@@ -9,9 +9,14 @@ import { Router } from '@angular/router';
 })
 export class ListWorkspaceComponent implements OnInit {
 
-  constructor(public auth:AuthService) { }
+  constructor(public auth:AuthService, private router: Router) { }
+ 
 
   ngOnInit(): void {
   }
 
+
+   createBoard() {
+      this.router.navigate(['/saveBoard'])
+   }
 }
