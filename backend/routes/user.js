@@ -8,6 +8,7 @@ const Role = require("../models/role");
 const Auth = require("../middleware/auth");
 const UserAuth = require("../middleware/user");
 const Admin = require("../middleware/admin");
+const { uploadImg } = require("../helper/uploads-img");
 
 router.post("/registerUser", async (req, res) => {
   if (
@@ -17,6 +18,16 @@ router.post("/registerUser", async (req, res) => {
     !req.body.userName
   )
     return res.status(400).send("Incomplete data");
+
+	
+	let imageUrl = "";
+	if (req.files) {
+		try {
+			if (req.files) imageUrl = await uploadImg(req.files, "users");
+		} catch (error) {
+			return res.status(400).json({ error });
+		}
+	}
 
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("The user is already registered");
@@ -40,6 +51,7 @@ router.post("/registerUser", async (req, res) => {
     workSpacesId:[],
     assignedTaskId: [],
     status: true,
+	img: imageUrl
   });
 
   try {
@@ -53,14 +65,14 @@ router.post("/registerUser", async (req, res) => {
 });
 
 router.get("/listUsers/:userName?", Auth, UserAuth, Admin, async (req, res) => {
-  const users = await User.find({
-    userName: new RegExp(req.params["userName"], "i"),
-  })
-    .populate("roleId")
-    .exec();
+	const users = await User.find({
+		userName: new RegExp(req.params["userName"], "i"),
+	})
+		.populate("roleId")
+		.exec();
 
-  if (!users) return res.status(401).send("There are no users to list");
-  return res.status(200).send({ users });
+	if (!users) return res.status(401).send("There are no users to list");
+	return res.status(200).send({ users });
 });
 
 router.put("/updateUser", Auth, UserAuth, Admin, async (req, res) => {

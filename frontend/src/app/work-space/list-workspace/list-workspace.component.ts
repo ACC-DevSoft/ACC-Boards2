@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-list-workspace',
@@ -8,7 +9,8 @@ import { Router } from "@angular/router";
 })
 export class ListWorkspaceComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(public auth:AuthService, private router: Router) { }
+ 
 
   ngOnInit(): void {
   }
