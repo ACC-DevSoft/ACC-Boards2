@@ -1,3 +1,4 @@
 /backend/node_modules/
+/backend/uploads/*.[jpg, png, jpeg, svg, .gif]
 /frontend/node_modules/
 BD_model_ACC.png

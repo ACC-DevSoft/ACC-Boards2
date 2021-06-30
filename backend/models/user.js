@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   //workSpacesId: { type: mongoose.Schema.ObjectId, ref: "worsSpace" },
   date: { type: Date, default: Date.now },
   status: Boolean,
+  img: String,
 });
 
 userSchema.methods.generateJWT = function () {
