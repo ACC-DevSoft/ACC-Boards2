@@ -30,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from "@angular/material/menu";
+import {MatTreeModule} from '@angular/material/tree';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
@@ -64,6 +65,7 @@ import { WorkspacesComponent } from './work-space/workspaces/workspaces.componen
     MatIconModule,
     MatExpansionModule,
     MatMenuModule,
+    MatTreeModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
