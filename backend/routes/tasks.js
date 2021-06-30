@@ -2,30 +2,24 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Auth = require("../middleware/auth");
 
-const multiparty = require("connect-multiparty");
-const mult = multiparty();
-const fs = require("fs");
-const path = require("path");
-const moment = require("moment");
+const { uploadImg } = require("../helper/uploads-img");
 
 const Board = require("../models/board");
 const Task = require("../models/task");
 
-const UploadImg = require("../middleware/file-img");
-
 const router = express.Router();
 
-router.post("/addTask", [mult, UploadImg, Auth], async (req, res) => {
+router.post("/addTask", async (req, res) => {
 	if (!req.body.name || !req.body.description)
 		return res.status(401).send("Data incomplete");
 	let imageUrl = "";
-	 let reqImg = req.files.image;
-	 if (req.files !== undefined && reqImg.type) {
-	 	const url = req.protocol + "://" + req.get("host") + "/";
-	 	let serverImg = "./uploads/" + moment().unix() + path.extname(reqImg.path);
-	 	fs.createReadStream(reqImg.path).pipe(fs.createWriteStream(serverImg));
-	 	imageUrl = url + "uploads/" + moment().unix() + path.extname(reqImg.path);
-	 }
+	if (req.files) {
+		try {
+			if (req.files) imageUrl = await uploadImg(req.files, "tasks");
+		} catch (error) {
+			return res.status(400).json({ error });
+		}
+	}
 	const board = await Board.findById(req.body.board);
 	if (!board) return res.status(401).send("Board was not found");
 
@@ -41,6 +35,7 @@ router.post("/addTask", [mult, UploadImg, Auth], async (req, res) => {
 	await board.save();
 	return res.status(200).send({ saveTask });
 });
+
 
 router.get("/getTasks", Auth, async (req, res) => {
 	const tasks = await Task.find({ status: true });
@@ -66,13 +61,10 @@ router.delete("/deleteTask/:id", Auth, async (req, res) => {
 	const validId = mongoose.Types.ObjectId.isValid(id);
 	if (!validId) return res.status(401).send("Process failed: Invalid id");
 
-	const task = await Task.findByIdAndUpdate(
-		id,
-		{ status: false },
-		{ new: true }
-	);
+	const task = await Task.findByIdAndDelete(id);
 
-	res.status(200).json({ task });
+	if (!task) return res.status(401).send("Process failed: Task not found");
+	return res.status(200).json({ message: "Task deleted" });
 });
 
 module.exports = router;
