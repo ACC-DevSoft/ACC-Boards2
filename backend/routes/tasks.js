@@ -2,29 +2,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Auth = require("../middleware/auth");
 
-const multiparty = require("connect-multiparty");
-const mult = multiparty();
-const fs = require("fs");
-const path = require("path");
-const moment = require("moment");
+const { uploadImg } = require("../helper/uploads-img");
 
 const Board = require("../models/board");
 const Task = require("../models/task");
 
-const UploadImg = require("../middleware/file-img");
-
 const router = express.Router();
 
-router.post("/addTask", [Auth, mult, UploadImg], async (req, res) => {
+router.post("/addTask", async (req, res) => {
 	if (!req.body.name || !req.body.description)
 		return res.status(401).send("Data incomplete");
 	let imageUrl = "";
-	let reqImg = req.files.image;
-	if (req.files !== undefined && reqImg.type) {
-		const url = req.protocol + "://" + req.get("host") + "/";
-		let serverImg = "./uploads/" + moment().unix() + path.extname(reqImg.path);
-		fs.createReadStream(reqImg.path).pipe(fs.createWriteStream(serverImg));
-		imageUrl = url + "uploads/" + moment().unix() + path.extname(reqImg.path);
+	if (req.files) {
+		try {
+			if (req.files) imageUrl = await uploadImg(req.files, "tasks");
+		} catch (error) {
+			return res.status(400).json({ error });
+		}
 	}
 	const board = await Board.findById(req.body.board);
 	if (!board) return res.status(401).send("Board was not founded");
@@ -39,6 +33,7 @@ router.post("/addTask", [Auth, mult, UploadImg], async (req, res) => {
 	const saveTask = await task.save();
 	return res.status(200).send({ saveTask });
 });
+
 
 router.get("/getTasks", Auth, async (req, res) => {
 	const tasks = await Task.find({ status: true });

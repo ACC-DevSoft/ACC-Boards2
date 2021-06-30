@@ -3,7 +3,6 @@ const fs = require("fs");
 const { Router } = require("express");
 const mongoose = require("mongoose");
 const { uploadImg, allowedCollections } = require("../helper/uploads-img");
-const { validateImg } = require("../middleware/validateImg");
 
 const Task = require("../models/task");
 const User = require("../models/user");
@@ -14,7 +13,7 @@ router.get("/:collection/:id", async (req, res) => {
 	const { collection, id } = req.params;
 
 	const validId = mongoose.Types.ObjectId.isValid(id);
-	if (!validId) return res.status(401).send("Process failed: Invalid id");
+	if (!validId) return res.status(401).json("Process failed: Invalid id");
 
 	let model;
 
@@ -52,19 +51,7 @@ router.get("/:collection/:id", async (req, res) => {
 	res.sendFile(pathImg);
 });
 
-router.post("/", validateImg, async (req, res) => {
-	try {
-		const pathfull = await uploadImg(req.files, "tasks");
-
-		res.status(200).json({
-			path: pathfull,
-		});
-	} catch (error) {
-		res.status(400).json({ error });
-	}
-});
-
-router.put("/:collection/:id", validateImg, async (req, res) => {
+router.put("/:collection/:id", async (req, res) => {
 	const { collection, id } = req.params;
 
 	try {
@@ -107,7 +94,15 @@ router.put("/:collection/:id", validateImg, async (req, res) => {
 		if (fs.existsSync(pathImg)) fs.unlinkSync(pathImg);
 	}
 
-	const nameImg = await uploadImg(req.files, collection);
+	let nameImg = "";
+	if (req.files) {
+		try {
+			if (req.files) nameImg = await uploadImg(req.files, collection);
+		} catch (error) {
+			return res.status(400).json({ error });
+		}
+	}
+
 	model.img = nameImg;
 
 	await model.save();
