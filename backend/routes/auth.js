@@ -16,8 +16,8 @@ router.post("/login", async (req, res) => {
   try {
     const jwtToken = user.generateJWT();
     userSend = {
-      workSpacesId: userSend.workSpacesId, 
-      id:user._id,
+      workSpacesId: user.workSpacesId, 
+      id: user._id,  
       assignedTaskId:user.assignedTaskId,
       name:user.name,
       userName:user.userName,

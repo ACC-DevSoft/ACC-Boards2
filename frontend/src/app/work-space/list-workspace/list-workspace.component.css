@@ -23,16 +23,21 @@
     border-radius: 0px;
 }
 .card-container--workspaces{
-    max-width: 220px;
-    max-height: 220px;
+    width: 220px;
     margin: 10px;
     background-color: #ffffff;
     border-right: 1px solid #696868;
     border-radius: 5px;
     
 }
-.card_container--image{
+
+.card-container--tasks {
     display: flex;
+    flex-direction: column;
+}
+
+.card-container--tasks > mat-card{
+    margin-bottom: 10px;
 }
 
 mat-card-title{
