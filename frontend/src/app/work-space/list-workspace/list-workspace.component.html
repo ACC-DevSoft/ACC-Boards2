@@ -52,25 +52,6 @@
     </div>
   </mat-card-content>
   <hr />
-  <mat-card-actions>
-      <div class="nav-items">
-          <a *ngIf="auth.loggedIn()"
-            mat-button
-            mat-stroked-button
-            (click)="auth.logOut()">
-            <mat-icon>account_box</mat-icon>
-            Profile
-          </a>
-          <a *ngIf="auth.loggedIn()"
-             mat-button
-             mat-stroked-button
-             (click)="auth.logOut()">
-              <mat-icon>logout</mat-icon>
-              Logout
-          </a>
 
-      </div>
-  
-  </mat-card-actions>
   <div class=""></div>
 </mat-card>
