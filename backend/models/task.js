@@ -9,6 +9,6 @@ const taskSchema = new mongoose.Schema({
 	date: { type: Date, default: Date.now },
 	status: { type: String, default: "to-do" },
 });
-
 const Task = mongoose.model("task", taskSchema);
+
 module.exports = Task;

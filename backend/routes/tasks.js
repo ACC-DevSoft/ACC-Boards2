@@ -21,7 +21,7 @@ router.post("/addTask", async (req, res) => {
 		}
 	}
 	const board = await Board.findById(req.body.board);
-	if (!board) return res.status(401).send("Board was not founded");
+	if (!board) return res.status(401).send("Board was not found");
 
 	const task = new Task({
 		name: req.body.name,
@@ -31,6 +31,8 @@ router.post("/addTask", async (req, res) => {
 	});
 
 	const saveTask = await task.save();
+	board.tasks.push(saveTask);
+	await board.save();
 	return res.status(200).send({ saveTask });
 });
 

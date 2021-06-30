@@ -4,33 +4,40 @@ const Board = require("../models/board")
 const Auth = require("../middleware/auth")
 const User = require("../models/user")
 const Scrum = require("../middleware/scrumMaster")
-// const Workspace = require("../models/workspace")
+const Workspace = require("../models/workspace")
 
-router.post("/create",Auth, Scrum, async (req, res) => {
-  if (!req.body.name || !req.body.description || !req.body.techleader || !req.body.workspace) {
+router.post("/create",Auth, async (req, res) => {
+  if (!req.body.workspace || !req.body.name || !req.body.description || !req.body.techleader ) {
     return res.status(400).send("Incomplete Data");
   }
-  const user = await User.findOne({ name: req.body.techleader})
+  
+  const user = await User.findOne({ userName: req.body.techleader})
   if(!user) return res.status(400).send("User not found");
-  // const workspace = await Workspace.findById(req.body.workspace)
-  // if(!workspace) return res.status(400).send("Workspace not found");
+
+  const workspace = await Workspace.findById(req.body.workspace)
+  if(!workspace) return res.status(400).send("Workspace not found");
+
   const board = new Board({
-    // workspace: workspace._id,
+    workspace: workspace._id,
     name: req.body.name,
     description: req.body.description,
     tasks:[],
     techleader: user._id,
-    status:'to-do'
+    status:'Active'
   })
   try{
     const saveboard = await board.save()
-    res.status(200).send('board created')
+    // res.status(200).send('board created');
+    console.log(saveboard);
+    workspace.boards.push(saveboard);
+    await workspace.save();
+    return res.status(200).send({saveboard})
   } catch(err) {
     res.status(400).send("Error: board no create" + err)
   }
 });
 
-router.get('/list/:workspace', Auth, Scrum, async (req, res) => {
+router.get('/list/:workspace?', Auth, Scrum, async (req, res) => {
   if(!req.params.workspace) return res.status(400).send("Incomplete Data");
   const board = await Board.find({workspace: req.params.workspace})
   if(!board || board==[]) return res.status(400).send(' Not found boards on ' + req.params.workspace)

@@ -18,9 +18,23 @@ import { AuthService } from './services/auth.service';
 import { BoardService } from './services/board.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './guard/auth.guard';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from "@angular/material/menu";
+import {MatTreeModule} from '@angular/material/tree';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
+import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +49,26 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     RegisterUserComponent,
     UpdateRoleComponent,
     RegisterRoleComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ListWorkspaceComponent,
+    WorkspacesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatTreeModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [AuthService,
     BoardService,
