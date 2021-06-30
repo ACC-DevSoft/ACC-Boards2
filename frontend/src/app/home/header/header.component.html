@@ -9,7 +9,7 @@
   <ul>
     <span class="spacer"></span>
 
-    <mat-expansion-panel class="expansion-panel" hideToggle="true">
+    <mat-expansion-panel *ngIf="auth.loggedIn()" class="expansion-panel" hideToggle="true">
       <mat-expansion-panel-header class="expansion-panel-header">
         <mat-panel-title class="color-title">
           <span class="text-center">Roles</span>
@@ -18,7 +18,7 @@
 
       <mat-list class="list-item">
         <mat-list-item>
-          <a mat-button routerLink="registerRole">Create role</a></mat-list-item>
+          <a mat-button  routerLink="registerRole">Create role</a></mat-list-item>
         <mat-list-item>
           <a mat-button routerLink="listRole">List roles</a></mat-list-item>
       </mat-list>
@@ -26,7 +26,7 @@
   </ul>
   <ul>
 
-    <mat-expansion-panel class="expansion-panel" hideToggle="true">
+    <mat-expansion-panel *ngIf="auth.loggedIn()" class="expansion-panel" hideToggle="true">
       <mat-expansion-panel-header class="expansion-panel-header">
         <mat-panel-title class="color-title">
           <span class="text-center">Users</span>
