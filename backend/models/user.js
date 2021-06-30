@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   assignedTaskId: [{ type: mongoose.Schema.ObjectId, ref: "task" }],
   date: { type: Date, default: Date.now },
   status: Boolean,
+  img: String,
 });
 
 userSchema.methods.generateJWT = function () {

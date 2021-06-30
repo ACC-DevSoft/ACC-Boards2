@@ -5,9 +5,9 @@ const taskSchema = new mongoose.Schema({
 	description: String,
 	img: String,
 	board: { type: mongoose.Schema.ObjectId, ref: "board", required: true },
-	users: { type: Array, default: [] },
-	status: { type: Boolean, default: true },
+	editors: { type: Array, default: [] },
 	date: { type: Date, default: Date.now },
+	status: { type: String, default: "to-do" },
 });
 const Task = mongoose.model("task", taskSchema);
 

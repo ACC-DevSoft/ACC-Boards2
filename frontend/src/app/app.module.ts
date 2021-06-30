@@ -30,11 +30,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from "@angular/material/menu";
+import { MatListModule } from '@angular/material/list';
 import {MatTreeModule} from '@angular/material/tree';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
+import { SaveBoardComponent } from "./board/save-board/save-board.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { WorkspacesComponent } from './work-space/workspaces/workspaces.componen
     RegisterRoleComponent,
     UpdateUserComponent,
     ListWorkspaceComponent,
-    WorkspacesComponent
+    WorkspacesComponent,
+    SaveBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { WorkspacesComponent } from './work-space/workspaces/workspaces.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatListModule,
   ],
   providers: [AuthService,
     BoardService,
