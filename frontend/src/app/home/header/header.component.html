@@ -1,12 +1,52 @@
 <mat-toolbar class="bgHeader">
-    <ul>
-      <a *ngIf="auth.loggedIn()" routerLink="listTasks">Work Spaces</a>
-    </ul>
+  <div class="logo">
+    <img src="../../../assets/img/ACC-Logo.png" alt="" />
+  </div>
 
-    <span class="headerSpacer"></span>
-    <ul>
-      <a *ngIf="!auth.loggedIn()" mat-button routerLink="register">Sign up</a>
-      <a *ngIf="!auth.loggedIn()" mat-button routerLink="login">Log in</a>
-      <a *ngIf="auth.loggedIn()" mat-button (click)="auth.logOut()">Log out</a>
-    </ul>
-  </mat-toolbar>
+  <ul>
+    <a *ngIf="auth.loggedIn()" routerLink="listTasks">Work Spaces</a>
+  </ul>
+  <ul>
+    <span class="spacer"></span>
+
+    <mat-expansion-panel class="expansion-panel" hideToggle="true">
+      <mat-expansion-panel-header class="expansion-panel-header">
+        <mat-panel-title class="color-title">
+          <span class="text-center">Roles</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-list class="list-item">
+        <mat-list-item>
+          <a mat-button routerLink="listTasks">Create role</a></mat-list-item>
+        <mat-list-item>
+          <a mat-button routerLink="listTasks">List roles</a></mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </ul>
+  <ul>
+
+    <mat-expansion-panel class="expansion-panel" hideToggle="true">
+      <mat-expansion-panel-header class="expansion-panel-header">
+        <mat-panel-title class="color-title">
+          <span class="text-center">Users</span>
+
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list class="list-item">
+        <mat-list-item>
+          <a mat-button routerLink="listTasks">Create user</a></mat-list-item
+        >
+        <mat-list-item>
+          <a mat-button routerLink="listTasks">List user</a></mat-list-item
+        >
+      </mat-list>
+    </mat-expansion-panel>
+  </ul>
+  <span class="headerSpacer"></span>
+  <ul>
+    <a *ngIf="!auth.loggedIn()" mat-button routerLink="register">Sign up</a>
+    <a *ngIf="!auth.loggedIn()" mat-button routerLink="login">Log in</a>
+    <a *ngIf="auth.loggedIn()" mat-button (click)="auth.logOut()">Log out</a>
+  </ul>
+</mat-toolbar>
