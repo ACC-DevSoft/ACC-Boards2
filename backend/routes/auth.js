@@ -15,7 +15,16 @@ router.post("/login", async (req, res) => {
 
   try {
     const jwtToken = user.generateJWT();
-    return res.status(200).send({ jwtToken });
+    userSend = {
+      workSpacesId: userSend.workSpacesId, 
+      id:user._id,
+      assignedTaskId:user.assignedTaskId,
+      name:user.name,
+      userName:user.userName,
+      email:user.email,
+      status:user.status,
+    }
+    return res.status(200).send({ jwtToken , userSend});
   } catch (e) {
     return res.status(400).send("Login error");
   }
