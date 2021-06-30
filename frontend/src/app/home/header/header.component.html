@@ -4,7 +4,7 @@
   </div>
 
   <ul>
-    <a *ngIf="auth.loggedIn()" routerLink="listTasks">Work Spaces</a>
+    <a *ngIf="auth.loggedIn()" routerLink="workSpaces">Work Spaces</a>
   </ul>
   <ul>
     <span class="spacer"></span>
@@ -18,9 +18,9 @@
 
       <mat-list class="list-item">
         <mat-list-item>
-          <a mat-button routerLink="listTasks">Create role</a></mat-list-item>
+          <a mat-button routerLink="registerRole">Create role</a></mat-list-item>
         <mat-list-item>
-          <a mat-button routerLink="listTasks">List roles</a></mat-list-item>
+          <a mat-button routerLink="listRole">List roles</a></mat-list-item>
       </mat-list>
     </mat-expansion-panel>
   </ul>
@@ -35,11 +35,9 @@
       </mat-expansion-panel-header>
       <mat-list class="list-item">
         <mat-list-item>
-          <a mat-button routerLink="listTasks">Create user</a></mat-list-item
-        >
+          <a mat-button routerLink="registerUser">Create user</a></mat-list-item>
         <mat-list-item>
-          <a mat-button routerLink="listTasks">List user</a></mat-list-item
-        >
+          <a mat-button routerLink="listUser">List user</a></mat-list-item>
       </mat-list>
     </mat-expansion-panel>
   </ul>
