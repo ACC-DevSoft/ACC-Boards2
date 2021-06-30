@@ -30,7 +30,31 @@ const routes: Routes = [
   {
     path: 'workSpaces',
     component:WorkspacesComponent,
-  }
+  },
+  {
+    path: 'listRole',
+    component: ListRoleComponent,
+  },
+  {
+    path: 'updateRole',
+    component: UpdateRoleComponent,
+  },
+  {
+    path: 'registerRole',
+    component: RegisterRoleComponent,
+  },
+  {
+    path: 'listUser',
+    component: ListUserComponent,
+  },
+  {
+    path: 'updateUser',
+    component: UpdateUserComponent,
+  },
+  {
+    path: 'registerUser',
+    component: RegisterUserComponent,
+  },
 ];
 
 @NgModule({
