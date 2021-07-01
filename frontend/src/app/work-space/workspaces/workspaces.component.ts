@@ -9,26 +9,36 @@ import { Router } from "@angular/router";
   styleUrls: ['./workspaces.component.css']
 })
 export class WorkspacesComponent implements OnInit {
-  public errorMessage: any;
+  public errorMessage: String;
+  public workspaceData: any;
+
 
   constructor(private router: Router, private auth: AuthService, private workspace: WorkSpaceService) { 
     this.errorMessage = '';
+    this.workspaceData = {}
   }
-
+  
   ngOnInit(): void {
-    let id = this.auth.getCurrent();
-    this.errorMessage = JSON.stringify(id);
-    console.log(id);
+    let current = JSON.stringify(this.auth.getCurrent());
+    current = current.replace(/['"]+/g, '' );
     
-    this.workspace.listWorkSpacesByUser(id).subscribe(
+    this.workspace.listWorkSpacesByUser(current).subscribe(
       (res:any)=>{
         console.log(res);
-        
+        this.workspaceData = res.workSpaces;
+        // this.errorMessage = res.workSpaces;
+      },
+      (err)=>{
+        console.log(err.error);
+        this.errorMessage = err.error;
+        this.closeAlert();
       }
     )
      
   }
   
+  closeAlert(){
+}
 
 
 }
