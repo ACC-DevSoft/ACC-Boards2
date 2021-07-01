@@ -46,6 +46,7 @@ export class AuthService {
   getCurrent(){
     let currentUser = localStorage.getItem('current');
     return currentUser;
+
   }
 
   getToken(){

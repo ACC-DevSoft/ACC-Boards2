@@ -15,10 +15,11 @@ export class ListBoardComponent implements OnInit {
     this.boardData = {};
     this.errorMessage = "";
     this.successMessage = "";
+    this.boardData.id = "60db3272728da31738b54b45"
   }
 
   ngOnInit(): void {
-    this.board.listBoard(this.boardData).subscribe(
+    this.board.listBoard(this.boardData.id).subscribe(
       (res: any) => {
         console.log(res);
         this.boardData = res.board;        
