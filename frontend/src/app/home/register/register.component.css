@@ -30,5 +30,11 @@ mat-card-title {
     margin:20px;
     text-align:center;
 }
-
+.alert{
+    display: flex;
+    justify-content: space-between;
+}
+.spacer {
+  flex: 1 0 auto;
+}
 button { margin: 10px;}

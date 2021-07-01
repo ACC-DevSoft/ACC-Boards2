@@ -1,0 +1,30 @@
+.main-wrap{
+    top:50px;
+    display: flex;
+    flex-direction:row;
+}
+.main-wrap .content-page{
+    width: 90%;
+    margin:15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 10px;
+}
+.main-wrap .content-page .page-column{
+
+}
+.btn-add{
+    background-color: #E7E7E7;
+    border: 1px solid #505050;
+    width: 200px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.btn-add:hover{
+box-shadow: outser;
+}

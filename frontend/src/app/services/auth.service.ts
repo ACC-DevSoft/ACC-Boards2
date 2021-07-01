@@ -17,11 +17,15 @@ export class AuthService {
     return this.http.post(this.env + 'user/registerUser/', user)
   }
   login(user: any){
-    return this.http.post(this.env + "auth/login", user);
+    return this.http.post(this.env + "auth/login?include=", user);
   }
 
   loggedIn(){
     return !!localStorage.getItem('token');
+  }
+  getCurrent(){
+    let currentUser = localStorage.getItem('current');
+    return currentUser;
   }
 
   getToken(){
@@ -30,6 +34,7 @@ export class AuthService {
 
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('current');
     this.router.navigate(['/login']);
   }
 }

@@ -8,6 +8,7 @@
                 <div class="alert-message">
                     {{errorMessage}}
                 </div>
+                <div class="spacer"></div>
                 <span (click)="close()" class="close" data-dismiss="alert">
                     <mat-icon>close</mat-icon>
                 </span>
@@ -23,6 +24,9 @@
                 <input matInput [(ngModel)]="loginData.password" matInput type="password" placeholder="Password" required />
                 <mat-label>Password</mat-label>
             </mat-form-field>
+        </div>
+        <div class="">
+            <span>Create an account. <a routerLink="/register">Sign Up</a></span>
         </div>
         <mat-card-actions>
             <button (click)="login()" mat-raised-button>
