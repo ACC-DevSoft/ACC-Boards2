@@ -3,9 +3,10 @@ const router = express.Router();
 
 const Auth = require("../middleware/auth");
 const Admin = require("../middleware/admin");
+const UserAuth = require("../middleware/user");
 
 const Role = require("../models/role");
-router.post("/registerRole", Auth, Admin, async(req, res) =>{
+router.post("/registerRole", Auth, UserAuth, Admin, async(req, res) =>{
     if(!req.body.name ||  !req.body.description)return res.status(400).send("Incomplete data.");
 
     const roleExist = await Role.findOne({name: req.body.name});

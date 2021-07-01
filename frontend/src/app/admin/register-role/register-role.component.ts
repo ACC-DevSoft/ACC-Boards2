@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService} from "../../services/admin.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register-role',
@@ -6,10 +8,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-role.component.css']
 })
 export class RegisterRoleComponent implements OnInit {
+  roleData: any;
+  successMessage: String;
+  errorMessage: String;
 
-  constructor() { }
+  constructor(private router: Router, private admin: AdminService) { 
+    this.roleData = {};
+    this.successMessage = '';
+    this.errorMessage = '';
+  }
 
   ngOnInit(): void {
   }
 
+  registerRole(){
+    if (
+      !this.roleData.name ||
+      !this.roleData.description
+    ){
+      console.log('Register Failed: Incomplete Data');
+      this.errorMessage = 'Register Failed: Incomplete Data';
+      this.closeAlert()
+      this.roleData = {};
+    } else {
+      this.admin.registerRole(this.roleData).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.roleData = {};
+          this.router.navigate(['/listRole']);
+        },
+        (err: any) => {
+          console.log(err)
+          this.errorMessage = err.error; 
+          this.closeAlert()
+          this.roleData = {};
+        }
+      );
+    }
+  }
+
+  closeAlert() {
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000);
+  }
+  closeX() {
+    this.errorMessage = '';
+  }
 }
+

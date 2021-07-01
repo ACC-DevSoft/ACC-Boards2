@@ -46,7 +46,7 @@ const routes: Routes = [
     component: ListRoleComponent,
   },
   {
-    path: 'updateRole',
+    path: 'updateRole/:role?',
     component: UpdateRoleComponent,
   },
   {

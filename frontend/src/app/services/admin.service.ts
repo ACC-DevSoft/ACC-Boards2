@@ -33,4 +33,8 @@ export class AdminService {
   registerRole(role: any) {
     return this.http.post(this.env + "role/registerRole", role)
   }
+
+  updateRole(role:any){
+    return this.http.put(this.env + "role/updateRole", role);
+  }
 }
