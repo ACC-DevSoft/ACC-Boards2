@@ -6,8 +6,7 @@
         <div class="page-header">
             <h1>Work Spaces</h1>
             <h2>{{workspaceData.length}}</h2>
-
-        </div>
+    </div>
         <!-- <div class="page-column">
             <a routerLink="ad"></a><button class="btn-add"><mat-icon>add</mat-icon> &nbsp;   Add Workspace</button>
         </div> -->
@@ -22,6 +21,7 @@
                 <div class="workspace-item-header">
                     <div class="item-name">
                         <h2>{{workspace.name}}</h2>
+                        <p>{{workspace._id}}</p>
                     </div>
                     <div class="item-options">
                         <a href=""><mat-icon>people</mat-icon><span>&nbsp;members</span></a>
@@ -32,10 +32,11 @@
                 <div class="workspace-item-content">
                     <ul>
                         <li class="">
-                            <a href="" class="board-title">
+                            <a routerLink="#" class="board-title">
                                 <div class="board-details">
                                     <div class="board-name">
                                         board name
+                                        <!-- {workspace.boards.}} -->
                                     </div>
                                 </div>
                             </a>

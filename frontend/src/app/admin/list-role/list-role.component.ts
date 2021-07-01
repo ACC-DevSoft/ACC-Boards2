@@ -10,13 +10,16 @@ import { Router } from "@angular/router";
 export class ListRoleComponent implements OnInit {
   public roleData: any;
   public errorMessage: String;
+  public data: any;
 
   constructor(private admin: AdminService, private router: Router) { 
     this.roleData = {};
     this.errorMessage = '';
+    this.data = {};
   }
 
   ngOnInit(): void {
+    this.data = 
     this.admin.listRole().subscribe(
       (res: any) => {
         console.log(res);

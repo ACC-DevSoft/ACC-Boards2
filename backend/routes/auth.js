@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
+const Role = require("../models/role");
 
 router.post("/login", async (req, res) => {
   if(!req.body.email || !req.body.password) return res.status(400).send("Incomplete data.");
@@ -12,9 +13,10 @@ router.post("/login", async (req, res) => {
   const hash = await bcrypt.compare(req.body.password, user.password);
   if (!user.status || !hash)
     return res.status(400).send("Incorrect email or password");
-
   try {
     const jwtToken = user.generateJWT();
+    const { name } = await Role.findById('60d0bc7657fa52478c80d682');
+    const role = (name === "ADMIN") ? true : false;
     userSend = {
       workSpacesId: user.workSpacesId, 
       id: user._id,  
@@ -25,7 +27,7 @@ router.post("/login", async (req, res) => {
       status:user.status,
     }
     let current = user.id;
-    return res.status(200).send({ jwtToken , current});
+    return res.status(200).send({ token:jwtToken, user:userSend, role:role,current });
   } catch (e) {
     return res.status(400).send("Login error");
   }
