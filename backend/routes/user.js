@@ -75,7 +75,17 @@ router.get("/listUsers/:userName?", Auth, UserAuth, Admin, async (req, res) => {
 	return res.status(200).send({ users });
 });
 
-router.put("/updateUser", Auth, UserAuth, Admin, async (req, res) => {
+router.get("/loadUser/:_id", Auth, UserAuth, Admin, async(req, res) => {
+  const user = await User.find({ 
+    userName: new RegExp(userNamereq.params["userName"], "i")
+  })
+  .populate("id")
+    .exec();
+  if (!user) return res.status(401).send("Process failed: User not found");
+  return res.status(200).send({ user });
+});
+
+router.put("/updateUser/:_id", Auth, UserAuth, Admin, async (req, res) => {
   if (
     !req.body._id ||
     !req.body.name ||

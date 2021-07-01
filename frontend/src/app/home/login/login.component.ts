@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(!this.loginData.email || !this.loginData.password){
-      this.errorMessage = "Process Failed: Incomplete Data.";
+      this.errorMessage = "Process Failed: Incomplete Data";
       this.loginData ={};
       this.closeAlert();
     }else{
