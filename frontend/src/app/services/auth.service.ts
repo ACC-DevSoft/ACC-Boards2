@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private env : String;
+  public Admin : Boolean;
+  public userData : Object;
 
   constructor(private http: HttpClient, private router: Router) { 
     this.env = environment.APP_URL;
+    this.Admin = false;
+    this.userData = {};
   }
 
   registerUser(user: any) {
@@ -18,6 +22,22 @@ export class AuthService {
   }
   login(user: any){
     return this.http.post(this.env + "auth/login", user);
+  }
+  isAdmin(){
+    this.Admin = true;
+  }
+
+  forAdmin(){
+    this.Admin === true;
+    return this.Admin;
+  }
+
+  getUserData() {
+    return this.userData
+  }
+
+  setUserData(data:any) {
+    this.userData = data;
   }
 
   loggedIn(){

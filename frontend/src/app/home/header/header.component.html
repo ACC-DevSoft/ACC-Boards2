@@ -6,10 +6,10 @@
   <ul>
     <a *ngIf="auth.loggedIn()" routerLink="workSpaces">Work Spaces</a>
   </ul>
-  <ul>
+  <ul *ngIf="auth.forAdmin()">
    <a *ngIf="auth.loggedIn()" routerLink="listRole">Roles</a> 
   </ul>
-  <ul>
+  <ul *ngIf="auth.forAdmin()">
     <a *ngIf="auth.loggedIn()" routerLink="listUser">Users</a> 
    </ul>
   <span class="headerSpacer"></span>
