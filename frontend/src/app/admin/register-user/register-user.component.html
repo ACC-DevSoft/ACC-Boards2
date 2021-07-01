@@ -1,1 +1,55 @@
-<p>register-user works!</p>
+<div class="form">
+  <mat-card class="form_content">
+    <mat-card-title>Register user</mat-card-title>
+    <div class="form_content_inputs">
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          [(ngModel)]="registerData.name"
+          matInput
+          placeholder="Name"
+          required
+        /><mat-label>Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          [(ngModel)]="registerData.email"
+          matInput
+          placeholder="Email"
+          required
+        /><mat-label>Email</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          [(ngModel)]="registerData.userName"
+          matInput
+          placeholder="User Name"
+          required
+        /><mat-label>User Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          [(ngModel)]="registerData.password"
+          matInput
+          type="password"
+          placeholder="Password"
+          required
+        /><mat-label>Password</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Role:</mat-label>
+        <mat-select [(ngModel)]="registerData.roleId" *ngIf="roleData.length">
+          <mat-option *ngFor="let role of roleData" [value]="role._id">{{
+            role.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-card-actions>
+      <button (click)="registerAdmin()" mat-raised-button>Register</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

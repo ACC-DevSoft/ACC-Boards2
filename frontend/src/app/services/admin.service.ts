@@ -13,7 +13,7 @@ export class AdminService {
     this.env = environment.APP_URL;
   }
 
-  registerUser(user: any) {
+  registerAdmin(user: any) {
     return this.http.post(this.env + "user/registerAdmin", user)
   }
 

@@ -29,6 +29,22 @@ export class ListUserComponent implements OnInit {
     )
   }
 
+  updateUser(){
+    this.admin.updateUser(this.userData).subscribe(
+      (res)=>{
+        console.log(res);
+        this.userData = {};
+        this.router.navigate(['/updateUser']);
+      },
+      (err)=>{
+        console.log(err);
+        this.errorMessage = err.console.error();
+        this.closeAlert();
+        
+      }
+    )
+  }
+
   closeAlert(){
     setTimeout(() => {
       this.errorMessage = '';

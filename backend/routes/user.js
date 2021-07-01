@@ -77,6 +77,7 @@ router.get("/listUsers/:userName?", Auth, UserAuth, Admin, async (req, res) => {
 
 router.put("/updateUser", Auth, UserAuth, Admin, async (req, res) => {
   if (
+    !req.body._id ||
     !req.body.name ||
     !req.body.userName ||
     !req.body.email ||
