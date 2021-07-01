@@ -1,49 +1,64 @@
 <div class="container">
-    <mat-card>
-        <h2>Users</h2>
-        <hr>
-        <div class="col-12 col-lg-12" *ngIf="errorMessage">
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <div class="alert-message">
-                    {{errorMessage}}
-                </div>
-                <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">X</span></button>
-            </div>
+  <mat-card>
+    <h2>Users</h2>
+    <hr />
+    <div class="col-12 col-lg-12" *ngIf="errorMessage">
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert-message">
+          {{ errorMessage }}
         </div>
-        <div class="row">
-            <div class="col">
-                <h3>Total users: <span>{{userData.length}}</span></h3>
-            </div>
-            <div class="row-12">
-                <a routerLink="/registerUser" mat-button mat-raised-button>
-                    <mat-icon aria-hidden="false" color="accent">add</mat-icon> Add user
-                </a>
-            </div>
-        </div>
-        <p>{{userData.name}}</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Creation date</th>
-                    <th>Edit</th>
-                </tr>
-            </thead>
-            <tbody *ngIf="userData.length">
-                <tr *ngFor="let users of userData">
-                    <td>{{users.name}}</td>
-                    <td>{{users.email}}</td>
-                    <td>{{users.roleId.name}}</td>
-                    <td>{{users.status}}</td>
-                    <td>{{users.date}}</td>
-                    <a routerLink="/updateUser/{{users._id}}" mat-button color="secondary"><mat-icon>edit</mat-icon> Update </a>
-                    <a routerLink="/deleteUser/{{users._id}}" mat-button color="secondary"><mat-icon>delete</mat-icon> Delete </a>
-                </tr>
-            </tbody>
-        </table>
-    </mat-card>
+        <button
+          type="button"
+          class="close"
+          (click)="closeX()"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <h3>
+          Total users: <span>{{ userData.length }}</span>
+        </h3>
+      </div>
+      <div class="row-12">
+        <a routerLink="/registerUser" mat-button mat-raised-button>
+          <mat-icon aria-hidden="false" color="accent">add</mat-icon> Add user
+        </a>
+      </div>
+    </div>
+    <p>{{ userData.name }}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Creation date</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="userData.length">
+        <tr *ngFor="let users of userData">
+          <td>{{ users.name }}</td>
+          <td>{{ users.email }}</td>
+          <td>{{ users.roleId.name }}</td>
+          <td>{{ users.status }}</td>
+          <td>{{ users.date }}</td>
+          <button
+            ng-click="updateUser(users._id)"
+            mat-button
+            color="secondary"
+          >
+            <mat-icon>edit</mat-icon> Update
+          </button>
+          <!-- <a routerLink="/deleteUser/{{users._id}}" mat-button color="secondary"><mat-icon>delete</mat-icon> Delete </a> -->
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AdminService } from "../../services/admin.service";
 import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-update-user',
@@ -13,7 +14,8 @@ export class UpdateUserComponent implements OnInit {
   userData: any;
   errorMessage: string;
 
-  constructor(private admin: AdminService, private router: Router) { 
+
+  constructor(private admin: AdminService, private router: Router ) { 
     this.updateData = {};
     this.roleData = {};
     this.userData = {};
@@ -23,7 +25,7 @@ export class UpdateUserComponent implements OnInit {
   ngOnInit(): void {
     this.userData = localStorage.getItem('data');
     this.userData = JSON.parse(this.userData);
-    this.userData.name
+    
 
     this.admin.listRole().subscribe(
       (res: any) => {

@@ -29,11 +29,13 @@ export class ListUserComponent implements OnInit {
     )
   }
 
+  
   updateUser(){
     this.admin.updateUser(this.userData).subscribe(
       (res:any)=>{
         console.log(res);
         this.userData = {};
+        sessionStorage.setItem('temp', this.userData._id)
         this.router.navigate(['/updateUser']);
       },
       (err)=>{
