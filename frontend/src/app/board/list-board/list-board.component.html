@@ -1,5 +1,46 @@
-<div class="bg-component">
-    <div class="accordion-display">
+<div class="main-wrap">
+  <div class="content-page">
+      <div class="page-header">
+          <h1>Boards</h1>
+          <h2>{{boardData.length}}</h2>
+  </div>
+      <div class="row">
+      </div>
+      <span>{{errorMessage}}</span>
+      <div class="workspace-section">
+          <div class="workspace-item" *ngFor="let board of boardData">
+              <div class="workspace-item-header">
+                  <div class="item-name">
+                      <h2>{{boardData.name}}</h2>
+                      <p>{{boardData._id}}</p>
+                  </div>
+                  <div class="item-options">
+                      <a href=""><mat-icon>people</mat-icon><span>&nbsp;members</span></a>
+                      <a href=""><mat-icon>settings</mat-icon><span>&nbsp;settings</span></a>
+                      <a href=""><mat-icon>delete</mat-icon> <span>&nbsp;delete</span></a>
+                  </div>
+              </div>
+              <div class="workspace-item-content">
+                  <ul>
+                      <li class="">
+                          <a routerLink="#" class="board-title">
+                              <div class="board-details">
+                                  <div class="board-name">
+                                      board name
+                                  </div>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="">
+                          <div class="add-board">
+                          <p><span>Add Board</span></p>
+                          </div>
+                      </li>
+                  </ul>
+              </div>  
+          </div>
+      </div>
 
-    </div>
+  </div>
+
 </div>

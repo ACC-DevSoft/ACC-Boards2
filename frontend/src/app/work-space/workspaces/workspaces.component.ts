@@ -39,7 +39,7 @@ export class WorkspacesComponent implements OnInit {
       }
     )
 
-    this.board.viewBoard(this).subscribe(
+    this.board.listBoard(this).subscribe(
       (res:any)=>{
         console.log(res);
         

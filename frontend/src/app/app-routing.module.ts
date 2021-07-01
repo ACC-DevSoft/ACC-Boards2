@@ -66,7 +66,7 @@ const routes: Routes = [
     component: RegisterUserComponent,
   },
   {
-    path: 'listBoard/:id?',
+    path: 'listBoard',
     component: ListBoardComponent,
   },
   {
