@@ -13,6 +13,7 @@ import { RegisterComponent } from './home/register/register.component';
 import { AuthGuard } from "./guard/auth.guard";
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
+import { ListBoardComponent } from "./board/list-board/list-board.component";
 
 
 const routes: Routes = [
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'registerUser',
     component: RegisterUserComponent,
+  },
+  {
+    path: 'listBoard',
+    component: ListBoardComponent,
   },
 ];
 

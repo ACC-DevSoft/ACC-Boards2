@@ -39,6 +39,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
+import { ListBoardComponent } from './board/list-board/list-board.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SaveBoardComponent } from "./board/save-board/save-board.component";
     UpdateUserComponent,
     ListWorkspaceComponent,
     WorkspacesComponent,
-    SaveBoardComponent
+    SaveBoardComponent,
+    ListBoardComponent
   ],
   imports: [
     BrowserModule,
