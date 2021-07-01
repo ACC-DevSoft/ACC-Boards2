@@ -46,7 +46,7 @@ const routes: Routes = [
     component: ListRoleComponent,
   },
   {
-    path: 'updateRole/:role?',
+    path: 'updateRole',
     component: UpdateRoleComponent,
   },
   {
@@ -58,7 +58,7 @@ const routes: Routes = [
     component: ListUserComponent,
   },
   {
-    path: 'updateUser/:user?',
+    path: 'updateUser',
     component: UpdateUserComponent,
   },
   {

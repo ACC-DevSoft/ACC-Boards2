@@ -47,6 +47,7 @@ export class UpdateUserComponent implements OnInit {
       !this.updateData.email ||
       !this.updateData.password ||
       !this.updateData.userName ||
+      !this.updateData.status ||
       !this.updateData.roleId
     ){
       console.log('Update Failed: Incomplete Data');

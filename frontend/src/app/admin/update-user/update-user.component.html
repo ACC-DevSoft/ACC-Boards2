@@ -9,7 +9,7 @@
             matInput
             placeholder="Name"
             required
-          /><mat-label>{{userData.name}}</mat-label>
+          /><mat-label>Name</mat-label>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input
@@ -38,6 +38,15 @@
             placeholder="Password"
             required
           /><mat-label>Password</mat-label>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            [(ngModel)]="updateData.status"
+            matInput
+            placeholder="Status"
+            required
+          /><mat-label>Status</mat-label>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Role:</mat-label>

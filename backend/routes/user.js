@@ -87,24 +87,24 @@ router.get("/loadUser/:_id", Auth, UserAuth, Admin, async(req, res) => {
 
 router.put("/updateUser/", Auth, UserAuth, Admin, async (req, res) => {
   if (
-    !req.body._id ||
     !req.body.name ||
     !req.body.userName ||
     !req.body.email ||
     !req.body.password ||
+    !req.body.status ||
     !req.body.roleId
   )
     return res.status(401).send("Incomplete data");
 
   const hash = await bcrypt.hash(req.body.password, 10);
 
-  const user = await User.findByIdAndUpdate(req.body._id, {
+  const user = await User.findOneAndUpdate(req.body.email, {
     name: req.body.name,
     userName: req.body.userName,
     email: req.body.email,
     password: hash,
     roleId: req.body.roleId,
-    status: req.body.status,
+    status: req.body.status ,
   });
 
   if (!user) return res.status(401).send("Error while editing user");

@@ -29,10 +29,10 @@ router.get("/listRole", Auth, Admin, async (req, res) => {
   return res.status(200).send({ roles });
 });
 
-router.put("/updateRole", Auth,  Admin, async (req, res) =>{
-    if(!req.body._id || !req.body.name  || !req.body.description) return res.status(400).send("Incomplete Data!");
+router.put("/updateRole/", Auth, UserAuth, Admin, async (req, res) =>{
+    if(!req.body.name  || !req.body.description) return res.status(400).send("Incomplete Data!");
     
-    const role =  await Role.findByIdAndUpdate(req.body._id,{
+    const role =  await Role.findOneAndUpdate(req.body.name,{
         name:req.body.name,
         description:req.body.description
     });

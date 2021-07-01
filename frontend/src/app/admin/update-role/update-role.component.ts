@@ -26,8 +26,8 @@ export class UpdateRoleComponent implements OnInit {
       !this.roleData.name ||
       !this.roleData.description
     ){
-      console.log('Register Failed: Incomplete Data');
-      this.errorMessage = 'Register Failed: Incomplete Data';
+      console.log('Update Failed: Incomplete Data');
+      this.errorMessage = 'Update Failed: Incomplete Data';
       this.closeAlert()
       this.roleData = {};
     } else {
