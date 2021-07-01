@@ -9,7 +9,11 @@
   <ul>
     <span class="spacer"></span>
 
-    <mat-expansion-panel *ngIf="auth.loggedIn()" class="expansion-panel" hideToggle="true">
+    <mat-expansion-panel
+      *ngIf="auth.loggedIn()"
+      class="expansion-panel"
+      hideToggle="true"
+    >
       <mat-expansion-panel-header class="expansion-panel-header">
         <mat-panel-title class="color-title">
           <span class="text-center">Roles</span>
@@ -18,33 +22,70 @@
 
       <mat-list class="list-item">
         <mat-list-item>
-          <a mat-button  routerLink="registerRole">Create role</a></mat-list-item>
+          <a mat-button routerLink="registerRole">Create role</a></mat-list-item
+        >
         <mat-list-item>
-          <a mat-button routerLink="listRole">List roles</a></mat-list-item>
+          <a mat-button routerLink="listRole">List roles</a></mat-list-item
+        >
       </mat-list>
     </mat-expansion-panel>
   </ul>
   <ul>
-
-    <mat-expansion-panel *ngIf="auth.loggedIn()" class="expansion-panel" hideToggle="true">
+    <mat-expansion-panel
+      *ngIf="auth.loggedIn()"
+      class="expansion-panel"
+      hideToggle="true"
+    >
       <mat-expansion-panel-header class="expansion-panel-header">
         <mat-panel-title class="color-title">
           <span class="text-center">Users</span>
-
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list class="list-item">
         <mat-list-item>
-          <a mat-button routerLink="registerUser">Create user</a></mat-list-item>
+          <a mat-button routerLink="registerUser">Create user</a></mat-list-item
+        >
         <mat-list-item>
-          <a mat-button routerLink="listUser">List user</a></mat-list-item>
+          <a mat-button routerLink="listUser">List user</a></mat-list-item
+        >
       </mat-list>
     </mat-expansion-panel>
   </ul>
   <span class="headerSpacer"></span>
-  <ul>
-    <a *ngIf="!auth.loggedIn()" mat-button routerLink="register">Sign up</a>
-    <a *ngIf="!auth.loggedIn()" mat-button routerLink="login">Log in</a>
-    <a *ngIf="auth.loggedIn()" mat-button (click)="auth.logOut()">Log out</a>
-  </ul>
+  <mat-card-actions>
+    <div class="nav-items">
+      <a
+        *ngIf="!auth.loggedIn()"
+        mat-button
+        mat-stroked-button
+        routerLink="register"
+        ><mat-icon>perm_identity</mat-icon>Sign up</a
+      >
+      <a
+        *ngIf="!auth.loggedIn()"
+        mat-button
+        mat-stroked-button
+        routerLink="login"
+        ><mat-icon>login</mat-icon>Log in</a
+      >
+      <a
+        *ngIf="auth.loggedIn()"
+        mat-button
+        mat-stroked-button
+        (click)="auth.logOut()"
+      >
+        <mat-icon>account_box</mat-icon>
+        Profile
+      </a>
+      <a
+        *ngIf="auth.loggedIn()"
+        mat-button
+        mat-stroked-button
+        (click)="auth.logOut()"
+      >
+        <mat-icon>logout</mat-icon>
+        Logout
+      </a>
+    </div>
+  </mat-card-actions>
 </mat-toolbar>

@@ -9,6 +9,8 @@ a{
 
 .bgHeader{
     background-color:#1138c7;
+    position:fixed;
+    z-index: 10;
 }
 
 .logo{
@@ -26,7 +28,7 @@ a{
 }
 
 .expansion-panel{
-    display: flex;
+    display: column;
     justify-content: center;
     align-items: center;
     flex-basis: 0;
