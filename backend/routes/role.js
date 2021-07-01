@@ -23,9 +23,9 @@ router.post("/registerRole", Auth, Admin, async(req, res) =>{
 });
 
 router.get("/listRole", Auth, Admin, async (req, res) => {
-  const role = await Role.find();
-  if (!role) return res.status(401).send("No roles");
-  return res.status(200).send({ role });
+  const roles = await Role.find();
+  if (!roles) return res.status(401).send("No roles");
+  return res.status(200).send({ roles });
 });
 
 router.put("/updateRole", Auth,  Admin, async (req, res) =>{
