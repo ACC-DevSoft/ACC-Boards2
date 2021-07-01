@@ -57,7 +57,7 @@ const routes: Routes = [
     component: ListUserComponent,
   },
   {
-    path: 'updateUser',
+    path: 'updateUser/:user?',
     component: UpdateUserComponent,
   },
   {

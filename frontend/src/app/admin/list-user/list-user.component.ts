@@ -31,7 +31,7 @@ export class ListUserComponent implements OnInit {
 
   updateUser(){
     this.admin.updateUser(this.userData).subscribe(
-      (res)=>{
+      (res:any)=>{
         console.log(res);
         this.userData = {};
         this.router.navigate(['/updateUser']);

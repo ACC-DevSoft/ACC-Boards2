@@ -9,15 +9,16 @@
     justify-content: space-between;
     margin-left: 220px;
 }
-.space_container_lateralbar {
+/* .space_container_lateralbar {
     position:fixed;
     z-index: 5; 
-}
+} */
 .card-container{
     display: flex;
     flex-direction:column;
     height: 100%;
     max-width: 220px;
+    min-height: 92.7vh;
     background-color: #ffffff;
     border-right: 1px solid #696868;
     border-radius: 0px;

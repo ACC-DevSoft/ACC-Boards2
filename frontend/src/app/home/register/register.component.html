@@ -1,6 +1,18 @@
 <div class="form">
     <mat-card class="form_content">
         <mat-card-title>Register Form</mat-card-title>
+        <hr>
+            <div class="col-12 col-lg-12"  *ngIf="errorMessage">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert-message">
+                        {{errorMessage}}
+                    </div>
+                    <div class="spacer"></div>
+                    <span (click)="close()" class="close" data-dismiss="alert">
+                        <mat-icon>close</mat-icon>
+                    </span>
+                </div>
+            </div>
         <div class="form_content_inputs">
             <mat-form-field appearance="fill">
                 <input matInput
@@ -12,19 +24,19 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <input matInput
+                    [(ngModel)]="registerData.userName"
+                    matInput
+                    placeholder="User Name"
+                    required
+                /><mat-label>Username</mat-label>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <input matInput
                     [(ngModel)]="registerData.email"
                     matInput
                     placeholder="Email"
                     required
                 /><mat-label>Email</mat-label>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <input matInput
-                    [(ngModel)]="registerData.userName"
-                    matInput
-                    placeholder="User Name"
-                    required
-                /><mat-label>User Name</mat-label>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <input matInput
@@ -36,9 +48,13 @@
                 /><mat-label>Password</mat-label>
             </mat-form-field>
         </div>
+        <div class="">
+            <span>I already have an account. <a routerLink="/login">Login</a></span>
+        </div>
         <mat-card-actions>
             <button
                 (click)="registerUser()"
+                mat-button
                 mat-raised-button
                 >
                 Register
