@@ -9,7 +9,7 @@ a{
 
 .bgHeader{
     background-color:#1138c7;
-    position:fixed;
+    position: sticky;
     z-index: 10;
 }
 

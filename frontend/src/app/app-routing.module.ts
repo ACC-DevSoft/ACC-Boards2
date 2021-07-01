@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'registerUser',
     component: RegisterUserComponent,
   },
+  {
+    path: 'listTask/:id',
+    component: ListTaskComponent,
+  },
 ];
 
 @NgModule({

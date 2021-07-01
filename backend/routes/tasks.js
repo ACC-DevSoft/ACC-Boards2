@@ -37,15 +37,26 @@ router.post("/addTask", async (req, res) => {
 });
 
 
-router.get("/getTasks", Auth, async (req, res) => {
-	const tasks = await Task.find({ status: true });
+router.get("/getTasks",  async (req, res) => {
+	const tasks = await Task.find({ status: 'to-do' });
 	if (!tasks) return res.status(401).send("There are not tasks");
 	return res.status(200).send({ tasks });
 });
 
-router.put("/updateTask/:id", Auth, async (req, res) => {
+router.get("/getTasks/:id",  async (req, res) => {
 	const { id } = req.params;
-	const { _id, status, date, ...data } = req.body;
+
+	const validId = mongoose.Types.ObjectId.isValid(id);
+	if (!validId) return res.status(401).send("Process failed: Invalid id");
+
+	const tasks = await Task.find({board:id});
+	if (!tasks) return res.status(401).send("There are not tasks");
+	return res.status(200).send({ tasks });
+});
+
+router.put("/updateTask/:id", async (req, res) => {
+	const { id } = req.params;
+	const { _id, date, ...data } = req.body;
 
 	const validId = mongoose.Types.ObjectId.isValid(id);
 	if (!validId) return res.status(401).send("Process failed: Invalid id");
@@ -55,7 +66,7 @@ router.put("/updateTask/:id", Auth, async (req, res) => {
 	res.status(200).json({ task });
 });
 
-router.delete("/deleteTask/:id", Auth, async (req, res) => {
+router.delete("/deleteTask/:id", async (req, res) => {
 	const { id } = req.params;
 
 	const validId = mongoose.Types.ObjectId.isValid(id);
