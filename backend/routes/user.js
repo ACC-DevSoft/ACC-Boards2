@@ -85,7 +85,7 @@ router.get("/loadUser/:_id", Auth, UserAuth, Admin, async(req, res) => {
   return res.status(200).send({ user });
 });
 
-router.put("/updateUser/:_id", Auth, UserAuth, Admin, async (req, res) => {
+router.put("/updateUser/", Auth, UserAuth, Admin, async (req, res) => {
   if (
     !req.body._id ||
     !req.body.name ||
