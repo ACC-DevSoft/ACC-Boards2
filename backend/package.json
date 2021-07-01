@@ -1,21 +1,16 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Aplicacion para el seguimiento de proyectos ",
+  "description": "aplicacion para el seguimiento de proyectos",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ACC-DevSoft/ACC-Boards.git"
-  },
-  "author": "ACC-DevSoft",
+  "author": "ACC-Devsoft",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ACC-DevSoft/ACC-Boards/issues"
+  "devDependencies": {
+    "nodemon": "^2.0.9"
   },
-  "homepage": "https://github.com/ACC-DevSoft/ACC-Boards#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-multiparty": "^2.2.0",
@@ -27,8 +22,5 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^5.12.14"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
   }
 }

@@ -33,7 +33,7 @@
         *ngIf="auth.loggedIn()"
         mat-button
         mat-stroked-button
-        (click)="auth.logOut()"
+        routerLink="profile"
       >
         <mat-icon>account_box</mat-icon>
         Profile
