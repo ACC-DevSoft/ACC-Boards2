@@ -19,4 +19,8 @@ export class ListWorkspaceComponent implements OnInit {
    createBoard() {
       this.router.navigate(['/saveBoard'])
    }
+
+   listBoard() {
+     this.router.navigate(['/listBoard'])
+   }
 }

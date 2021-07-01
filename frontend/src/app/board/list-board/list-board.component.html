@@ -1,5 +1,48 @@
 <div class="bg-component">
-    <div class="accordion-display">
-
+    <div class="accordion_display">
+      <div class="accordion-size">
+        <div class="col-12 col-lg-12" *ngIf="successMessage">
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <div class="alert-message">
+              {{ successMessage }}
+            </div>
+            <button
+              type="button"
+              class="close"
+              (click)="closeAlert()"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              X
+            </button>
+          </div>
+        </div>
+  
+        <div class="col-12 col-lg-12" *ngIf="errorMessage">
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class="alert-message">
+              {{ errorMessage }}
+            </div>
+            <button
+              type="button"
+              class="close"
+              (click)="closeAlert()"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              X
+            </button>
+          </div>
+        </div>
+        
+        <div class="col-md-4 p5" >
+            <div class="card bg-light text-center text-black my-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h4 class="card-title"></h4>
+                </div>
+            </div>
+        </div>
+        
+      </div>
     </div>
-</div>
+  </div>
