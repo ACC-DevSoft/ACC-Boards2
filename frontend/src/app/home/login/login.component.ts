@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginData).subscribe(
         (res:any)=>{
           console.log(res);
-          localStorage.setItem('token', res.jwtToken);
-          let user = JSON.stringify(res.userSend)
-          localStorage.setItem('current', user);
+          localStorage.setItem('token', res.token);
+          this.auth.setUserData(res.user)
+          if(res.role === true) this.auth.isAdmin()
           this.router.navigate(['/workSpaces']);
         },
         (err)=>{

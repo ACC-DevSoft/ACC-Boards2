@@ -5,11 +5,12 @@
   <ul>
     <a *ngIf="auth.loggedIn()" routerLink="workSpaces">Work Spaces</a>
   </ul>
- 
-  <ul>
-   <a  *ngIf="auth.loggedIn()" routerLink="listRole">Roles</a> 
+
+  <ul *ngIf="auth.forAdmin()">
+   <a *ngIf="auth.loggedIn()" routerLink="listRole">Roles</a> 
+
   </ul>
-  <ul>
+  <ul *ngIf="auth.forAdmin()">
     <a *ngIf="auth.loggedIn()" routerLink="listUser">Users</a> 
    </ul>
   
@@ -34,7 +35,7 @@
         *ngIf="auth.loggedIn()"
         mat-button
         mat-stroked-button
-        (click)="auth.logOut()"
+        routerLink="profile"
       >
         <mat-icon>account_box</mat-icon>
         Profile

@@ -13,6 +13,7 @@ import { RegisterComponent } from './home/register/register.component';
 import { AuthGuard } from "./guard/auth.guard";
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
+import { ProfileComponent } from "./home/profile/profile.component";
 
 
 const routes: Routes = [
@@ -63,6 +64,10 @@ const routes: Routes = [
     path: 'registerUser',
     component: RegisterUserComponent,
   },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  }
 ];
 
 @NgModule({
