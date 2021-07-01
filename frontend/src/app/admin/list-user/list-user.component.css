@@ -7,13 +7,15 @@
     border-collapse: collapse;
     width: 80%;
     overflow-y:scroll;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  /* td, th {
+
+  td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  } */
+  }
   
   tr:nth-child(even) {
     background-color: #bad7f3;

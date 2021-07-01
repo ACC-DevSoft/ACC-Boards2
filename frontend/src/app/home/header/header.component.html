@@ -7,50 +7,11 @@
     <a *ngIf="auth.loggedIn()" routerLink="workSpaces">Work Spaces</a>
   </ul>
   <ul>
-    <span class="spacer"></span>
-
-    <mat-expansion-panel
-      *ngIf="auth.loggedIn()"
-      class="expansion-panel"
-      hideToggle="true"
-    >
-      <mat-expansion-panel-header class="expansion-panel-header">
-        <mat-panel-title class="color-title">
-          <span class="text-center">Roles</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <mat-list class="list-item">
-        <mat-list-item>
-          <a mat-button routerLink="registerRole">Create role</a></mat-list-item
-        >
-        <mat-list-item>
-          <a mat-button routerLink="listRole">List roles</a></mat-list-item
-        >
-      </mat-list>
-    </mat-expansion-panel>
+   <a *ngIf="auth.loggedIn()" routerLink="listRole">Roles</a> 
   </ul>
   <ul>
-    <mat-expansion-panel
-      *ngIf="auth.loggedIn()"
-      class="expansion-panel"
-      hideToggle="true"
-    >
-      <mat-expansion-panel-header class="expansion-panel-header">
-        <mat-panel-title class="color-title">
-          <span class="text-center">Users</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-list class="list-item">
-        <mat-list-item>
-          <a mat-button routerLink="registerUser">Create user</a></mat-list-item
-        >
-        <mat-list-item>
-          <a mat-button routerLink="listUser">List user</a></mat-list-item
-        >
-      </mat-list>
-    </mat-expansion-panel>
-  </ul>
+    <a *ngIf="auth.loggedIn()" routerLink="listUser">Users</a> 
+   </ul>
   <span class="headerSpacer"></span>
   <mat-card-actions>
     <div class="nav-items">

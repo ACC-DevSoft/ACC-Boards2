@@ -1,0 +1,46 @@
+<div class="container">
+    <mat-card>
+        <h2>Role</h2>
+        <hr>
+        <div class="col-12 col-lg-12" *ngIf="errorMessage">
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <div class="alert-message">
+                    {{errorMessage}}
+                </div>
+                <button type="button" class="close"  data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">X</span></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>Total roles: <span>{{roleData.length}}</span></h3>
+            </div>
+            <div class="row-12">
+                <a routerLink="/registerUser" mat-button mat-raised-button>
+                    <mat-icon aria-hidden="false" color="accent">add</mat-icon> Add role
+                </a>
+            </div>
+        </div>
+        <p>{{roleData.name}}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="roleData.length">
+                <tr *ngFor="let roles of roleData">
+                    <td>{{roles.name}}</td>
+                    <td>{{roles.description}}</td>
+                    <td>{{roles.status}}</td>
+                    <a routerLink="/updateRole/{{roles._id}}" mat-button color="secondary"><mat-icon>edit</mat-icon> Update </a>
+                    <a routerLink="/deactivateRole/{{roles._id}}" mat-button color="secondary"><mat-icon>delete</mat-icon> Delete </a>
+
+                </tr>
+            </tbody>
+        </table>
+    </mat-card>
+    </div>
