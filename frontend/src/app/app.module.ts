@@ -17,6 +17,7 @@ import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { AuthService } from './services/auth.service';
 import { BoardService } from './services/board.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AdminService } from "./services/admin.service";
 import { AuthGuard } from './guard/auth.guard';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -77,6 +78,7 @@ import { SaveBoardComponent } from "./board/save-board/save-board.component";
   providers: [AuthService,
     BoardService,
     AuthGuard,
+    AdminService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
