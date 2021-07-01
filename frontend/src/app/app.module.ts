@@ -40,6 +40,7 @@ import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspa
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
 import { ListBoardComponent } from './board/list-board/list-board.component';
+import { ProfileComponent } from './home/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ListBoardComponent } from './board/list-board/list-board.component';
     ListWorkspaceComponent,
     WorkspacesComponent,
     SaveBoardComponent,
-    ListBoardComponent
+    ListBoardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
