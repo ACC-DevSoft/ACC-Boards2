@@ -67,6 +67,14 @@ const routes: Routes = [
     path: 'listTask/:id',
     component: ListTaskComponent,
   },
+  {
+    path: 'updateTask/:id',
+    component: SaveTaskComponent,
+  },
+  {
+    path: 'addTask/:id',
+    component: SaveTaskComponent,
+  },
 ];
 
 @NgModule({

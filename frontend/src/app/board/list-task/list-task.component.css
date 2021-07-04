@@ -1,7 +1,7 @@
 .container-tasks {
   max-width: 500px;
   max-height: 100vh;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
 
 .header-task {

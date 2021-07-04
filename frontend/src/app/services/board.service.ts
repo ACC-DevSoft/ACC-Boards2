@@ -15,10 +15,31 @@ export class BoardService {
     return this.http.post(this.env + "board/create", board)
   }
 
+  addTask(board: any) {
+
+    return this.http.post<any>(this.env + 'board/addTask', board);
+
+  }
+  addTaskImg(board: any) {
+
+    return this.http.post<any>(this.env + 'board/addTask', board);
+
+  }
+
+
   listTask(boardId: any) {
     return this.http.get<any>(this.env + 'board/getTasks/' + boardId)
   }
+
   updateTask(body: any) {
     return this.http.put<any>(this.env + 'board/updateTask/'+ body._id, body)
+  }
+
+  updateImg(collection: string,id:any,image: any) {
+    return this.http.put<any>(`${this.env}/${collection}/updateTask/${id}`, image)
+  }
+
+  deleteTask(id: any ){
+    return this.http.delete<any>(this.env + 'board/deleteTask/'+ id)
   }
 }

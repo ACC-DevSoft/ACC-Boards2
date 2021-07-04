@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { HttpClient } from '@angular/common/http';
+
 import { BoardService } from '../../services/board.service';
 
 @Component({
@@ -11,21 +12,30 @@ import { BoardService } from '../../services/board.service';
 })
 export class ListTaskComponent implements OnInit {
 
-  toppings: FormGroup;
   tasks: any[] = [];
+  id: String;
+  taskId: String;
+  taskData: any;
+  edition: boolean;
+  selectedFile:any;
 
-  constructor(private http: HttpClient, public board: BoardService, public fb: FormBuilder) {
+  constructor(public board: BoardService, private router: Router, private activateRoute: ActivatedRoute, public fb: FormBuilder) {
 
-    this.toppings = fb.group({
-      pepperoni: false,
-      extracheese: false,
-      mushroom: false
-    });
+    this.id = this.activateRoute.snapshot.params.id;
+    this.taskId = '';
+    this.loadTask();
+    this.taskData = {}
+    this.edition = false;
+    this.selectedFile = null;
 
-    this.board.listTask('60db330c728da31738b54b4a').subscribe(
+  }
+
+  ngOnInit(): void { }
+
+  loadTask() {
+    this.board.listTask(this.id).subscribe(
       (res: any) => {
         this.tasks = res.tasks;
-
       }
     )
   }
@@ -39,15 +49,54 @@ export class ListTaskComponent implements OnInit {
         task.status = status;
         console.log(task.status);
 
+      }
+    );
+
+  }
+  createTask() {
+    this.router.navigate(['/addTask', this.id]);
+  }
+
+  editTask(task: any) {
+    const { name, description, _id } = task;
+    this.taskId = _id;
+    this.edition = true;
+    this.taskData = { _id, name, description }
+    // this.loadTask();
+    // this.router.navigate(['/updateTask', task._id])
+
+    console.log(task);
+
+  }
+
+  saveChanges() {
+    this.edition = false
+    this.board.updateTask(this.taskData).subscribe(
+      res => {
+        console.log(res);
+        this.loadTask();
+
+      }
+    )
+  }
+
+  uploadImg(event: any) {
+    console.log(event);
+    this.selectedFile = <File>event.target.files[0];
+  }
+
+  deleteTask(id: any) {
+    this.board.deleteTask(id).subscribe(
+      res => {
+
+        this.loadTask();
 
       }
     )
 
   }
 
-  ngOnInit(): void {
 
-  }
 
   drop(e: any) {
     console.log('ok!', e)
