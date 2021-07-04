@@ -1,22 +1,32 @@
-<div class="row row-cols-1 row-cols-md-3 g-4 mx-auto">
+<div class="row row-cols-1 row-cols-md-3 g-4 mx-auto main-tasks">
   <div class="col">
-    <div class="container-tasks mt-5 text-center">
-      <div class="header-task sticky-top bg-dark d-flex justify-content-around">
-        <h2 class="text-white">
-          Status:
-          <span class="badge rounded-pill bg-info text-dark">To Do</span>
-        </h2>
-        <div>
-          <button
-            mat-mini-fab
-            color="accent"
-            aria-label="Example icon button with a plus one icon"
-          >
-            <mat-icon (click)="createTask()">add</mat-icon>
-          </button>
-          <span class="pt-2 px-2 text-white">Add Tasks</span>
-        </div>
+    <div
+      class="
+        header-task
+        mt-5
+        p-3
+        sticky-top
+        bg-dark
+        d-flex
+        justify-content-around
+      "
+    >
+      <h2 class="text-white">
+        Status:
+        <span class="badge rounded-pill bg-info text-dark">To Do</span>
+      </h2>
+      <div>
+        <button
+          mat-mini-fab
+          color="accent"
+          aria-label="Example icon button with a plus one icon"
+        >
+          <mat-icon (click)="createTask()">add</mat-icon>
+        </button>
+        <span class="pt-2 px-2 text-white">Add Tasks</span>
       </div>
+    </div>
+    <div class="container-tasks mt-5">
       <ul
         cdkDropList
         (cdkDropListDropped)="drop($event)"
@@ -29,33 +39,38 @@
                 task.name
               }}</mat-card-title>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
-                <input
-                  [(ngModel)]="taskData.name"
-                  matInput
-                  placeholder="Name"
-                  required
-                />
+                <input [(ngModel)]="taskData.name" matInput required />
               </mat-form-field>
             </mat-card-header>
-            <img
-              mat-card-lg-avatar
-              src="{{ task._id | getImg: 'tasks' }}"
-              alt="{{ task.name }}"
-            />
-            <input
-              type="file"
-              (change)="uploadImg($event)"
+            <figure class="img-container">
+              <img
+                class="my-4"
+                mat-card-lg-avatar
+                src="{{ task._id | getImg: 'tasks' }}"
+                alt="{{ task.name }}"
+              />
+            </figure>
+            <div
+              class="uploads my-4 d-flex justify-content-center"
               *ngIf="edition == true && taskId == task._id"
-            />
+            >
+              <div>
+                <input type="file" (change)="uploadImg($event)" />
+              </div>
+              <mat-card-actions class="mb-4">
+                <button mat-raised-button color="primary" (click)="changeImg()">
+                  Change
+                </button>
+                <button mat-raised-button color="warn" (click)="changeImg()">
+                  X
+                </button>
+              </mat-card-actions>
+            </div>
+
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
-                <input
-                  [(ngModel)]="taskData.description"
-                  matInput
-                  placeholder="Name"
-                  required
-                />
+                <input [(ngModel)]="taskData.description" matInput required />
               </mat-form-field>
               <div class="d-flex justify-content-end my-2">
                 <button
@@ -77,7 +92,7 @@
                 </button>
               </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions class="mb-4">
               <button
                 mat-raised-button
                 color="primary"
@@ -100,13 +115,23 @@
   </div>
 
   <div class="col">
-    <div class="container-tasks mt-5 text-center">
-      <div class="header-task sticky-top bg-dark d-flex justify-content-around">
-        <h2 class="text-white">
-          Status:
-          <span class="badge rounded-pill bg-danger text-dark">Doing</span>
-        </h2>
-      </div>
+    <div
+      class="
+        header-task
+        mt-5
+        p-3
+        sticky-top
+        bg-dark
+        d-flex
+        justify-content-around
+      "
+    >
+      <h2 class="text-white">
+        Status:
+        <span class="badge rounded-pill bg-danger text-dark">Doing</span>
+      </h2>
+    </div>
+    <div class="container-tasks mt-5">
       <ul
         cdkDropList
         (cdkDropListDropped)="drop($event)"
@@ -119,28 +144,21 @@
                 task.name
               }}</mat-card-title>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
-                <input
-                  [(ngModel)]="taskData.name"
-                  matInput
-                  placeholder="Name"
-                  required
-                />
+                <input [(ngModel)]="taskData.name" matInput required />
               </mat-form-field>
             </mat-card-header>
-            <img
-              mat-card-lg-avatar
-              src="{{ task._id | getImg: 'tasks' }}"
-              alt="{{ task.name }}"
-            />
+            <figure class="img-container">
+              <img
+                class="my-4"
+                mat-card-lg-avatar
+                src="{{ task._id | getImg: 'tasks' }}"
+                alt="{{ task.name }}"
+              />
+            </figure>
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
-                <input
-                  [(ngModel)]="taskData.description"
-                  matInput
-                  placeholder="Name"
-                  required
-                />
+                <input [(ngModel)]="taskData.description" matInput required />
               </mat-form-field>
               <div class="d-flex justify-content-end my-2">
                 <button
@@ -162,20 +180,13 @@
                 </button>
               </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions class="mb-4">
               <button
                 mat-raised-button
                 color="primary"
                 (click)="changeStatus(task, 'to-do')"
               >
                 To do
-              </button>
-              <button
-                mat-raised-button
-                color="primary"
-                (click)="changeStatus(task, 'doing')"
-              >
-                Doing
               </button>
               <button
                 mat-raised-button
@@ -198,13 +209,23 @@
     </div>
   </div>
   <div class="col">
-    <div class="container-tasks mt-5 text-center">
-      <div class="header-task sticky-top bg-dark d-flex justify-content-around">
-        <h2 class="text-white">
-          Status:
-          <span class="badge rounded-pill bg-success text-dark">Done</span>
-        </h2>
-      </div>
+    <div
+      class="
+        header-task
+        mt-5
+        p-3
+        sticky-top
+        bg-dark
+        d-flex
+        justify-content-around
+      "
+    >
+      <h2 class="text-white">
+        Status:
+        <span class="badge rounded-pill bg-success text-dark">Done</span>
+      </h2>
+    </div>
+    <div class="container-tasks mt-5">
       <ul
         cdkDropList
         (cdkDropListDropped)="drop($event)"
@@ -217,28 +238,21 @@
                 task.name
               }}</mat-card-title>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
-                <input
-                  [(ngModel)]="taskData.name"
-                  matInput
-                  placeholder="Name"
-                  required
-                />
+                <input [(ngModel)]="taskData.name" matInput required />
               </mat-form-field>
             </mat-card-header>
-            <img
-              mat-card-lg-avatar
-              src="{{ task._id | getImg: 'tasks' }}"
-              alt="{{ task.name }}"
-            />
+            <figure class="img-container">
+              <img
+                class="my-4"
+                mat-card-lg-avatar
+                src="{{ task._id | getImg: 'tasks' }}"
+                alt="{{ task.name }}"
+              />
+            </figure>
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
-                <input
-                  [(ngModel)]="taskData.description"
-                  matInput
-                  placeholder="Name"
-                  required
-                />
+                <input [(ngModel)]="taskData.description" matInput required />
               </mat-form-field>
               <div class="d-flex justify-content-end my-2">
                 <button
@@ -260,7 +274,7 @@
                 </button>
               </div>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions class="mb-4">
               <button
                 mat-raised-button
                 color="primary"

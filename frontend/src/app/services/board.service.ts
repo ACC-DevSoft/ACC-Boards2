@@ -26,6 +26,9 @@ export class BoardService {
 
   }
 
+  getImg(url: string) {
+    return this.http.get(url);
+  }
 
   listTask(boardId: any) {
     return this.http.get<any>(this.env + 'board/getTasks/' + boardId)

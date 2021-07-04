@@ -1,8 +1,12 @@
+.main-tasks {
+  max-width: 90%;
+}
 .container-tasks {
-  max-width: 500px;
+  text-align: center;
   max-height: 100vh;
   overflow: scroll;
 }
+
 
 .header-task {
   padding: 10px;
@@ -11,9 +15,15 @@
   list-style: none;
   margin: 20px 0;
 }
-.task-card {
-  width: 100%;
-  /* max-width: 400px; */
+
+.img-container {
+  margin: 0 auto;
+  max-width: 70%;
+  height: 350px;
+  object-fit: cover;
+  overflow: hidden;
 }
 
-
+.task-card {
+  width: 100%;
+}
