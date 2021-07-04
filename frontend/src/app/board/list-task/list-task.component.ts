@@ -17,7 +17,7 @@ export class ListTaskComponent implements OnInit {
   taskId: String;
   taskData: any;
   edition: boolean;
-  selectedFile:any;
+  selectedFile: any;
 
   constructor(public board: BoardService, private router: Router, private activateRoute: ActivatedRoute, public fb: FormBuilder) {
 
@@ -83,6 +83,17 @@ export class ListTaskComponent implements OnInit {
   uploadImg(event: any) {
     console.log(event);
     this.selectedFile = <File>event.target.files[0];
+    const data = new FormData();
+
+    data.append('image', this.selectedFile);
+
+    this.board.updateImg('tasks', this.taskId, data).subscribe(
+      res => {
+        console.log(res);
+
+      }
+    )
+
   }
 
   deleteTask(id: any) {

@@ -28,7 +28,7 @@
               <mat-card-title *ngIf="edition == false">{{
                 task.name
               }}</mat-card-title>
-              <mat-form-field *ngIf="edition == true && taskId == task._id ">
+              <mat-form-field *ngIf="edition == true && taskId == task._id">
                 <input
                   [(ngModel)]="taskData.name"
                   matInput
@@ -42,9 +42,14 @@
               src="{{ task._id | getImg: 'tasks' }}"
               alt="{{ task.name }}"
             />
+            <input
+              type="file"
+              (change)="uploadImg($event)"
+              *ngIf="edition == true && taskId == task._id"
+            />
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
-              <mat-form-field *ngIf="edition == true && taskId == task._id ">
+              <mat-form-field *ngIf="edition == true && taskId == task._id">
                 <input
                   [(ngModel)]="taskData.description"
                   matInput
@@ -66,7 +71,7 @@
                   mat-raised-button
                   color="primary"
                   (click)="saveChanges()"
-                  *ngIf="edition == true && taskId == task._id "
+                  *ngIf="edition == true && taskId == task._id"
                 >
                   Guardar
                 </button>
@@ -113,7 +118,7 @@
               <mat-card-title *ngIf="edition == false">{{
                 task.name
               }}</mat-card-title>
-              <mat-form-field *ngIf="edition == true && taskId == task._id ">
+              <mat-form-field *ngIf="edition == true && taskId == task._id">
                 <input
                   [(ngModel)]="taskData.name"
                   matInput
@@ -129,7 +134,7 @@
             />
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
-              <mat-form-field *ngIf="edition == true && taskId == task._id ">
+              <mat-form-field *ngIf="edition == true && taskId == task._id">
                 <input
                   [(ngModel)]="taskData.description"
                   matInput
@@ -151,7 +156,7 @@
                   mat-raised-button
                   color="primary"
                   (click)="saveChanges()"
-                  *ngIf="edition == true && taskId == task._id "
+                  *ngIf="edition == true && taskId == task._id"
                 >
                   Guardar
                 </button>
@@ -211,7 +216,7 @@
               <mat-card-title *ngIf="edition == false">{{
                 task.name
               }}</mat-card-title>
-              <mat-form-field *ngIf="edition == true && taskId == task._id ">
+              <mat-form-field *ngIf="edition == true && taskId == task._id">
                 <input
                   [(ngModel)]="taskData.name"
                   matInput
@@ -227,7 +232,7 @@
             />
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
-              <mat-form-field *ngIf="edition == true && taskId == task._id ">
+              <mat-form-field *ngIf="edition == true && taskId == task._id">
                 <input
                   [(ngModel)]="taskData.description"
                   matInput
@@ -249,7 +254,7 @@
                   mat-raised-button
                   color="primary"
                   (click)="saveChanges()"
-                  *ngIf="edition == true && taskId == task._id "
+                  *ngIf="edition == true && taskId == task._id"
                 >
                   Guardar
                 </button>

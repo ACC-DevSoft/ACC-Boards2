@@ -36,7 +36,7 @@ export class BoardService {
   }
 
   updateImg(collection: string,id:any,image: any) {
-    return this.http.put<any>(`${this.env}/${collection}/updateTask/${id}`, image)
+    return this.http.put<any>(`${this.env}uploads/${collection}/${id}`, image)
   }
 
   deleteTask(id: any ){
