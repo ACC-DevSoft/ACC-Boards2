@@ -13,6 +13,8 @@ import { RegisterComponent } from './home/register/register.component';
 import { AuthGuard } from "./guard/auth.guard";
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
+import { ListBoardComponent } from "./board/list-board/list-board.component";
+import { ProfileComponent } from "./home/profile/profile.component";
 
 
 const routes: Routes = [
@@ -56,7 +58,7 @@ const routes: Routes = [
     component: ListUserComponent,
   },
   {
-    path: 'updateUser',
+    path: 'updateUser/:user?',
     component: UpdateUserComponent,
   },
   {
@@ -74,6 +76,15 @@ const routes: Routes = [
   {
     path: 'addTask/:id',
     component: SaveTaskComponent,
+  },
+  {
+    path: 'listBoard',
+    component: ListBoardComponent,
+  },
+
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
 ];
 

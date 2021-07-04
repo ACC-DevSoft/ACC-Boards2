@@ -45,4 +45,7 @@ export class BoardService {
   deleteTask(id: any ){
     return this.http.delete<any>(this.env + 'board/deleteTask/'+ id)
   }
+  listBoard(board: any){    
+    return this.http.get(this.env + "list/" + board)
+  }
 }

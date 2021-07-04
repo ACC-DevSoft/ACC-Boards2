@@ -42,6 +42,8 @@ import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspa
 import { WorkspacesComponent } from './work-space/workspaces/workspaces.component';
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
 import { GetImgPipe } from './pipes/get-img.pipe';
+import { ListBoardComponent } from './board/list-board/list-board.component';
+import { ProfileComponent } from './home/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { GetImgPipe } from './pipes/get-img.pipe';
     ListWorkspaceComponent,
     WorkspacesComponent,
     SaveBoardComponent,
-    GetImgPipe
+    GetImgPipe,
+    ListBoardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

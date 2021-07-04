@@ -1,6 +1,6 @@
 <div class="space_container">
   <div class="space_container_lateralbar">
-    <mat-card class="card-container">
+    <mat-card class="card-container"> 
       <mat-card-title class="mat-card-title--slidebar"
         >DASHBOARD</mat-card-title
       >
@@ -25,7 +25,11 @@
             <mat-expansion-panel-header>
               <mat-panel-title> My Boards </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description> item </mat-panel-description>
+            <mat-panel-description> 
+              <a mat-button (click) = "listBoard()">List Boards</a></mat-panel-description>
+            <mat-panel-description>
+              <a mat-button (click) = "createBoard()">New Board</a>
+          </mat-panel-description>
           </mat-expansion-panel>
         </div>
       </mat-card-content>
@@ -48,23 +52,5 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <div class="space_container_workspaces">
-    <mat-card class="card-container--workspaces">
-      <mat-card-subtitle>Tablero #1</mat-card-subtitle>
-      <div class="card-container--tasks">
-        <mat-card> <p>tarea #1</p></mat-card>
-        <mat-card> <p>tarea #2</p></mat-card>
-        <mat-card> <p>tarea #3</p></mat-card>
-        <mat-card> <p>tarea #4</p></mat-card>
-        <mat-card> <p>tarea #5</p></mat-card>
-      </div>
-    </mat-card>
-    <mat-card class="card-container--workspaces">
-      <mat-card-subtitle>Tablero #2</mat-card-subtitle>
-      <div class="card-container--tasks">
-        <mat-card> <p>tarea #1</p></mat-card>
-        <mat-card> <p>tarea #2</p></mat-card>
-      </div>
-    </mat-card>
-  </div>
+  
 </div>

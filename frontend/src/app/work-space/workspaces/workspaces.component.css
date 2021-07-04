@@ -1,0 +1,119 @@
+.main-wrap{
+    top:50px;
+    display: flex;
+    flex-direction:row;
+}
+.main-wrap .content-page{
+    width: 90%;
+    margin:15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.btn-add{
+    background-color: #E7E7E7;
+    border: 1px solid #505050;
+    width: 200px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.btn-add:hover{
+box-shadow: outser;
+}
+
+.workspace-section{
+    width: 60%;
+    /* background-color: #505050; */
+}
+.workspace-section .workspace-item{
+    background-color: #ffffff98 !important;
+    border-radius: 4px;
+    padding: 0 0 15px;
+    margin-bottom: 10px;
+}
+
+.workspace-section .workspace-item .workspace-item-header{
+    display: flex;
+    padding: 0 5px 5px;
+    /* background-color: blueviolet; */
+}
+
+.workspace-item-header .item-name{
+    display: inline-block;
+    line-height: 24px;
+    margin: 5px 0 0;
+    /* font-size: 18px; */
+    font-weight: bold;
+    text-transform: uppercase;
+    flex:auto 1 ;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.workspace-item-header .item-options{
+    display: flex;
+    margin-left: 8px;
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+.workspace-item-header .item-options a{
+    font-size: 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    margin-left: 8px;
+    padding: 6px 6px;
+    background-color: #091e420a;
+    box-shadow: none;
+    border: none;
+    align-items: center;
+    display: flex;
+}
+.workspace-item-content ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.workspace-item-content ul li{
+    list-style: none;
+    background-color: #c5c4c4b4;
+    width: 23.5%;
+    padding: 0;
+    margin: 0 2% 2% 0;
+    transform: translate(0);
+    border-radius: 6px;
+}
+.workspace-item-content ul li .board-details{
+    display: flex;
+    height: 80px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.board-title {
+    background-size: cover;
+    background-position: 50%;
+    color: #fff;
+    line-height: 20px;
+    padding: 8px;
+    position: relative;
+    text-decoration: none;
+}
+.board-name{
+    flex: 0 0 auto;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-block;
+    overflow: hidden;
+    max-height: 40px;
+    width: 100%;
+    word-wrap: break-word;
+}

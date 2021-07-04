@@ -2,16 +2,18 @@
   <div class="logo">
     <img src="../../../assets/img/ACC-Logo.png" alt="" />
   </div>
-
   <ul>
     <a *ngIf="auth.loggedIn()" routerLink="workSpaces">Work Spaces</a>
   </ul>
-  <ul>
+
+  <ul *ngIf="auth.forAdmin()">
    <a *ngIf="auth.loggedIn()" routerLink="listRole">Roles</a> 
+
   </ul>
-  <ul>
+  <ul *ngIf="auth.forAdmin()">
     <a *ngIf="auth.loggedIn()" routerLink="listUser">Users</a> 
    </ul>
+  
   <span class="headerSpacer"></span>
   <mat-card-actions>
     <div class="nav-items">
@@ -33,7 +35,7 @@
         *ngIf="auth.loggedIn()"
         mat-button
         mat-stroked-button
-        (click)="auth.logOut()"
+        routerLink="profile"
       >
         <mat-icon>account_box</mat-icon>
         Profile

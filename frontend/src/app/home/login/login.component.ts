@@ -19,14 +19,19 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(!this.loginData.email || !this.loginData.password){
-      this.errorMessage = "Process Failed: Incomplete Data.";
+      this.errorMessage = "Process Failed: Incomplete Data";
       this.loginData ={};
       this.closeAlert();
     }else{
       this.auth.login(this.loginData).subscribe(
         (res:any)=>{
           console.log(res);
-          localStorage.setItem('token', res.jwtToken);
+          // localStorage.setItem('token', res.jwtToken);
+          let user = res.current;
+          localStorage.setItem('current', user);
+          localStorage.setItem('token', res.token);
+          this.auth.setUserData(res.user)
+          if(res.role === true) this.auth.isAdmin()
           this.router.navigate(['/workSpaces']);
         },
         (err)=>{

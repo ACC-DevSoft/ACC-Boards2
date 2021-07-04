@@ -9,7 +9,11 @@ a{
 
 .bgHeader{
     background-color:#1138c7;
+<<<<<<< HEAD
     position: sticky;
+=======
+    /* position:fixed; */
+>>>>>>> develop
     z-index: 10;
 }
 
