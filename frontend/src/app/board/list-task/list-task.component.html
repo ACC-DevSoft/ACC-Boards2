@@ -155,6 +155,22 @@
                 alt="{{ task.name }}"
               />
             </figure>
+            <div
+              class="uploads my-4 d-flex justify-content-center"
+              *ngIf="edition == true && taskId == task._id"
+            >
+              <div>
+                <input type="file" (change)="uploadImg($event)" />
+              </div>
+              <mat-card-actions class="mb-4">
+                <button mat-raised-button color="primary" (click)="changeImg()">
+                  Change
+                </button>
+                <button mat-raised-button color="warn" (click)="changeImg()">
+                  X
+                </button>
+              </mat-card-actions>
+            </div>
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
@@ -249,6 +265,22 @@
                 alt="{{ task.name }}"
               />
             </figure>
+            <div
+              class="uploads my-4 d-flex justify-content-center"
+              *ngIf="edition == true && taskId == task._id"
+            >
+              <div>
+                <input type="file" (change)="uploadImg($event)" />
+              </div>
+              <mat-card-actions class="mb-4">
+                <button mat-raised-button color="primary" (click)="changeImg()">
+                  Change
+                </button>
+                <button mat-raised-button color="warn" (click)="changeImg()">
+                  X
+                </button>
+              </mat-card-actions>
+            </div>
             <mat-card-content>
               <p *ngIf="edition == false">{{ task.description }}</p>
               <mat-form-field *ngIf="edition == true && taskId == task._id">
