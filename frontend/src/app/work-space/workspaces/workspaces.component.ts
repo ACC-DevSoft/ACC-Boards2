@@ -13,13 +13,15 @@ export class WorkspacesComponent implements OnInit {
   public errorMessage: String;
   public workspaceData: any;
   public boardData: any;
+  public wpBoards: any;
   private userid: any
 
 
   constructor(private router: Router, private auth: AuthService, private workspace: WorkSpaceService, private board: BoardService, private ActivatedRoute: ActivatedRoute) {
     this.errorMessage = '';
-    this.workspaceData = {}
-    this.boardData = []
+    this.workspaceData = {};
+    this.boardData = [];
+    this.wpBoards = [];
     this.userid = this.ActivatedRoute.snapshot.params.id;
   }
 
@@ -28,13 +30,26 @@ export class WorkspacesComponent implements OnInit {
     this.workspace.listWorkSpacesByUser(this.userid).subscribe(
       (res: any) => {
         console.log(res);
-        this.workspaceData = res.workSpaces;
-        console.log('WorkSpaces', this.workspaceData);
-        this.workspaceData.forEach(({ boards }: any) => {
-          console.log('Boards', boards);
-          this.boardData = boards
+        const { workSpaces } = res;
+        this.workspaceData = workSpaces;
+        console.log('WorkSpaces', workSpaces);
 
-        });
+        for (let i = 0; i < this.workspaceData.length; i++) {
+          this.wpBoards.push(this.workspaceData[i].boards);
+        }
+
+        console.log('WpBoards',this.wpBoards);
+        
+        
+
+      // console.log('Boardsssssss', this.boardData);
+      
+
+        // this.workspaceData.forEach(({ boards }: any, i:number) => {
+        //   console.log('Boards', boards);
+        //   this.boardData = boards
+
+        // });
 
         console.log('BoardData',this.boardData);
         
@@ -45,15 +60,6 @@ export class WorkspacesComponent implements OnInit {
         this.closeAlert();
       }
     )
-
-    // this.board.listBoard('60e226e8836ff1651e123fbe').subscribe(
-    //   (res:any)=>{
-    //     console.log(res);
-
-    //   }
-    // )
-
-
 
   }
 
