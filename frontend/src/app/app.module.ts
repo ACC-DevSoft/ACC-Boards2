@@ -44,6 +44,7 @@ import { SaveBoardComponent } from "./board/save-board/save-board.component";
 import { GetImgPipe } from './pipes/get-img.pipe';
 import { ListBoardComponent } from './board/list-board/list-board.component';
 import { ProfileComponent } from './home/profile/profile.component';
+import { SaveWorkspaceComponent } from './work-space/save-workspace/save-workspace.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ProfileComponent } from './home/profile/profile.component';
     SaveBoardComponent,
     GetImgPipe,
     ListBoardComponent,
-    ProfileComponent
+    ProfileComponent,
+    SaveWorkspaceComponent
   ],
   imports: [
     BrowserModule,

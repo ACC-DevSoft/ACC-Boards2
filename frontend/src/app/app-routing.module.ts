@@ -15,6 +15,7 @@ import { WorkspacesComponent } from './work-space/workspaces/workspaces.componen
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
 import { ListBoardComponent } from "./board/list-board/list-board.component";
 import { ProfileComponent } from "./home/profile/profile.component";
+import { SaveWorkspaceComponent } from './work-space/save-workspace/save-workspace.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'workSpaces/:id',
     component:WorkspacesComponent,
+  },
+  {
+    path: 'saveWorkspace/:id',
+    component: SaveWorkspaceComponent,
   },
 
   {

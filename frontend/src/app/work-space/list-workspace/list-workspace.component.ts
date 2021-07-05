@@ -3,8 +3,6 @@ import { AuthService } from "../../services/auth.service";
 import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
-
-
 @Component({
   selector: 'app-list-workspace',
   templateUrl: './list-workspace.component.html',
@@ -27,12 +25,6 @@ export class ListWorkspaceComponent implements OnInit {
     console.log('board', this.boards);
     console.log('wpData', this.wpData);
   }
-
-  //  wpSelected(){
-  //    console.log(this.opt);
-  //    this.workspaceId = this.opt;
-
-  //  }
 
   createBoard() {
 

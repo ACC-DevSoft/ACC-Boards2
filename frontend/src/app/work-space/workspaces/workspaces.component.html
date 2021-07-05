@@ -8,7 +8,7 @@
   </div>
   <div class="content-page">
     <div class="page-header">
-      <h1>Work Spaces</h1>
+      <h1>WorkSpaces</h1>
       <div class="d-flex justify-content-center pb-5">
         <h2 class="pt-3 px-5">{{ workspaceData.length }}</h2>
         <div class="message" *ngIf="workspaceData.length == 0">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="page-column">
-          <button class="btn-add">
+          <button class="btn-add" (click)="createWorkspace()">
             <mat-icon>add</mat-icon> &nbsp; Add Workspace
           </button>
         </div>
@@ -32,7 +32,6 @@
         <div class="workspace-item-header">
           <div class="item-name">
             <h2>{{ workspace.name }}</h2>
-            <!-- <p>{{workspace._id}}</p> -->
           </div>
           <div class="item-options">
             <a href=""><mat-icon>people</mat-icon><span>&nbsp;members</span></a>
@@ -57,39 +56,5 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="space_container_workspaces">
-            <mat-card class="card-container--workspaces">
-                <mat-card-subtitle>Tablero #1</mat-card-subtitle>
-                <div class="card-container--tasks">
-                    <mat-card>
-                        <p>tarea #1</p>
-                    </mat-card>
-                    <mat-card>
-                        <p>tarea #2</p>
-                    </mat-card>
-                    <mat-card>
-                        <p>tarea #3</p>
-                    </mat-card>
-                    <mat-card>
-                        <p>tarea #4</p>
-                    </mat-card>
-                    <mat-card>
-                        <p>tarea #5</p>
-                    </mat-card>
-                </div>
-            </mat-card>
-            <mat-card class="card-container--workspaces">
-                <mat-card-subtitle>Tablero #2</mat-card-subtitle>
-                <div class="card-container--tasks">
-                    <mat-card>
-                        <p>tarea #1</p>
-                    </mat-card>
-                    <mat-card>
-                        <p>tarea #2</p>
-                    </mat-card>
-                </div>
-            </mat-card>
-        </div> -->
   </div>
 </div>

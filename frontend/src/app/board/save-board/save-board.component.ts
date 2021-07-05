@@ -1,10 +1,7 @@
 import { CompilePipeMetadata } from "@angular/compiler";
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 import { BoardService } from "../../services/board.service";
-
-
-
 @Component({
   selector: 'app-save-board',
   templateUrl: './save-board.component.html',
@@ -13,31 +10,36 @@ import { BoardService } from "../../services/board.service";
 export class SaveBoardComponent implements OnInit {
   public boardData: any;
   public errorMessage: String;
+  public workspaceId: string;
+  public userId: string;
 
-  constructor(private boardService: BoardService, private router: Router) {
+  constructor(private boardService: BoardService, private router: Router, public ActivatedRoute: ActivatedRoute) {
     this.boardData = {};
-    this.errorMessage = "";
-   }
+    this.errorMessage = '';
+    this.userId = '';
+    this.workspaceId = this.ActivatedRoute.snapshot.params.id;
+  }
 
   ngOnInit(): void {
   }
 
   saveBoard() {
-    if (!this.boardData.name || !this.boardData.description || !this.boardData.workspace || !this.boardData.techleader) {
+    if (!this.boardData.name || !this.boardData.description || !this.boardData.techleader) {
       console.log("Failed Process: Incomplete Data");
       this.errorMessage = "Failed Process: Incomplete Data"
       this.closeAlert();
     } else {
-      this.boardService.createBoard(this.boardData).subscribe(
+      this.boardService.createBoard(this.boardData, this.workspaceId).subscribe(
         (res: any) => {
           console.log(res);
           this.boardData = {};
-          this.router.navigate(['listBoard'])
+          let current = localStorage.getItem('current')
+          this.router.navigate(['/workSpaces', current])
         },
         (err) => {
           console.log(err);
           this.errorMessage = err.error;
-          this.closeAlert()          
+          this.closeAlert()
         }
       )
     }

@@ -11,8 +11,8 @@ export class BoardService {
     this.env = environment.APP_URL;
   }
 
-  createBoard(board: any) {
-    return this.http.post(this.env + "board/create", board)
+  createBoard(board: any, id:string) {
+    return this.http.post(this.env + "board/create/"+ id, board)
   }
 
   listBoard(boardId: any){    

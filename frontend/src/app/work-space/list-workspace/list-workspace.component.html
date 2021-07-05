@@ -25,10 +25,6 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="mat-title"> My Boards </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description class="mat-description">
-              <a mat-button (click)="listBoard()"
-                >List Boards</a
-              ></mat-panel-description>
             <select [(ngModel)]="opt">
               <option value="">Select a workspaces</option>
               <option *ngFor="let wp of wpData" value="{{ wp._id}}">{{wp.name}}</option>

@@ -36,7 +36,7 @@ export class WorkspacesComponent implements OnInit {
       (res: any) => {
         console.log(res);
         const { workSpaces } = res;
-        this.workspaceData = workSpaces;
+        this.workspaceData = workSpaces.reverse();
         console.log('WorkSpaces', workSpaces);
 
         for (let i = 0; i < this.workspaceData.length; i++) {
@@ -51,8 +51,12 @@ export class WorkspacesComponent implements OnInit {
         this.errorMessage = err.error;
         this.closeAlert();
       }
-    )
+    );
 
+  }
+
+  createWorkspace() {
+    this.router.navigate(['/saveWorkspace', this.userid]);
   }
 
   closeAlert() {

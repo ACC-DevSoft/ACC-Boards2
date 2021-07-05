@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require('mongoose');
 const Board = require("../models/board");
 const Auth = require("../middleware/auth");
 const User = require("../models/user");
@@ -12,13 +13,15 @@ router.post("/create/:id", Auth, async (req, res) => {
 	const validId = mongoose.Types.ObjectId.isValid(id);
 	if (!validId) return res.status(401).send("Process failed: Invalid id");
 
+	req.body.workspace = id;
+
 	if (
 		!req.body.workspace ||
 		!req.body.name ||
 		!req.body.description ||
 		!req.body.techleader
 	) {
-		return res.status(400).send("Incomplete Data");
+		return res.status(400).send("Incomplete Dataaaaa");
 	}
 
 	const user = await User.findOne({ userName: req.body.techleader });

@@ -29,8 +29,8 @@
                 <input [(ngModel)] = "boardData.description" matInput placeholder="Description" required/>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <input [(ngModel)] = "boardData.workspace" matInput placeholder="WorkSpace" required/>
+            <mat-form-field appearance="fill" hidden>
+                <input [(ngModel)] = "workspaceId" matInput placeholder="WorkSpace" required/>
             </mat-form-field>
 
             <mat-form-field appearance="fill">

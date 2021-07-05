@@ -7,16 +7,18 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class WorkSpaceService {
-  public env:String;
+  public env: String;
 
-  constructor(private router: Router, private http: HttpClient) { 
+  constructor(private router: Router, private http: HttpClient) {
     this.env = environment.APP_URL;
   }
 
 
-  listWorkSpacesByUser(id: String){
-    
-    // return this.http.get(this.env + "workSpace/listWorkSpaces/60d2385a559dca62f4b1a436");    
-    return this.http.get(this.env + "workSpace/listWorkSpaces/"+ id);
+  listWorkSpacesByUser(id: String) {
+    return this.http.get(this.env + "workSpace/listWorkSpaces/" + id);
+  }
+
+  createWorkspace(body: any, id: string) {
+    return this.http.post(this.env + "workSpace/newWorkSpace/" + id, body);
   }
 }
