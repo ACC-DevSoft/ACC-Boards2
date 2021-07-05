@@ -85,7 +85,7 @@ import { ProfileComponent } from './home/profile/profile.component';
     MatListModule,
     MatSelectModule,
     MatCheckboxModule,
-    DragDropModule
+    DragDropModule,
   ],
   providers: [AuthService,
     BoardService,

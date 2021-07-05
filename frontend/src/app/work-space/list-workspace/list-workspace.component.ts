@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-list-workspace',
@@ -9,18 +12,45 @@ import { Router } from '@angular/router';
 })
 export class ListWorkspaceComponent implements OnInit {
 
-  constructor(public auth:AuthService, private router: Router) { }
- 
+  opt: string;
 
-  ngOnInit(): void {
+  @Input() boards: any;
+  @Input() wpData: any;
+
+
+  constructor(public auth: AuthService, private router: Router) {
+    this.opt = '';
   }
 
 
-   createBoard() {
-      this.router.navigate(['/saveBoard'])
-   }
+  ngOnInit(): void {
+    console.log('board', this.boards);
+    console.log('wpData', this.wpData);
+  }
 
-   listBoard() {
-     this.router.navigate(['/listBoard'])
-   }
+  //  wpSelected(){
+  //    console.log(this.opt);
+  //    this.workspaceId = this.opt;
+
+  //  }
+
+  createBoard() {
+
+    if (!this.opt) {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please, select a workspace',
+      });
+
+    } else {
+      this.router.navigate(['/saveBoard', this.opt]);
+    }
+
+  }
+
+  listBoard() {
+    this.router.navigate(['/listBoard'])
+  }
 }

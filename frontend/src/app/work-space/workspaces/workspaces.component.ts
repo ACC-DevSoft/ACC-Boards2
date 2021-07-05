@@ -12,20 +12,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class WorkspacesComponent implements OnInit {
   public errorMessage: String;
   public workspaceData: any;
-  public boardData: any;
   public wpBoards: any;
+  public workspaces: any[] = []
   private userid: any
 
 
   constructor(private router: Router, private auth: AuthService, private workspace: WorkSpaceService, private board: BoardService, private ActivatedRoute: ActivatedRoute) {
     this.errorMessage = '';
-    this.workspaceData = {};
-    this.boardData = [];
+    this.workspaceData = [];
     this.wpBoards = [];
     this.userid = this.ActivatedRoute.snapshot.params.id;
+
+    this.loadWorkSpaces();
   }
 
   ngOnInit(): void {
+    this.workspaces = this.workspaceData;
+  }
+
+  loadWorkSpaces() {
 
     this.workspace.listWorkSpacesByUser(this.userid).subscribe(
       (res: any) => {
@@ -38,21 +43,8 @@ export class WorkspacesComponent implements OnInit {
           this.wpBoards.push(this.workspaceData[i].boards);
         }
 
-        console.log('WpBoards',this.wpBoards);
-        
-        
+        console.log('WpBoards', this.wpBoards);
 
-      // console.log('Boardsssssss', this.boardData);
-      
-
-        // this.workspaceData.forEach(({ boards }: any, i:number) => {
-        //   console.log('Boards', boards);
-        //   this.boardData = boards
-
-        // });
-
-        console.log('BoardData',this.boardData);
-        
       },
       (err) => {
         console.log(err.error);

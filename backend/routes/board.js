@@ -6,7 +6,12 @@ const User = require("../models/user");
 const Scrum = require("../middleware/scrumMaster");
 const Workspace = require("../models/workspace");
 
-router.post("/create", Auth, async (req, res) => {
+router.post("/create/:id", Auth, async (req, res) => {
+	const { id } = req.params;
+
+	const validId = mongoose.Types.ObjectId.isValid(id);
+	if (!validId) return res.status(401).send("Process failed: Invalid id");
+
 	if (
 		!req.body.workspace ||
 		!req.body.name ||

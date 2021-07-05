@@ -1,6 +1,6 @@
 <div class="space_container">
   <div class="space_container_lateralbar">
-    <mat-card class="card-container"> 
+    <mat-card class="card-container">
       <mat-card-title class="mat-card-title--slidebar"
         >DASHBOARD</mat-card-title
       >
@@ -9,13 +9,13 @@
         <div class="">
           <mat-expansion-panel class="mat-panel">
             <mat-expansion-panel-header>
-              <mat-panel-title class="mat-title"> My Work Spaces </mat-panel-title>
+              <mat-panel-title class="mat-title">
+                My WorkSpaces
+              </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-panel-description class="mat-description">
               <ul>
-                <li>item</li>
-                <li>item</li>
-                <li>item</li>
+                <li *ngFor="let wp of wpData">{{ wp.name }}</li>
               </ul>
             </mat-panel-description>
           </mat-expansion-panel>
@@ -25,11 +25,17 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="mat-title"> My Boards </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description class="mat-description"> 
-              <a mat-button (click) = "listBoard()">List Boards</a></mat-panel-description>
             <mat-panel-description class="mat-description">
-              <a mat-button (click) = "createBoard()">New Board</a>
-          </mat-panel-description>
+              <a mat-button (click)="listBoard()"
+                >List Boards</a
+              ></mat-panel-description>
+            <select [(ngModel)]="opt">
+              <option value="">Select a workspaces</option>
+              <option *ngFor="let wp of wpData" value="{{ wp._id}}">{{wp.name}}</option>
+            </select>
+            <mat-panel-description class="mat-description">
+              <a mat-button (click)="createBoard()">New Board</a>
+            </mat-panel-description>
           </mat-expansion-panel>
         </div>
       </mat-card-content>
@@ -52,5 +58,4 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  
 </div>

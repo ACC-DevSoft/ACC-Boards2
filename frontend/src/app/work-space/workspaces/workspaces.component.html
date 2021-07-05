@@ -1,6 +1,10 @@
 <div class="main-wrap">
   <div class="sidebar">
-    <app-list-workspace></app-list-workspace>
+    <app-list-workspace
+      [boards]="wpBoards"
+      [wpData]="workspaceData"
+      *ngIf="workspaceData.length>0"
+    ></app-list-workspace>
   </div>
   <div class="content-page">
     <div class="page-header">
@@ -21,7 +25,10 @@
 
     <span>{{ errorMessage }}</span>
     <div class="workspace-section mx-auto">
-      <div class="workspace-item" *ngFor="let workspace of workspaceData; let wp = index">
+      <div
+        class="workspace-item"
+        *ngFor="let workspace of workspaceData; let wp = index"
+      >
         <div class="workspace-item-header">
           <div class="item-name">
             <h2>{{ workspace.name }}</h2>
@@ -36,9 +43,7 @@
           </div>
         </div>
         <div class="workspace-item-content">
-          <ul
-            class="d-flex justify-content-center"
-          >
+          <ul class="d-flex justify-content-center">
             <li class="text-center" *ngFor="let board of wpBoards[wp]">
               <a routerLink="/listTask/{{ board._id }}" class="board-title">
                 <div class="board-details">

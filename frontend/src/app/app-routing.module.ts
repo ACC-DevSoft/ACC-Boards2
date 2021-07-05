@@ -37,7 +37,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'saveBoard',
+    path: 'saveBoard/:id',
     component:SaveBoardComponent,
   },
 
