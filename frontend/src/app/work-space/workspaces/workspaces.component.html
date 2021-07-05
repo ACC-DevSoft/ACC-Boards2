@@ -33,21 +33,15 @@
                     </div>
                 </div>
                 <div class="workspace-item-content">
-                    <ul>
+                    <ul class="d-flex justify-content-center" *ngFor="let board of boardData">
                         <li class="">
-                            <a routerLink="" class="board-title">
+                            <a routerLink="/listTask/{{ board[0]._id}}" class="board-title">
                                 <div class="board-details">
                                     <div class="board-name">
-                                        board name
-                                        <!-- {workspace.boards.}} -->
+                                        {{board[0].name}}
                                     </div>
                                 </div>
                             </a>
-                        </li>
-                        <li class="">
-                            <div class="add-board">
-                            <p><span>Add Board</span></p>
-                            </div>
                         </li>
                     </ul>
                 </div>  

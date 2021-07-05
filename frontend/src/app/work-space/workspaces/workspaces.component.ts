@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkSpaceService } from "../../services/work-space.service";
 import { BoardService } from "../../services/board.service";
-import { AuthService} from "../../services/auth.service";
-import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-workspaces',
@@ -13,47 +13,54 @@ export class WorkspacesComponent implements OnInit {
   public errorMessage: String;
   public workspaceData: any;
   public boardData: any;
+  private userid: any
 
 
-  constructor(private router: Router, private auth: AuthService, private workspace: WorkSpaceService, private board: BoardService) { 
+  constructor(private router: Router, private auth: AuthService, private workspace: WorkSpaceService, private board: BoardService, private ActivatedRoute: ActivatedRoute) {
     this.errorMessage = '';
     this.workspaceData = {}
-    this.boardData = {}
+    this.boardData = []
+    this.userid = this.ActivatedRoute.snapshot.params.id;
   }
-  
+
   ngOnInit(): void {
-    let current = JSON.stringify(this.auth.getCurrent());
-    current = current.replace(/['"]+/g, '' );
-    
-    this.workspace.listWorkSpacesByUser(current).subscribe(
-      (res:any)=>{
+
+    this.workspace.listWorkSpacesByUser(this.userid).subscribe(
+      (res: any) => {
         console.log(res);
         this.workspaceData = res.workSpaces;
-        console.log(this.workspaceData);
-        // this.errorMessage = res.workSpaces;
+        console.log('WorkSpaces', this.workspaceData);
+        this.workspaceData.forEach(({ boards }: any) => {
+          console.log('Boards', boards);
+          this.boardData = boards
+
+        });
+
+        console.log('BoardData',this.boardData);
+        
       },
-      (err)=>{
+      (err) => {
         console.log(err.error);
         this.errorMessage = err.error;
         this.closeAlert();
       }
     )
 
-    this.board.listBoard(this).subscribe(
-      (res:any)=>{
-        console.log(res);
-        
-      }
-    )
+    // this.board.listBoard('60e226e8836ff1651e123fbe').subscribe(
+    //   (res:any)=>{
+    //     console.log(res);
+
+    //   }
+    // )
 
 
-     
+
   }
-  
-  closeAlert(){
-    
-}
-  callBoard(){
+
+  closeAlert() {
+
+  }
+  callBoard() {
 
   }
 

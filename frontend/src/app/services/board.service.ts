@@ -15,6 +15,10 @@ export class BoardService {
     return this.http.post(this.env + "board/create", board)
   }
 
+  listBoard(boardId: any){    
+    return this.http.get(this.env + "board/list/" + boardId)
+  }
+
   addTask(board: any) {
 
     return this.http.post<any>(this.env + 'board/addTask', board);
@@ -45,7 +49,5 @@ export class BoardService {
   deleteTask(id: any ){
     return this.http.delete<any>(this.env + 'board/deleteTask/'+ id)
   }
-  listBoard(board: any){    
-    return this.http.get(this.env + "list/" + board)
-  }
+ 
 }

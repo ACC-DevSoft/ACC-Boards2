@@ -32,7 +32,7 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'workSpaces',
+    path: 'workSpaces/:id',
     component:WorkspacesComponent,
   },
 
