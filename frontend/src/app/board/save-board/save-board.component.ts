@@ -32,7 +32,7 @@ export class SaveBoardComponent implements OnInit {
         (res: any) => {
           console.log(res);
           this.boardData = {};
-          //this.router.navigate(['listBoard'])
+          this.router.navigate(['listBoard'])
         },
         (err) => {
           console.log(err);

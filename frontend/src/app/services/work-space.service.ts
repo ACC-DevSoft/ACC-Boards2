@@ -14,7 +14,9 @@ export class WorkSpaceService {
   }
 
 
-  listWorkSpacesByUser(id:any){
-    return this.http.get(this.env + "workSpace/listWorkSpaces/:_id", id);
+  listWorkSpacesByUser(id: String){
+    
+    // return this.http.get(this.env + "workSpace/listWorkSpaces/60d2385a559dca62f4b1a436");    
+    return this.http.get(this.env + "workSpace/listWorkSpaces/"+ id);
   }
 }

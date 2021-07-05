@@ -32,7 +32,7 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'workSpaces',
+    path: 'workSpaces/:id',
     component:WorkspacesComponent,
   },
 
@@ -84,6 +84,15 @@ const routes: Routes = [
   {
     path: 'addTask/:id',
     component: SaveTaskComponent,
+  },
+  {
+    path: 'listBoard',
+    component: ListBoardComponent,
+  },
+
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
 ];
 

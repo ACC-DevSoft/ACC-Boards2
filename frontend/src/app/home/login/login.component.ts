@@ -26,10 +26,12 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginData).subscribe(
         (res:any)=>{
           console.log(res);
+          const { current } = res;
+          localStorage.setItem('current', current);
           localStorage.setItem('token', res.token);
           this.auth.setUserData(res.user)
           if(res.role === true) this.auth.isAdmin()
-          this.router.navigate(['/workSpaces']);
+          this.router.navigate(['/workSpaces', current]);
         },
         (err)=>{
           console.log(err.error);

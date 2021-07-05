@@ -5,17 +5,49 @@
     <div class="content-page">
         <div class="page-header">
             <h1>Work Spaces</h1>
-
-        </div>
-        <div class="page-column">
+            <h2>{{workspaceData.length}}</h2>
+            <div class="message" *ngIf="workspaceData.length == 0">
+                <h2>No hay espacios para mostrar</h2>
+            </div>
+    </div>
+        <!-- <div class="page-column">
             <a routerLink="ad"></a><button class="btn-add"><mat-icon>add</mat-icon> &nbsp;   Add Workspace</button>
-        </div>
+        </div> -->
         <div class="row">
             <!-- <mat-card>
                 <mat-card-title>item</mat-card-title>
             </mat-card> -->
         </div>
         <span>{{errorMessage}}</span>
+        <div class="workspace-section">
+            <div class="workspace-item" *ngFor="let workspace of workspaceData">
+                <div class="workspace-item-header">
+                    <div class="item-name">
+                        <h2>{{workspace.name}}</h2>
+                        <!-- <p>{{workspace._id}}</p> -->
+                    </div>
+                    <div class="item-options">
+                        <a href=""><mat-icon>people</mat-icon><span>&nbsp;members</span></a>
+                        <a href=""><mat-icon>settings</mat-icon><span>&nbsp;settings</span></a>
+                        <a href=""><mat-icon>delete</mat-icon> <span>&nbsp;delete</span></a>
+                    </div>
+                </div>
+                <div class="workspace-item-content">
+                    <ul class="d-flex justify-content-center" *ngFor="let board of boardData">
+                        <li class="">
+                            <a routerLink="/listTask/{{ board[0]._id}}" class="board-title">
+                                <div class="board-details">
+                                    <div class="board-name">
+                                        {{board[0].name}}
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+
         <!-- <div class="space_container_workspaces">
             <mat-card class="card-container--workspaces">
                 <mat-card-subtitle>Tablero #1</mat-card-subtitle>

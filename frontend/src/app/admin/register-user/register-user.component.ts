@@ -8,10 +8,10 @@ import { Router } from "@angular/router";
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
-  registerData: any; 
-  roleData: any;
-  successMessage: String;
-  errorMessage: String;
+  public registerData: any; 
+  public roleData: any;
+  public successMessage: String;
+  public errorMessage: String;
 
 
   constructor(private router: Router, private admin: AdminService) { 
