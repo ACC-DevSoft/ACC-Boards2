@@ -19,7 +19,7 @@
     height: 100%;
     max-width: 220px;
     min-height: 92.7vh;
-    background-color: #ffffff;
+    background-color: #D9A404;
     border-right: 1px solid #696868;
     border-radius: 0px;
     overflow: auto;
@@ -49,11 +49,26 @@ mat-card-title{
 
 .mat-card-title--slidebar{
     padding-top: 20px;
+    color: #ffffff;
 }
 
 .mat-card-content{
     min-height: 350px;
 }
+
+.mat-panel{
+    background-color: #a66d0383;
+}
+
+.mat-title{
+    color: #ffffff;
+    font-size: 84%;
+}
+
+.mat-description{
+    color: #ffffff;
+}
+
 .nav-items{
     display: flex;
     justify-content: baseline;

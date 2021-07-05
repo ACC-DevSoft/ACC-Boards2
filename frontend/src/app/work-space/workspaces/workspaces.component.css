@@ -12,6 +12,9 @@
     padding: 10px;
 }
 
+.page-header{
+    color:#59646e;
+}
 .btn-add{
     background-color: #E7E7E7;
     border: 1px solid #505050;
@@ -29,6 +32,8 @@ box-shadow: outser;
 
 .workspace-section{
     width: 60%;
+    background-color: #A66D03;
+    color: #ffffff;
     /* background-color: #505050; */
 }
 .workspace-section .workspace-item{
