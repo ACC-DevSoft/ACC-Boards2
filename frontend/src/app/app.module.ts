@@ -32,8 +32,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatListModule } from '@angular/material/list';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatSelectModule } from "@angular/material/select";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListWorkspaceComponent } from './work-space/list-workspace/list-workspace.component';
@@ -41,6 +43,7 @@ import { WorkspacesComponent } from './work-space/workspaces/workspaces.componen
 import { SaveBoardComponent } from "./board/save-board/save-board.component";
 import { ListBoardComponent } from './board/list-board/list-board.component';
 import { ProfileComponent } from './home/profile/profile.component';
+import { GetImgPipe } from './pipes/get-img.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ import { ProfileComponent } from './home/profile/profile.component';
     WorkspacesComponent,
     SaveBoardComponent,
     ListBoardComponent,
-    ProfileComponent
+    ProfileComponent,
+    GetImgPipe
   ],
   imports: [
     BrowserModule,
@@ -80,6 +84,8 @@ import { ProfileComponent } from './home/profile/profile.component';
     ReactiveFormsModule,
     MatListModule,
     MatSelectModule,
+    MatCheckboxModule,
+    DragDropModule
   ],
   providers: [AuthService,
     BoardService,

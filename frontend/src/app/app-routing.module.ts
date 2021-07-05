@@ -73,6 +73,18 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
   },
+  {
+    path: 'listTask/:id',
+    component: ListTaskComponent,
+  },
+  {
+    path: 'updateTask/:id',
+    component: SaveTaskComponent,
+  },
+  {
+    path: 'addTask/:id',
+    component: SaveTaskComponent,
+  },
 ];
 
 @NgModule({
