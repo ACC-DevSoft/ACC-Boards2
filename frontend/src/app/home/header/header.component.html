@@ -3,7 +3,7 @@
     <img src="../../../assets/img/ACC-Logo.png" alt="" />
   </div>
   <ul>
-    <a *ngIf="auth.loggedIn()" routerLink="workSpaces">Work Spaces</a>
+    <a *ngIf="auth.loggedIn()"  [routerLink]="[ '/workSpaces', userId ]">WorkSpaces</a>
   </ul>
 
   <ul *ngIf="auth.forAdmin()">

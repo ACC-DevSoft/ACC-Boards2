@@ -25,12 +25,12 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="mat-title"> My Boards </mat-panel-title>
             </mat-expansion-panel-header>
-            <select [(ngModel)]="opt">
+            <select [(ngModel)]="opt" class="my-3">
               <option value="">Select a workspaces</option>
               <option *ngFor="let wp of wpData" value="{{ wp._id}}">{{wp.name}}</option>
             </select>
             <mat-panel-description class="mat-description">
-              <a mat-button (click)="createBoard()">New Board</a>
+              <a mat-raised-button color="warn" (click)="createBoard()">New Board</a>
             </mat-panel-description>
           </mat-expansion-panel>
         </div>

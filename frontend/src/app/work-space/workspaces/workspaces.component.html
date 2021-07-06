@@ -9,14 +9,14 @@
   <div class="content-page">
     <div class="page-header">
       <h1>WorkSpaces</h1>
-      <div class="d-flex justify-content-center pb-5">
-        <h2 class="pt-3 px-5">{{ workspaceData.length }}</h2>
+      <div class="d-flex justify-content-around pb-5">
+        <h2 class="pt-3 px-5 badge rounded-pill bg-primary">{{ workspaceData.length }} - Workspaces</h2>
         <div class="message" *ngIf="workspaceData.length == 0">
           <h2>No hay espacios para mostrar</h2>
         </div>
 
         <div class="page-column">
-          <button class="btn-add" (click)="createWorkspace()">
+          <button class="btn-add bg-success text-white" (click)="createWorkspace()">
             <mat-icon>add</mat-icon> &nbsp; Add Workspace
           </button>
         </div>
@@ -24,12 +24,12 @@
     </div>
 
     <span>{{ errorMessage }}</span>
-    <div class="workspace-section mx-auto">
+    <div class="workspace-section mx-auto p-5">
       <div
         class="workspace-item"
         *ngFor="let workspace of workspaceData; let wp = index"
       >
-        <div class="workspace-item-header">
+        <div class="workspace-item-header p-4">
           <div class="item-name">
             <h2>{{ workspace.name }}</h2>
           </div>
@@ -41,14 +41,17 @@
             <a href=""><mat-icon>delete</mat-icon> <span>&nbsp;delete</span></a>
           </div>
         </div>
-        <div class="workspace-item-content">
+        <div class="workspace-item-content mt-5">
           <ul class="d-flex justify-content-center">
             <li class="text-center" *ngFor="let board of wpBoards[wp]">
               <a routerLink="/listTask/{{ board._id }}" class="board-title">
                 <div class="board-details">
-                  <div class="board-name">
+                  <p class="board-name text-uppercase text-primary">
                     {{ board.name }}
-                  </div>
+                  </p>
+                  <p>
+                    {{ board.description }}
+                  </p>
                 </div>
               </a>
             </li>

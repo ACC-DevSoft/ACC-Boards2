@@ -5,6 +5,7 @@ li {
 .space_container {
     display: flex;
 }
+
 .space_container_workspaces {
     padding: 10px;
     display: flex;
