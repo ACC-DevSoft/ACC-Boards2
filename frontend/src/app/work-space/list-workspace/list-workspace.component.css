@@ -21,7 +21,7 @@ li {
     height: 100%;
     max-width: 220px;
     min-height: 92.7vh;
-    background-color: #d9a404ef;
+    background-color: #2541b2;
     border-right: 1px solid #696868;
     border-radius: 0px;
     overflow: auto;
@@ -59,7 +59,7 @@ mat-card-title{
 }
 
 .mat-panel{
-    background-color: #a66d0383;
+    background-color: #1768ac;
 }
 
 .mat-title{
