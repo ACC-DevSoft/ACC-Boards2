@@ -30,6 +30,7 @@ import { WorkSpacesComponent } from './user/work-spaces/work-spaces.component';
 import { NavHomeComponent } from './header/nav-home/nav-home.component';
 import { NavPageComponent } from './header/nav-page/nav-page.component';
 import { HomeComponent } from './home/home/home.component';
+import { LoginComponent } from './home/login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { HomeComponent } from './home/home/home.component';
     ProfileComponent,
     RegisterRoleComponent,
     ListRoleComponent,
+    LoginComponent,
     
   ],
   imports: [
