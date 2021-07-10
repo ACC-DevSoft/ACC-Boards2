@@ -1,1 +1,19 @@
-<p>nav-page works!</p>
+<mat-toolbar class="bgHeader">
+    <div class="logo">
+        <a routerLink="/">
+            <img src="../../../assets/img/ACC-Logo.png" alt="ACC-Logo" />
+        </a>
+    </div>
+    <span class="headerSpacer"></span>
+    <div class="nav-items">
+        <ul>
+            <a mat-button href="#register">Sign Up</a>
+            <a *ngIf="auth.loggedIn()" mat-button  (click)="auth.logOut()">
+                <mat-icon>logout</mat-icon>
+                Logout
+            </a>
+            <!-- <a mat-button routerLink="/login">login</a> -->
+        </ul>
+    </div>
+
+</mat-toolbar>

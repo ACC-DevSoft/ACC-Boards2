@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
           console.log(res);
           const { current } = res;
           localStorage.setItem('current', current);
-          localStorage.setItem('token', res.jwtToken);
+          localStorage.setItem('token', res.token);
           this.auth.setUserData(res.user)
           if (res.role === true) this.auth.isAdmin()
           this.router.navigate(['/workSpaces', current]);

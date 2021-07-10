@@ -56,9 +56,12 @@ router.post("/registerUser", async (req, res) => {
 
   try {
     const result = await user.save();
+    const userSend = user;
+    const current =user._id;
     if (!result) return res.status(401).send("Failed to register user");
     const jwtToken = user.generateJWT();
-    res.status(200).send({ jwtToken });
+    // res.status(200).send({ token: jwtToken, user: userSend, role: role, current });
+    res.status(200).send({ token: jwtToken, user:userSend, current});
   } catch (e) {
     return res.status(400).send("Failed to register user");
   }

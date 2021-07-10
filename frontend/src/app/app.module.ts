@@ -20,6 +20,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatListModule } from '@angular/material/list';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatSidenavModule } from "@angular/material/sidenav";
+
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './home/register/register.component';
@@ -62,6 +64,7 @@ import { LoginComponent } from './home/login/login.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSidenavModule,
     MatListModule,
   ],
   providers: [AuthService,
