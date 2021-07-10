@@ -26,6 +26,10 @@
     align-items: center;
     padding-top: 15px;
 }
+.btn-stroked{
+    margin-right: 5px;
+    border:2px solid var(--white);
+}
 
 
 
