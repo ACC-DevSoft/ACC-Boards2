@@ -29,17 +29,19 @@ import { ListRoleComponent } from './admin/list-role/list-role.component';
 import { WorkSpacesComponent } from './user/work-spaces/work-spaces.component';
 import { NavHomeComponent } from './header/nav-home/nav-home.component';
 import { NavPageComponent } from './header/nav-page/nav-page.component';
+import { HomeComponent } from './home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavHomeComponent,
+    HomeComponent,
     RegisterComponent,
+    NavPageComponent,
+    WorkSpacesComponent,
     ProfileComponent,
     RegisterRoleComponent,
     ListRoleComponent,
-    WorkSpacesComponent,
-    NavHomeComponent,
-    NavPageComponent,
     
   ],
   imports: [
