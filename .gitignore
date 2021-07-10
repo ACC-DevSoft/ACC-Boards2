@@ -1,0 +1,5 @@
+/backend/node_modules/
+/backend/uploads/users/*.*
+/backend/uploads/tasks/*.*
+/frontend/node_modules/
+BD_model_ACC.png
