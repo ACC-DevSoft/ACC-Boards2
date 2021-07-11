@@ -1,0 +1,44 @@
+<div class="section">
+    <app-nav-home></app-nav-home>
+    <div class="container">
+        <div class="form">
+            <mat-card class="form_content">
+                <div class="content-img">
+                    <img mat-card-image class="Img" src="../../../assets/img/Acc-logo_Purple.png" alt="Acc-logo_Purple"/>
+                </div>
+                <mat-card-title>login</mat-card-title>
+                <hr />
+                <div class="col-12 col-lg-12" *ngIf="errorMessage">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <div class="alert-message">
+                            {{ errorMessage }}
+                        </div>
+        
+                        <div class="spacer"></div>
+                        <span (click)="close()" class="close" data-dismiss="alert">
+                            <mat-icon>close</mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="form_content_inputs">
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="loginData.email" matInput placeholder="Email" required />
+                        <mat-label>Email</mat-label>
+                    </mat-form-field>
+        
+                    <mat-form-field>
+                        <input matInput [(ngModel)]="loginData.password" matInput type="password" placeholder="Password"
+                            required />
+                        <mat-label>Password</mat-label>
+                    </mat-form-field>
+                </div>
+                <div class="">
+                    <span>Create an account. <a href="/#register">Sign Up</a></span>
+                </div>
+                <mat-card-actions>
+                    <button (click)="login()" class="btn" mat-raised-button>Login</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
