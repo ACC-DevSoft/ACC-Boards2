@@ -21,6 +21,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatListModule } from '@angular/material/list';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatDialogModule } from "@angular/material/dialog";
 
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -33,6 +34,7 @@ import { NavHomeComponent } from './header/nav-home/nav-home.component';
 import { NavPageComponent } from './header/nav-page/nav-page.component';
 import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './home/login/login.component';
+import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-work-spaces.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { LoginComponent } from './home/login/login.component';
     RegisterRoleComponent,
     ListRoleComponent,
     LoginComponent,
+    AddWorkSpacesComponent,
     
   ],
   imports: [
@@ -65,6 +68,7 @@ import { LoginComponent } from './home/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
+    MatDialogModule,
     MatListModule,
   ],
   providers: [AuthService,
@@ -75,6 +79,7 @@ import { LoginComponent } from './home/login/login.component';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AddWorkSpacesComponent]
 })
 export class AppModule { }
