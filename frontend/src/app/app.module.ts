@@ -49,7 +49,6 @@ import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-w
     ListRoleComponent,
     LoginComponent,
     AddWorkSpacesComponent,
-    
   ],
   imports: [
     BrowserModule,

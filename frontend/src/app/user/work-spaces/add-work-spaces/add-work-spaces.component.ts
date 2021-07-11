@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from "@angular/material/dialog";
+
 
 @Component({
   selector: 'app-add-work-spaces',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class AddWorkSpacesComponent implements OnInit {
   public errorMessage:String;
   public workspaceData: any;
-  constructor() {
+  constructor(
+    // public dialogRef: MatDialogRef<AddWorkSpacesComponent>
+  ) {
     this.workspaceData = {};
     this.errorMessage = '';
    }
@@ -16,6 +20,9 @@ export class AddWorkSpacesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+    onNoClick(): void {
+      // this.dialogRef.close();
+    }
   saveWorkSpace(){
     if(!this.workspaceData.name){
       this.errorMessage = 'Incomplete Data';

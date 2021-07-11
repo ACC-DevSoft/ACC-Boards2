@@ -1,5 +1,6 @@
-    <h1 mat-dialog-title>Add work-space</h1>
-    <hr/>
+<h1 mat-dialog-title>Add work-space</h1>
+<hr/>
+<mat-dialog-content>
     <div class="col-12 col-lg-12" *ngIf="errorMessage">
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <div class="alert-message">
@@ -20,8 +21,18 @@
             <input [(ngModel)]="workspaceData.descrition" matInput type="text" placeholder="descrition">
         </mat-form-field>
     </div>
-    <mat-card-actions>
-
-        <!-- <button mat-button mat-raised-button class="btn" (click)="closeForm()">Cancel</button> -->
-        <button mat-button mat-raised-button class="btn" (click)="saveWorkSpace()">Save work-space</button>
-    </mat-card-actions>
+    <!-- <mat-card-actions>
+        <div class="row">
+            <div class="col-sm-6">
+                <button mat-button mat-raised-button class="btn .gray" mat-dialog-close>Cancel</button>
+            </div>
+            <div class="col-sm-6">
+                <button mat-button mat-raised-button class="btn" (click)="saveWorkSpace()">Save work-space</button>
+            </div>
+        </div>
+    </mat-card-actions> -->
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-raised-button mat-dialog-close class="btn gray" >Cancel</button>
+    <button mat-button mat-raised-button class="btn" (click)="saveWorkSpace()">Save work-space</button>
+</mat-dialog-actions>

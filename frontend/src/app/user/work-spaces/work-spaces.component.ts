@@ -8,10 +8,11 @@ import { AddWorkSpacesComponent } from './add-work-spaces/add-work-spaces.compon
   styleUrls: ['./work-spaces.component.css']
 })
 export class WorkSpacesComponent implements OnInit {
-
+  
   constructor(
     public dialog:MatDialog,
-    public dialogRef: MatDialogRef<AddWorkSpacesComponent>
+    // public dialogRef: MatDialogRef<AddWorkSpacesComponent>
+    
   ){ }
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class WorkSpacesComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '500px';
-    this.dialog.open(AddWorkSpacesComponent, dialogConfig);
+    const dialogRef= this.dialog.open(AddWorkSpacesComponent, dialogConfig);
   }
   
 
