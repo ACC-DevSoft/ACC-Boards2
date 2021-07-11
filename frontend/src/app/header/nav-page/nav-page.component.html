@@ -7,8 +7,11 @@
     <span class="headerSpacer"></span>
     <div class="nav-items">
         <ul>
-            <a mat-button href="#register">Sign Up</a>
-            <a *ngIf="auth.loggedIn()" mat-button  (click)="auth.logOut()">
+            <a  mat-button  routerLink="profile">
+                <mat-icon>account_box</mat-icon>
+                Profile
+            </a>
+            <a  mat-button  (click)="auth.logOut()">
                 <mat-icon>logout</mat-icon>
                 Logout
             </a>
