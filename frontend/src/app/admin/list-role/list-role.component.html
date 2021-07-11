@@ -1,47 +1,45 @@
 <div class="container">
-    <mat-card>
-        <h2>Role</h2>
-        <hr>
-        <div class="col-12 col-lg-12" *ngIf="errorMessage">
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <div class="alert-message">
-                    {{errorMessage}}
-                </div>
-                <button type="button" class="close"  data-dismiss="alert" aria-label="Close"><span
-                        aria-hidden="true">X</span></button>
-            </div>
+  <mat-card>
+    <h2>Roles</h2>
+    <hr />
+    <div class="col-12 col-lg-12" *ngIf="errorMessage">
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert-message">
+          {{ errorMessage }}
         </div>
-        <div class="row">
-            <div class="col">
-                <h3>Total roles: <span>{{roleData.length}}</span></h3>
-            </div>
-            <div class="row-12">
-                <a routerLink="/registerRole" mat-button mat-raised-button>
-                    <mat-icon aria-hidden="false" color="accent">add</mat-icon> Add role
-                </a>
-                <!-- <a routerLink="/updateRole" mat-button mat-raised-button>
-                    <mat-icon aria-hidden="false" color="accent">update</mat-icon> Update 
-                </a> -->
-            </div>
-        </div>
-        <p>{{roleData.name}}</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody *ngIf="roleData.length">
-                <tr *ngFor="let roles of roleData">
-                    <td>{{roles.name}}</td>
-                    <td>{{roles.description}}</td>
-                    <td>{{roles.status}}</td>
-
-
-                </tr>
-            </tbody>
-        </table>
-    </mat-card>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <h3>
+          Total roles: <span>{{ roleData.length }}</span>
+        </h3>
+      </div>
+    </div>
+    <p>{{ roleData.name }}</p>
+    <table>
+      <thead class="head">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="roleData.length">
+        <tr *ngFor="let roles of roleData">
+          <td>{{ roles.name }}</td>
+          <td>{{ roles.description }}</td>
+          <td>{{ roles.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>

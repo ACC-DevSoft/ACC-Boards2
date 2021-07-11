@@ -1,5 +1,12 @@
 .container{
     padding: 50px 16px 0;
+    background-color: var(--gray);
+  }
+
+  .container h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-style: italic; 
   }
 
   table {
@@ -11,6 +18,10 @@
     margin-right: auto;
   }
 
+  .head{
+    background-color: #42414d93
+  }
+
   td, th {
     border: 1px solid #dddddd;
     text-align: left;
@@ -18,5 +29,5 @@
   }
   
   tr:nth-child(even) {
-    background-color: #bad7f3;
+    background-color: #42414d93;
   } 

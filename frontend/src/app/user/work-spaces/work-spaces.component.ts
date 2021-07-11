@@ -11,7 +11,7 @@ export class WorkSpacesComponent implements OnInit {
 
   constructor(
     public dialog:MatDialog,
-    public dialogRef: MatDialogRef<AddWorkSpacesComponent>
+    //public dialogRef: MatDialogRef<AddWorkSpacesComponent>
   ){ }
 
   ngOnInit(): void {
