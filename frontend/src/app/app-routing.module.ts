@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { WorkSpacesComponent } from './user/work-spaces/work-spaces.component';
-
+import { ListRoleComponent } from "./admin/list-role/list-role.component";
 const routes: Routes = [
   {
     path:'',
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path:'workSpaces/:id',
     component: WorkSpacesComponent
+  },
+  {
+    path: 'listRoles',
+    component: ListRoleComponent
   }
 ]
 
