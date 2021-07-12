@@ -35,6 +35,8 @@ import { NavPageComponent } from './header/nav-page/nav-page.component';
 import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-work-spaces.component';
+import { ListUsersComponent } from './admin/list-users/list-users.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-w
     ListRoleComponent,
     LoginComponent,
     AddWorkSpacesComponent,
+    ListUsersComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,

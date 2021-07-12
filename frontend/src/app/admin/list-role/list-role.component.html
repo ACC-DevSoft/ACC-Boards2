@@ -24,6 +24,11 @@
         </h3>
       </div>
     </div>
+    <div class="row-12">
+      <a mat-button mat-raised-button (click)="openForm()">
+        <mat-icon aria-hidden="false" color="accent">add</mat-icon> Add role
+      </a>
+    </div>
     <p>{{ roleData.name }}</p>
     <table>
       <thead class="head">
@@ -31,6 +36,7 @@
           <th>Name</th>
           <th>Description</th>
           <th>Status</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody *ngIf="roleData.length">
@@ -38,6 +44,14 @@
           <td>{{ roles.name }}</td>
           <td>{{ roles.description }}</td>
           <td>{{ roles.status }}</td>
+          <td>
+            <a mat-button mat-flat-button class="">
+              <mat-icon>edit</mat-icon> edit
+            </a>
+            <a mat-button mat-flat-button class="">
+              <mat-icon>delete</mat-icon> delete
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

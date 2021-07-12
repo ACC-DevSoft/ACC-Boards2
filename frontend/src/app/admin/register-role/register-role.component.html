@@ -1,62 +1,51 @@
-<div class="section">
-  <div class="container">
-    <div class="form">
-      <mat-card class="form_content">
-        <mat-card-title>Role register</mat-card-title>
-        <hr />
-        <div class="col-12 col-lg-12" *ngIf="errorMessage">
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <div class="alert-message">
-              {{ errorMessage }}
-            </div>
-            <div class="spacer"></div>
-            <span (click)="close()" class="close" data-dismiss="alert">
-              <mat-icon>close</mat-icon>
-            </span>
-          </div>
-        </div>
-        <div class="col-12 col-lg-12" *ngIf="successMessage">
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <div class="alert-message">
-              {{ successMessage }}
-            </div>
-            <div class="spacer"></div>
-            <span (click)="close()" class="close" data-dismiss="alert">
-              <mat-icon>close</mat-icon>
-            </span>
-          </div>
-        </div>
-        <div class="form_content_inputs">
-          <mat-form-field>
-            <input
-              matInput
-              [(ngModel)]="registerData.name"
-              matInput
-              placeholder="Name"
-              required
-            /> </mat-form-field
-          ><br />
-          <mat-form-field>
-            <input
-              matInput
-              [(ngModel)]="registerData.description"
-              matInput
-              placeholder="Description"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <mat-card-actions>
-          <button
-            (click)="registerRole()"
-            class="btn"
-            mat-button
-            mat-raised-button
-          >
-            Register
-          </button>
-        </mat-card-actions>
-      </mat-card>
+<h1 mat-dialog-title>Register Rol</h1>  
+<hr>
+<mat-dialog-content>
+  <div class="col-12 col-lg-12" *ngIf="errorMessage">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ errorMessage }}
+      </div>
+      <div class="spacer"></div>
+      <span (click)="close()" class="close" data-dismiss="alert">
+        <mat-icon>close</mat-icon>
+      </span>
     </div>
   </div>
-</div>
+  <div class="col-12 col-lg-12" *ngIf="successMessage">
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ successMessage }}
+      </div>
+      <div class="spacer"></div>
+      <span (click)="close()" class="close" data-dismiss="alert">
+        <mat-icon>close</mat-icon>
+      </span>
+    </div>
+  </div>
+  <div class="form-content-inputs">
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="registerData.name"
+        matInput
+        placeholder="Name"
+        required
+      /> </mat-form-field
+    ><br />
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="registerData.description"
+        matInput
+        placeholder="Description"
+        required
+      />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="btn gray" mat-button mat-raised-button mat-dialog-close>Cancel</button>
+  <button (click)="registerRole()" class="btn" mat-button mat-raised-button>Register</button>
+
+</mat-dialog-actions>

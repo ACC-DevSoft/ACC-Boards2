@@ -6,6 +6,7 @@ import { RegisterComponent } from './home/register/register.component';
 import { WorkSpacesComponent } from './user/work-spaces/work-spaces.component';
 import { ListRoleComponent } from "./admin/list-role/list-role.component";
 import { RegisterRoleComponent } from './admin/register-role/register-role.component'
+import { ListUsersComponent } from './admin/list-users/list-users.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path:'workSpaces/:id',
     component: WorkSpacesComponent
+  },
+  {
+    path:'listUsers',
+    component:ListUsersComponent
   },
   {
     path: 'listRoles',

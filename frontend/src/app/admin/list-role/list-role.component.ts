@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from "../../services/admin.service";
 import { Router } from "@angular/router";
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { RegisterRoleComponent } from "../register-role/register-role.component";
 
 @Component({
   selector: 'app-list-role',
@@ -12,7 +14,7 @@ export class ListRoleComponent implements OnInit {
   public errorMessage: String;
   public data: any;
 
-  constructor(private admin: AdminService, private router: Router) { 
+  constructor(private admin: AdminService, private router: Router, public dialog:MatDialog) { 
     this.roleData = {};
     this.errorMessage = '';
     this.data = {};
@@ -35,6 +37,12 @@ export class ListRoleComponent implements OnInit {
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);
+  }
+
+  openForm(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    this.dialog.open(RegisterRoleComponent, dialogConfig);
   }
 
 }
