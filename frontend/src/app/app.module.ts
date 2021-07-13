@@ -42,9 +42,9 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { ListTasksComponent } from './tasks/list-tasks/list-tasks.component';
 import { GetImgPipe } from './pipes/get-img.pipe';
+import { ListWorkspacesComponent } from './user/work-spaces/list-workspaces/list-workspaces.component';
 import { SaveBoardComponent } from './board/save-board/save-board.component';
 import { ListBoardComponent } from './board/list-board/list-board.component';
-import { ListWorkspacesComponent } from './user/work-spaces/list-workspaces/list-workspaces.component';
 import { AddMembersComponent } from './user/work-spaces/add-members/add-members.component';
 import { SaveTaskComponent } from './tasks/save-task/save-task.component';
 
@@ -70,7 +70,8 @@ import { SaveTaskComponent } from './tasks/save-task/save-task.component';
     AddMembersComponent,
     ListTasksComponent,
     SaveTaskComponent,
-    GetImgPipe
+    GetImgPipe,
+    AddMembersComponent,
   ],
   imports: [
     BrowserModule,

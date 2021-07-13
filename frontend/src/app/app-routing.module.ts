@@ -72,9 +72,7 @@ const routes: Routes = [
     path: 'saveBoard/:id',
     component: SaveBoardComponent
   },
-  {path:'saveBoard/:id', 
-    component: SaveBoardComponent
-  }
+  
 
 ]
 
