@@ -1,0 +1,19 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input [(ngModel)]="updateData.name" matInput value="{{userData.name}}" required>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>User name</mat-label>
+        <input [(ngModel)]="updateData.userName" matInput value="{{userData.userName}}" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="updateData.email" matInput value="{{userData.email}}" required>
+      </mat-form-field>
+
+      <button mat-button mat-raised-button color="primary" routerLink="/profile">Save</button>
+
+  </form>

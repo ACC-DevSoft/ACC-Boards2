@@ -22,7 +22,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDialogModule } from "@angular/material/dialog";
-
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select'; 
 
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -41,8 +42,11 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ListTasksComponent } from './tasks/list-tasks/list-tasks.component';
 import { SaveTaskComponent } from './tasks/save-task/save-task.component';
 import { GetImgPipe } from './pipes/get-img.pipe';
+import { ListWorkspacesComponent } from './user/work-spaces/list-workspaces/list-workspaces.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { SaveBoardComponent } from './board/save-board/save-board.component';
 import { ListBoardComponent } from './board/list-board/list-board.component';
+import { AddMembersComponent } from './user/work-spaces/add-members/add-members.component';
 
 @NgModule({
   declarations: [
@@ -59,11 +63,14 @@ import { ListBoardComponent } from './board/list-board/list-board.component';
     AddWorkSpacesComponent,
     ListUsersComponent,
     AddUserComponent,
+    ListWorkspacesComponent,
+    EditProfileComponent,
     SaveBoardComponent,
     ListBoardComponent,
     ListTasksComponent,
     SaveTaskComponent,
-    GetImgPipe
+    GetImgPipe,
+    AddMembersComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +91,8 @@ import { ListBoardComponent } from './board/list-board/list-board.component';
     MatSidenavModule,
     MatDialogModule,
     MatListModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [AuthService,
     AuthGuard,

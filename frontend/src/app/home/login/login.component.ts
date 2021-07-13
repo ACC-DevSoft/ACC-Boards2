@@ -8,6 +8,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   public loginData: any;
   public errorMessage: String;
 

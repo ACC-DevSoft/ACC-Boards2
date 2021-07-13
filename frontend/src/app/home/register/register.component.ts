@@ -8,6 +8,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  hide = true
   public registerData: any;
   public errorMessage: String;
 

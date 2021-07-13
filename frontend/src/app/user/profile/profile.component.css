@@ -1,0 +1,41 @@
+.form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0px 0px 0px;
+}
+
+.form_content {
+    margin-top: 20px;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    background-color:var(--white);
+}
+
+.form_content--picture{
+    display:flex;
+    margin: 10px;
+    justify-content:center;
+    align-items: center;
+}
+
+.form_content--picture>img{
+    max-width: 35%;
+    border-radius: 5px;
+    margin-top:0px;
+}
+
+mat-card-title {
+    margin:20px;
+    text-align:center;
+}
+
+mat-card-content {
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.tags{
+  font-weight: bold;
+}
