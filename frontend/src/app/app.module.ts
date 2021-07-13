@@ -37,6 +37,8 @@ import { LoginComponent } from './home/login/login.component';
 import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-work-spaces.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
+import { SaveBoardComponent } from './board/save-board/save-board.component';
+import { ListBoardComponent } from './board/list-board/list-board.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
     AddWorkSpacesComponent,
     ListUsersComponent,
     AddUserComponent,
+    SaveBoardComponent,
+    ListBoardComponent,
   ],
   imports: [
     BrowserModule,
