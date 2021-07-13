@@ -37,6 +37,9 @@ import { LoginComponent } from './home/login/login.component';
 import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-work-spaces.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
+import { ListTasksComponent } from './tasks/list-tasks/list-tasks.component';
+import { SaveTaskComponent } from './tasks/save-task/save-task.component';
+import { GetImgPipe } from './pipes/get-img.pipe';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
     AddWorkSpacesComponent,
     ListUsersComponent,
     AddUserComponent,
+    ListTasksComponent,
+    SaveTaskComponent,
+    GetImgPipe,
   ],
   imports: [
     BrowserModule,
