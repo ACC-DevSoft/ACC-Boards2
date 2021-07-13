@@ -40,6 +40,8 @@ router.post("/create/:id", Auth, async (req, res) => {
 	});
 	try {
 		const saveboard = await board.save();
+		if(!saveboard) return res.status(401).send("Failed process")
+
 		// res.status(200).send('board created');
 		// console.log(saveboard);
 		await Workspace.findByIdAndUpdate(req.body.workspace, {
