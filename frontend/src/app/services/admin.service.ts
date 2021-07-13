@@ -17,7 +17,27 @@ export class AdminService {
     this.userData = {};
   }
 
-  registerRole(role: any){
-    return this.http.post(this.env + 'role/registerRole', role)
+  registerAdmin(user: any) {
+    return this.http.post(this.env + "user/registerAdmin", user)
+  }
+
+  listUsers(){
+    return this.http.get(this.env + "user/listUsers");
+  }
+
+  updateUser(user:any){
+    return this.http.put(this.env + "user/updateUser", user);
+  }
+
+  listRole() {
+    return this.http.get(this.env + "role/listRole");
+  }
+
+  registerRole(role: any) {
+    return this.http.post(this.env + "role/registerRole", role)
+  }
+
+  updateRole(role:any){
+    return this.http.put(this.env + "role/updateRole", role);
   }
 }

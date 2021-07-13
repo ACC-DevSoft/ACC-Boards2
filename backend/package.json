@@ -9,7 +9,7 @@
   "author": "ACC-Devsoft",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.12"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

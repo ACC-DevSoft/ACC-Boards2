@@ -1,1 +1,59 @@
-<p>list-role works!</p>
+<div class="container">
+  <mat-card>
+    <h2>Roles</h2>
+    <hr />
+    <div class="col-12 col-lg-12" *ngIf="errorMessage">
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert-message">
+          {{ errorMessage }}
+        </div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h3>
+          Total roles: <span>{{ roleData.length }}</span>
+        </h3>
+      </div>
+    </div>
+    <div class="row-12">
+      <a mat-button mat-raised-button (click)="openForm()">
+        <mat-icon aria-hidden="false" color="accent">add</mat-icon> Add role
+      </a>
+    </div>
+    <p>{{ roleData.name }}</p>
+    <table>
+      <thead class="head">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th> 
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="roleData.length"> 
+        <tr *ngFor="let roles of roleData">
+          <td>{{ roles.name }}</td>
+          <td>{{ roles.description }}</td>
+          <td>{{ roles.status }}</td>
+          <td>
+            <a mat-button mat-flat-button class="">
+              <mat-icon>edit</mat-icon> edit
+            </a>
+            <a mat-button mat-flat-button class="">
+              <mat-icon>delete</mat-icon> delete
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>

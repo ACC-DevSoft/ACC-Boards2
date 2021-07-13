@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Register Rol</h1>  
+<h1 mat-dialog-title>Register Users</h1>  
 <hr>
 <mat-dialog-content>
   <div class="col-12 col-lg-12" *ngIf="errorMessage">
@@ -31,21 +31,45 @@
         matInput
         placeholder="Name"
         required
-      /> </mat-form-field
-    ><br />
+      /> 
+    </mat-form-field>
     <mat-form-field>
       <input
         matInput
-        [(ngModel)]="registerData.description"
+        [(ngModel)]="registerData.userName"
         matInput
-        placeholder="Description"
+        placeholder="UserName"
         required
       />
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="registerData.email"
+          matInput
+          placeholder="Email"
+          required
+        />
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="registerData.password"
+          matInput
+          placeholder="Password"
+          required
+        />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Select</mat-label>
+        <mat-select [formControl]="selected" appearance="fill" *ngIf="roleData.length">
+          <mat-option *ngFor="let roles of roleData" value="{{ roles._id }}" >{{ roles.name }}</mat-option>
+        </mat-select>
     </mat-form-field>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button class="btn gray" mat-button mat-raised-button mat-dialog-close>Cancel</button>
-  <button (click)="registerRole()" class="btn" mat-button mat-raised-button>Register</button>
+  <button (click)="registerAdmin()" class="btn" mat-button mat-raised-button>Register</button>
 
 </mat-dialog-actions>

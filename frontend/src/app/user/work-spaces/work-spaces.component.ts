@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from "@angular/material/dialog";
+import { AddWorkSpacesComponent } from './add-work-spaces/add-work-spaces.component';
 
 @Component({
   selector: 'app-work-spaces',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./work-spaces.component.css']
 })
 export class WorkSpacesComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(
+    public dialog:MatDialog,
+    //public dialogRef: MatDialogRef<AddWorkSpacesComponent>
+  ){ }
 
   ngOnInit(): void {
   }
+  openForm(): void{
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '500px';
+    const dialogRef= this.dialog.open(AddWorkSpacesComponent, dialogConfig);
+  }
+  
+
 
 }

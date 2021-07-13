@@ -1,14 +1,24 @@
 <mat-toolbar class="bgHeader">
     <div class="logo">
-        <a routerLink="/">
+        <a routerLink="/work-spaces/:id">
             <img src="../../../assets/img/ACC-Logo.png" alt="ACC-Logo" />
         </a>
+    </div>
+    <div class="nav-items">
+      <ul>
+          <a mat-button routerLink="">workSpaces</a>
+          <a mat-button routerLink="/listUsers">users</a>
+          <a mat-button routerLink="/listRoles">roles</a>
+      </ul>
     </div>
     <span class="headerSpacer"></span>
     <div class="nav-items">
         <ul>
-            <a mat-button href="#register">Sign Up</a>
-            <a *ngIf="auth.loggedIn()" mat-button  (click)="auth.logOut()">
+            <a  mat-button  routerLink="profile">
+                <mat-icon>account_box</mat-icon>
+                Profile
+            </a>
+            <a  mat-button  (click)="auth.logOut()">
                 <mat-icon>logout</mat-icon>
                 Logout
             </a>

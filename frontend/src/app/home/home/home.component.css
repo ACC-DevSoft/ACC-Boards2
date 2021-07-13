@@ -1,19 +1,20 @@
 @import url('../../../colors.css');
 
-.section{
-    height: 100vh;
+section{
+    /* background-color: magenta; */
+    height:100vh;
+    margin-top: -63px;
 }
 .section-1{
-    /* background-image: url('../../../assets/img/ACC_back2.png');
+    /* background-image: url('../../../assets/img/ACC_back3.png');
     background-size: cover;
     background-repeat: no-repeat; */
     background-color: var(--white);
 }
 .container{
     height: 75%;
-    /* background-color: tomato; */
-    margin: 3% auto;
-    padding-top: 45px;
+    margin: 5% auto;
+    padding-top: 60px;
     text-decoration: none;
 }
 .text-home{
