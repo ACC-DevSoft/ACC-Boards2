@@ -19,8 +19,8 @@
   }
   
   .img-container {
-    width: 300px;
-    height: 250px;
+    width: 220px;
+    height: 200px;
     object-fit: cover;
     margin: 0 auto;
     overflow: hidden;
@@ -34,8 +34,8 @@
   }
   
   .imgTask {
-    width: 300px;
-    height: 250px;
+    width: 200px;
+    height: 180px;
     margin-top: 25px;
   }
   

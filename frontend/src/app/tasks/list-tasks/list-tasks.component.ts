@@ -11,7 +11,7 @@ export class ListTasksComponent implements OnInit {
 
   tasks: any[] = [];
   id: String;
-  taskId: String;
+  taskId: any;
   taskData: any;
   edition: boolean;
   selectedFile: any;
@@ -93,6 +93,7 @@ export class ListTasksComponent implements OnInit {
 
   cancelChanges() {
     this.edition = false
+    this.currentImg(this.taskId);
   }
 
   currentImg(id: string) {
@@ -155,15 +156,5 @@ export class ListTasksComponent implements OnInit {
   deleteImg() {
     this.readerImg = '/assets/imgs/no-image.jpg';
   }
-
-
-  // drop(e: any) {
-  //   console.log('ok!', e)
-
-  //   moveItemInArray(this.tasks, e.previousIndex, e.currentIndex);
-
-
-
-  // }
 
 }
