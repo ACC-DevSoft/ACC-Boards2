@@ -32,7 +32,10 @@ export class ListTasksComponent implements OnInit {
     this.loadTask();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log("el id es ", this.id);
+
+   }
 
   loadTask() {
     this.tasksService.listTask(this.id).subscribe(

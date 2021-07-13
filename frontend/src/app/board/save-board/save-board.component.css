@@ -1,26 +1,51 @@
-.container {
-    display: flex;
-    flex-direction: column;
+.form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px 0px 0px;
+    margin-top: 50px;
 }
 
-.button {
-    width: 100%;
-}
-
-.card {
+.form_content {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-    background-color:lavender;
+    background-color: var(--white);
+}
+h1 {
+    font-size: 30px;
+    text-align:center;
+    color: var(--grayTwo);
+    font-family: 'Roboto',sans-serif;
+    font-style: italic;
 }
 
-.form{
-    padding: 150px 0px 0px;
+.form-content-inputs {
+    display:flex;
+    flex-direction: column;
+}
+
+
+mat-dialog-actions{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
 }
+ mat-dialog-actions .btn{
+     width: 45%;
+     padding: 5px;
+     font-size: 18px;
+     font-weight: 700;
+     color: var(--white);
+ }
+  mat-dialog-actions .gray{
+     background-color: var(--grayTwo);
+ }
 
-mat-card-title{
-    text-align: center;
+.alert{
+    display: flex;
+    justify-content: space-between;
 }
+.spacer {
+  flex: 1 0 auto;
+}
+.btn{ margin: 10px; background-color: var(--blue);}

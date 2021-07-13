@@ -56,9 +56,11 @@
                 <div class="workspace-item-content ">
                     <ul class="">
                         <li class="text-center" *ngFor="let board of wpBoards[wp]">
-                            <a routerLink="/listTask/{{ board._id }}" class="board-title">
+                            <!-- <a [routerLink]="/listTask/{{ board._id }}" class="board-title"> -->
+                                <a [routerLink]="['/listTasks', board._id]" class="board-title">
                                 <div class="board-details">
                                     <p class="board-name text-uppercase">
+                                        {{ board._id }}
                                         {{ board.name }}
                                     </p>
                                     <p>

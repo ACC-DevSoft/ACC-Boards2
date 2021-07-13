@@ -27,6 +27,8 @@ export class SaveTaskComponent implements OnInit {
   uploadImg(event: any) {
     console.log(event);
     this.selectedFile = <File>event.target.files[0];
+    console.log("el id es ", this.id);
+    
   }
 
   addTaskImg() {

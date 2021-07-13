@@ -1,46 +1,33 @@
-<div class="form">
-    <mat-card class="card">
-      <mat-card-title>Create Board</mat-card-title>
-  
-      <div class="col-12 col-lg-12" *ngIf="errorMessage">
-        <div class="alert alert-danger alert-dismissible" role="alert">
-          <div class="alert-message">
-            {{ errorMessage }}
-          </div>
-          <button
-            type="button"
-            class="close"
-            (click)="closeX()"
-            data-dismiss="alert"
-            aria-label="Close"
-          >
-            x
-          </button>
-        </div>
+<h1 mat-dialog-title>Add board</h1>
+<mat-dialog-content>
+  <div class="col-12 col-lg-12" *ngIf="errorMessage">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ errorMessage }}
       </div>
-  
-      <mat-card-content>
-          <div class="container">
-              <mat-form-field appearance="fill">
-                  <input [(ngModel)]="boardData.name" matInput placeholder="Name" required/>
-              </mat-form-field>
-  
-              <mat-form-field appearance="fill">
-                  <input [(ngModel)] = "boardData.description" matInput placeholder="Description" required/>
-              </mat-form-field>
-  
-              <mat-form-field appearance="fill" hidden>
-                  <input [(ngModel)] = "workspaceId" matInput placeholder="WorkSpace" required/>
-              </mat-form-field>
-  
-              <mat-form-field appearance="fill">
-                  <input [(ngModel)] = "boardData.techleader" matInput placeholder="TechLeader" />
-              </mat-form-field>
-              
-          </div>
-      </mat-card-content>
-      <mat-card-actions>
-          <button (click) = "saveBoard()" class="button colorButton" mat-raised-button> Save Board</button>
-      </mat-card-actions>
-    </mat-card>
+      <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
+        x
+      </button>
+    </div>
   </div>
+  <div class="form-content-inputs">
+    <mat-form-field hidden>
+      <input [(ngModel)]="workspaceId" matInput placeholder="WorkSpace" readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="boardData.name" matInput placeholder="Name" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="boardData.description" matInput placeholder="Description" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input [(ngModel)]="boardData.techleader" matInput placeholder="TechLeader" />
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="btn gray">Cancel</button>
+  <button (click)="saveBoard()" class="btn colorButton" mat-button mat-raised-button> Save Board</button>
+</mat-dialog-actions>

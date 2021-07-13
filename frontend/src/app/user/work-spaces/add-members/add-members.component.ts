@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-members.component.css']
 })
 export class AddMembersComponent implements OnInit {
+  public errorMessage: String;
 
-  constructor() { }
+  constructor() { 
+    this.errorMessage = '';
+  }
 
   ngOnInit(): void {
   }
+  addMember(){}
+  closeAlert(){}
+  closeX(){}
 
 }
