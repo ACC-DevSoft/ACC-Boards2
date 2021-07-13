@@ -1,0 +1,97 @@
+
+.wrap-cards{
+    padding: 5px;
+}
+
+.wrap-cards mat-card{
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid var(--gray);
+}
+
+mat-card .item-header{
+    display: flex;
+    padding: 0 5px 5px;
+    justify-content: space-between;
+    /* background-color: blueviolet; */
+    border-bottom: 1px solid var(--grayTwo);
+}
+
+.item-header .item-name{
+    display: inline-block;
+    line-height: 24px;
+    margin: 5px 0 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    flex:auto 1 ;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-header .item-options{
+    display: flex;
+    margin-left: 8px;
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+.item-header .item-options a{
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    margin-left: 8px;
+    background-color: var(--blue);
+    color: #ffffff;
+    box-shadow: none;
+    border: none;
+    align-items: center;
+    display: flex;
+}
+mat-card-content{
+    padding: 10px;
+    /* border-bottom: 1px solid var(--grayTwo); */
+}
+.workspace-item-content ul{
+    display: flex;
+    overflow:visible;
+    /* flex-wrap: wrap; */
+    /* justify-content: flex-start; */
+}
+.workspace-item-content ul li{
+    list-style: none;
+    background-color: var(--grayTwo);
+    /* background-color: #c5c4c4b4; */
+    width: 23.5%;
+    /* margin: 0  2% 0; */
+    transform: translate(0);
+    border-radius: 4px;
+}
+.workspace-item-content ul li .board-details{
+    display: flex;
+    height: 80px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.board-title {
+    background-size: cover;
+    background-position: 50%;
+    color: #fff;
+    line-height: 20px;
+    padding: 8px;
+    position: relative;
+    text-decoration: none;
+}
+.board-name{
+    flex: 0 0 auto;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-block;
+    overflow: hidden;
+    max-height: 40px;
+    width: 100%;
+    word-wrap: break-word;
+}
