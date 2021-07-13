@@ -9,6 +9,7 @@ import { RegisterRoleComponent } from './admin/register-role/register-role.compo
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { ProfileComponent } from "./user/profile/profile.component";
 import { EditProfileComponent } from "./user/edit-profile/edit-profile.component";
+import { SaveBoardComponent } from "./board/save-board/save-board.component";
 
 const routes: Routes = [
   {
@@ -51,7 +52,11 @@ const routes: Routes = [
   {
     path: 'updateUser',
     component: EditProfileComponent
+  },
+  {path:'saveBoard/:id', 
+    component: SaveBoardComponent
   }
+
 ]
 
 @NgModule({
