@@ -7,7 +7,7 @@ import { WorkSpacesComponent } from './user/work-spaces/work-spaces.component';
 import { ListRoleComponent } from "./admin/list-role/list-role.component";
 import { RegisterRoleComponent } from './admin/register-role/register-role.component'
 import { ListUsersComponent } from './admin/list-users/list-users.component';
-
+import { ProfileComponent } from "./user/profile/profile.component";
 const routes: Routes = [
   {
     path:'',
@@ -41,6 +41,10 @@ const routes: Routes = [
   {
     path:'registerRole',
     component: RegisterRoleComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ]
 
