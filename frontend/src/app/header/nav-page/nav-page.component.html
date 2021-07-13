@@ -6,7 +6,7 @@
     </div>
     <div class="nav-items">
       <ul>
-          <a mat-button routerLink="">workSpaces</a>
+          <a mat-button [routerLink]="['workSpaces', userId]">workSpaces</a>
           <a mat-button routerLink="/listUsers">users</a>
           <a mat-button routerLink="/listRoles">roles</a>
       </ul>
