@@ -1,0 +1,30 @@
+ table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    overflow-y:scroll;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table thead{
+      text-transform: capitalize;
+  }
+
+  td, th {
+    /* border: 2px solid #dddddd; */
+    border: 1px solid var(--grayTwo);
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #bad7f3;
+    /* background-color: var(--gray); */
+  }
+
+  td a{
+      text-transform: capitalize;
+      margin-right: 3px;
+      color:var(--white);
+      background-color: var(--grayTwo);
+  }

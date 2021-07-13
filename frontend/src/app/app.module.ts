@@ -25,6 +25,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select'; 
 
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './home/register/register.component';
 import { ProfileComponent } from './user/profile/profile.component';
@@ -38,11 +39,14 @@ import { LoginComponent } from './home/login/login.component';
 import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-work-spaces.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
-import { ListWorkspacesComponent } from './user/work-spaces/list-workspaces/list-workspaces.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { ListTasksComponent } from './tasks/list-tasks/list-tasks.component';
+import { GetImgPipe } from './pipes/get-img.pipe';
+import { ListWorkspacesComponent } from './user/work-spaces/list-workspaces/list-workspaces.component';
 import { SaveBoardComponent } from './board/save-board/save-board.component';
 import { ListBoardComponent } from './board/list-board/list-board.component';
 import { AddMembersComponent } from './user/work-spaces/add-members/add-members.component';
+import { SaveTaskComponent } from './tasks/save-task/save-task.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { AddMembersComponent } from './user/work-spaces/add-members/add-members.
     EditProfileComponent,
     SaveBoardComponent,
     ListBoardComponent,
+    AddMembersComponent,
+    ListTasksComponent,
+    SaveTaskComponent,
+    GetImgPipe,
     AddMembersComponent,
   ],
   imports: [
