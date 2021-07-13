@@ -37,6 +37,7 @@ import { LoginComponent } from './home/login/login.component';
 import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-work-spaces.component';
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
     AddWorkSpacesComponent,
     ListUsersComponent,
     AddUserComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
