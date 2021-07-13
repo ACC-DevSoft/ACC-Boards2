@@ -38,6 +38,7 @@ import { AddWorkSpacesComponent } from './user/work-spaces/add-work-spaces/add-w
 import { ListUsersComponent } from './admin/list-users/list-users.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ListWorkspacesComponent } from './user/work-spaces/list-workspaces/list-workspaces.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { SaveBoardComponent } from './board/save-board/save-board.component';
 import { ListBoardComponent } from './board/list-board/list-board.component';
 import { AddMembersComponent } from './user/work-spaces/add-members/add-members.component';
@@ -58,6 +59,7 @@ import { AddMembersComponent } from './user/work-spaces/add-members/add-members.
     ListUsersComponent,
     AddUserComponent,
     ListWorkspacesComponent,
+    EditProfileComponent,
     SaveBoardComponent,
     ListBoardComponent,
     AddMembersComponent,

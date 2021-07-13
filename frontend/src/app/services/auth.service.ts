@@ -20,6 +20,7 @@ export class AuthService {
   registerUser(user: any) {
     return this.http.post(this.env + 'user/registerUser/', user)
   }
+  
   login(user:any){
     return this.http.post(this.env + 'auth/login', user)
   }
@@ -46,10 +47,10 @@ export class AuthService {
   loggedIn() {
     return !!localStorage.getItem('token');
   }
+
   getCurrent() {
     let currentUser = localStorage.getItem('current');
     return currentUser;
-
   }
 
   getToken() {

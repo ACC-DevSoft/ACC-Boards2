@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from "@angular/router";
+
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
   public userData: any;
+  public updateData: any;
 
-  constructor(private auth: AuthService) { 
-    this.userData = {}
+  constructor(private auth: AuthService, private router: Router) { 
+    this.userData = {};
+    this.updateData = {};
   }
 
   ngOnInit(): void {
