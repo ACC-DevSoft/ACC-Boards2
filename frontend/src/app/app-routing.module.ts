@@ -7,6 +7,7 @@ import { WorkSpacesComponent } from './user/work-spaces/work-spaces.component';
 import { ListRoleComponent } from "./admin/list-role/list-role.component";
 import { RegisterRoleComponent } from './admin/register-role/register-role.component'
 import { ListUsersComponent } from './admin/list-users/list-users.component';
+import { SaveBoardComponent } from "./board/save-board/save-board.component";
 
 const routes: Routes = [
   {
@@ -41,7 +42,13 @@ const routes: Routes = [
   {
     path:'registerRole',
     component: RegisterRoleComponent
-  }
+  },
+  {
+    path:'saveBoard/:id', 
+    component: SaveBoardComponent
+  },
+
+  
 ]
 
 @NgModule({
