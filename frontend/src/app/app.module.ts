@@ -22,7 +22,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDialogModule } from "@angular/material/dialog";
-
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select'; 
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './home/register/register.component';
@@ -73,6 +74,8 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
     MatSidenavModule,
     MatDialogModule,
     MatListModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [AuthService,
     AuthGuard,

@@ -12,7 +12,6 @@ h1 {
     flex-direction: column;
 }
 
-
 mat-dialog-actions{
     display: flex;
     flex-direction: row;
@@ -27,7 +26,6 @@ mat-dialog-actions{
   mat-dialog-actions .gray{
      background-color: var(--grayTwo);
  }
-
 
 
 .alert{

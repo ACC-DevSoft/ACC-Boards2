@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AdminService } from "../../services/admin.service";
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { ListRoleComponent } from "../list-role/list-role.component"
 
 @Component({
   selector: 'app-register-role',
@@ -12,7 +14,7 @@ export class RegisterRoleComponent implements OnInit {
   public errorMessage: String;
   public successMessage: String;
 
-  constructor(private admin: AdminService, private router:Router) {
+  constructor(private admin: AdminService, private router:Router, public dialogRef:MatDialogRef<ListRoleComponent>) {
     this.registerData ={};
     this.errorMessage = '';
     this.successMessage = '';
@@ -34,6 +36,7 @@ export class RegisterRoleComponent implements OnInit {
           this.successMessage = "Role created successfully"
           this.registerData = {}
           this.closeAlert()
+          this.closeDialog()
         },
         (err: any) => {
           console.log(err)
@@ -54,5 +57,8 @@ export class RegisterRoleComponent implements OnInit {
   close() {
     this.errorMessage = '';
     this.successMessage = '';
+  }
+  closeDialog() {
+    this.dialogRef.close()
   }
 }

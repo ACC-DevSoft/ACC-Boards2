@@ -1,49 +1,75 @@
-<h1>Register user</h1>
-<hr/>
+<h1 mat-dialog-title>Register Users</h1>  
+<hr>
 <mat-dialog-content>
-    <div class="col-12 col-lg-12" *ngIf="errorMessage">
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div class="alert-message">
-                {{ errorMessage }}
-            </div>
-    
-            <div class="spacer"></div>
-            <span (click)="close()" class="close" data-dismiss="alert">
-                <mat-icon>close</mat-icon>
-            </span>
-        </div>
+  <div class="col-12 col-lg-12" *ngIf="errorMessage">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ errorMessage }}
+      </div>
+      <div class="spacer"></div>
+      <span (click)="close()" class="close" data-dismiss="alert">
+        <mat-icon>close</mat-icon>
+      </span>
     </div>
-    <mat-card>
-        <div class="form-content-inputs">
-            <mat-form-field>
-                <input  type="text">
-            </mat-form-field>
-            <mat-form-field>
-                <input [(ngModel)]="registerData.name" matInput placeholder="Name" required />
-            </mat-form-field>
-            <mat-form-field>
-                <input  [(ngModel)]="registerData.email" matInput placeholder="Email" required />
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput [(ngModel)]="registerData.userName"  placeholder="User Name" required />
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput [(ngModel)]="registerData.password" matInput type="password" placeholder="Password" required />
-                <mat-label>Password</mat-label>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Role:</mat-label>
-                <!-- <mat-select [(ngModel)]="registerData.roleId" *ngIf="roleData.length">
-                            <mat-option *ngFor="let role of data" [value]="role._id">{{
-                                role.name
-                                }}</mat-option> 
-                            </mat-select> -->
-        
-            </mat-form-field>
-        </div>
-    </mat-card>
+  </div>
+  <div class="col-12 col-lg-12" *ngIf="successMessage">
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ successMessage }}
+      </div>
+      <div class="spacer"></div>
+      <span (click)="close()" class="close" data-dismiss="alert">
+        <mat-icon>close</mat-icon>
+      </span>
+    </div>
+  </div>
+  <div class="form-content-inputs">
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="registerData.name"
+        matInput
+        placeholder="Name"
+        required
+      /> 
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="registerData.userName"
+        matInput
+        placeholder="UserName"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="registerData.email"
+          matInput
+          placeholder="Email"
+          required
+        />
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="registerData.password"
+          matInput
+          placeholder="Password"
+          required
+        />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Select</mat-label>
+        <mat-select [formControl]="selected" appearance="fill" *ngIf="roleData.length">
+          <mat-option *ngFor="let roles of roleData" value="{{ roles._id }}" >{{ roles.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button mat-raised-button mat-dialog-close class="btn gray" >Cancel</button>
-    <button (click)="registerAdmin()" class="btn" mat-button mat-raised-button>Register</button>
+  <button class="btn gray" mat-button mat-raised-button mat-dialog-close>Cancel</button>
+  <button (click)="registerAdmin()" class="btn" mat-button mat-raised-button>Register</button>
+
 </mat-dialog-actions>
