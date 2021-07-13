@@ -1,0 +1,45 @@
+.main-tasks {
+    max-width: 90%;
+  }
+  
+  
+  .container-tasks {
+    text-align: center;
+    max-height: 100vh;
+    overflow: auto;
+  }
+  
+  .header-task {
+    padding: 10px;
+  }
+  
+  .container-tasks ul li {
+    list-style: none;
+    margin: 20px 0;
+  }
+  
+  .img-container {
+    width: 220px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .img-container .delImg{
+    position: absolute;
+    top: 35px;
+    right: 0;
+  }
+  
+  .imgTask {
+    width: 200px;
+    height: 180px;
+    margin-top: 25px;
+  }
+  
+  .task-card {
+    width: 100%;
+  }
+  
