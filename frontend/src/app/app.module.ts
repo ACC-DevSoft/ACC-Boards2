@@ -24,6 +24,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDialogModule } from "@angular/material/dialog";
 
 
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterComponent } from './home/register/register.component';
 import { ProfileComponent } from './user/profile/profile.component';
@@ -40,6 +41,8 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ListTasksComponent } from './tasks/list-tasks/list-tasks.component';
 import { SaveTaskComponent } from './tasks/save-task/save-task.component';
 import { GetImgPipe } from './pipes/get-img.pipe';
+import { SaveBoardComponent } from './board/save-board/save-board.component';
+import { ListBoardComponent } from './board/list-board/list-board.component';
 
 @NgModule({
   declarations: [
@@ -56,9 +59,11 @@ import { GetImgPipe } from './pipes/get-img.pipe';
     AddWorkSpacesComponent,
     ListUsersComponent,
     AddUserComponent,
+    SaveBoardComponent,
+    ListBoardComponent,
     ListTasksComponent,
     SaveTaskComponent,
-    GetImgPipe,
+    GetImgPipe
   ],
   imports: [
     BrowserModule,
