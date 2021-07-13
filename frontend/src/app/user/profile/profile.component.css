@@ -10,7 +10,7 @@
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-    background-color:lavender;
+    background-color:var(--white);
 }
 
 .form_content--picture{
@@ -34,4 +34,8 @@ mat-card-title {
 mat-card-content {
     display:flex;
     justify-content: space-evenly;
+}
+
+.tags{
+  font-weight: bold;
 }

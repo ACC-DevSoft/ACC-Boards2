@@ -1,26 +1,19 @@
-<div class="form">
-    <mat-card class="form_content">
-        <mat-card-title>{{userData.userName}}</mat-card-title>
-        <hr>
-        <div class="form_content--picture">
-            <img mat-card-image src="{{userData.img}}" alt="Profile Picture">
-        </div>
-        <hr>
-        <mat-card-content>
-            <mat-list role="list">
-                <mat-list-item role="listitem">Nombre   :</mat-list-item>
-                <mat-list-item role="listitem">Email    :</mat-list-item>
-                <mat-list-item role="listitem">UserName :</mat-list-item>
-                <mat-list-item role="listitem">Status   :</mat-list-item>
-            </mat-list>
-            <mat-list role="list">
-                <mat-list-item role="listitem">{{userData.name}}</mat-list-item>
-                <mat-list-item role="listitem">{{userData.email}}</mat-list-item>
-                <mat-list-item role="listitem">{{userData.userName}}</mat-list-item>
-                <mat-list-item role="listitem">{{userData.status}}</mat-list-item>
-              </mat-list>
-              
-        </mat-card-content>
-        <button mat-button mat-raised-button color="primary" routerLink="/profile">Save</button>
-    </mat-card>
-</div>
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input [(ngModel)]="updateData.name" matInput value="{{userData.name}}" required>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>User name</mat-label>
+        <input [(ngModel)]="updateData.userName" matInput value="{{userData.userName}}" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="updateData.email" matInput value="{{userData.email}}" required>
+      </mat-form-field>
+
+      <button mat-button mat-raised-button color="primary" routerLink="/profile">Save</button>
+
+  </form>

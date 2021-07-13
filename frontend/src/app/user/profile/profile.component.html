@@ -6,12 +6,12 @@
             <img mat-card-image src="{{userData.img}}" alt="Profile Picture">
         </div>
         <hr>
-        <mat-card-content>
+        <mat-card-content >
             <mat-list role="list">
-                <mat-list-item role="listitem">Nombre   :</mat-list-item>
-                <mat-list-item role="listitem">Email    :</mat-list-item>
-                <mat-list-item role="listitem">UserName :</mat-list-item>
-                <mat-list-item role="listitem">Status   :</mat-list-item>
+                <mat-list-item class="tags" role="listitem">Nombre   :</mat-list-item>
+                <mat-list-item role="listitem" class="tags" >Email    :</mat-list-item>
+                <mat-list-item role="listitem" class="tags" >UserName :</mat-list-item>
+                <mat-list-item role="listitem" class="tags" >Status   :</mat-list-item>
             </mat-list>
             <mat-list role="list">
                 <mat-list-item role="listitem">{{userData.name}}</mat-list-item>
@@ -21,6 +21,6 @@
               </mat-list>
               
         </mat-card-content>
-        <button mat-button mat-raised-button color="primary" routerLink="/updateUser">Update</button>
+        <!-- <button mat-button mat-raised-button color="primary" routerLink="/updateUser">Update</button> -->
     </mat-card>
 </div>
