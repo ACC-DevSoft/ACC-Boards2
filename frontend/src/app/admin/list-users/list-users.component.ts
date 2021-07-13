@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { AdminService } from "../../services/admin.service";
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { AddUserComponent } from "../add-user/add-user.component";
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-list-users',
@@ -14,7 +15,7 @@ export class ListUsersComponent implements OnInit {
     public roleData:any;
     public errorMessage:String;
 
- constructor(private admin: AdminService, private router: Router, public dialog:MatDialog) { 
+ constructor(private admin: AdminService, private router: Router, public dialog:MatDialog, private ngZone: NgZone) { 
     this.userData = {};
     this.roleData = {};
     this.errorMessage = '';

@@ -19,7 +19,7 @@ export class ListRoleComponent implements OnInit {
     this.errorMessage = '';
     this.data = {};
   }
-
+ 
   ngOnInit(): void {
     this.data = 
     this.admin.listRole().subscribe(
