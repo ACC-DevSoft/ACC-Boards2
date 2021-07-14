@@ -28,11 +28,10 @@ export class AuthService {
   //   return this.http.post(this.env + "auth/login?include=", user);
   // }
   isAdmin() {
-    this.Admin = true;
+    this.Admin = true; 
   }
 
   forAdmin() {
-    this.Admin === true;
     return this.Admin;
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AdminService } from "../../services/admin.service";
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { AddUserComponent } from "../add-user/add-user.component";
+import { AddUserComponent } from "../add-user/add-user.component"; 
 import { NgZone } from '@angular/core';
 
 @Component({
@@ -52,7 +52,7 @@ export class ListUsersComponent implements OnInit {
       this.errorMessage = '';
     }, 3000);
   }
-  closeX(){
+  closeX(){ 
     
   }
 
