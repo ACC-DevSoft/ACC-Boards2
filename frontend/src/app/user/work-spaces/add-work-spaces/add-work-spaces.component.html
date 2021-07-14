@@ -14,11 +14,17 @@
             </div>
     </div>
     <div class="form-content-inputs">
-        <mat-form-field>
-            <input [(ngModel)]="workspaceData.name" matInput type="text" placeholder="Title" required>
+        {{data.userId}}
+        <mat-form-field hidden>
+            <input  [(ngModel)]="data.userId" matInput type="text" placeholder="userId" readonly>
         </mat-form-field>
         <mat-form-field>
-            <input [(ngModel)]="workspaceData.descrition" matInput type="text" placeholder="descrition">
+            <mat-label>Title:</mat-label>
+            <input [(ngModel)]="workspaceData.name" matInput type="text" placeholder="example: my space" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Description:</mat-label>
+            <input [(ngModel)]="workspaceData.descrition" matInput type="text" placeholder="example: work-space">
         </mat-form-field>
     </div>
     <!-- <mat-card-actions>

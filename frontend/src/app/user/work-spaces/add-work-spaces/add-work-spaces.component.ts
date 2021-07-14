@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from "@angular/material/dialog";
+import { Component, OnInit,Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, DialogRole } from "@angular/material/dialog";
+import {Router,ActivatedRoute} from "@angular/router";
+import { WorkSpaceService } from "../../../services/work-space.service";
+import { AuthService } from "../../../services/auth.service";
+import { WorkSpacesComponent } from "../work-spaces.component";
 
 
 @Component({
@@ -10,26 +14,48 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from "@angu
 export class AddWorkSpacesComponent implements OnInit {
   public errorMessage:String;
   public workspaceData: any;
+  public userid : any;
+  public userId :any
   constructor(
-    // public dialogRef: MatDialogRef<AddWorkSpacesComponent>
+    private router: Router, private workspace : WorkSpaceService,
+    private activatedRoute: ActivatedRoute,
+    private auth: AuthService,
+    public dialogRef: MatDialogRef<WorkSpacesComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data:WorkSpacesComponent
   ) {
     this.workspaceData = {};
     this.errorMessage = '';
+    this.userid = this.activatedRoute.snapshot.params.id;
+    this.userId = localStorage.getItem('current');
+
    }
 
   ngOnInit(): void {
   }
 
-    onNoClick(): void {
-      // this.dialogRef.close();
-    }
   saveWorkSpace(){
     if(!this.workspaceData.name){
       this.errorMessage = 'Incomplete Data';
       this.closeAlert();
     }else{
-        alert('add work space');
+      this.workspace.createWorkspace(this.workspaceData, this.userId).subscribe(
+        (res: any) => {
+          console.log(res);
+          this.workspaceData = {};
+          this.closeDialog();
+          this.router.navigate(['/workSpaces', this.userId]);
+        },
+        (err) => {
+          console.log(err);
+          this.errorMessage = err.error;
+          this.closeAlert();
+        }
+      )
     }
+  }
+
+  closeDialog(){
+    this.dialogRef.close();
   }
 
    closeAlert() {
