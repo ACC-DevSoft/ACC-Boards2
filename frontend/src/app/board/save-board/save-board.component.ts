@@ -11,13 +11,16 @@ import {ListWorkspacesComponent} from "../../user/work-spaces/list-workspaces/li
   styleUrls: ['./save-board.component.css']
 })
 export class SaveBoardComponent implements OnInit {
+  public successMessage:String;
   public boardData: any;
   public errorMessage: String;
   public dataid: any;
-  constructor(private boardService: BoardService, private router: Router, public ActivatedRoute: ActivatedRoute,
+  constructor(private boardService: BoardService, private router: Router, private dialogRef: MatDialogRef<ListWorkspacesComponent>,
+    public ActivatedRoute: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data:{id:any}) {
     this.boardData = {};
     this.errorMessage = "";
+    this.successMessage = "";
     this.dataid = data;
    }
 
@@ -34,8 +37,10 @@ export class SaveBoardComponent implements OnInit {
         (res: any) => {
           console.log(res);
           this.boardData = {};
+          this.successMessage ='Successful adding board';
           let current = localStorage.getItem('current')
-          this.router.navigate(['/workSpaces', current])
+          this.router.navigate(['/workSpaces', current]);
+          this.closeDialog();
         },
         (err) => {
           console.log(err);
@@ -44,6 +49,10 @@ export class SaveBoardComponent implements OnInit {
         }
       )
     }
+  }
+
+  closeDialog(){
+    this.dialogRef.close();
   }
 
   closeAlert() {
