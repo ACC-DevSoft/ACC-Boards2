@@ -13,12 +13,12 @@ import {ListWorkspacesComponent} from "../../user/work-spaces/list-workspaces/li
 export class SaveBoardComponent implements OnInit {
   public boardData: any;
   public errorMessage: String;
-  public workspaceId: string;
+  public dataid: any;
   constructor(private boardService: BoardService, private router: Router, public ActivatedRoute: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data:{id:any}) {
     this.boardData = {};
     this.errorMessage = "";
-    this.workspaceId = this.ActivatedRoute.snapshot.params.id;
+    this.dataid = data;
    }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class SaveBoardComponent implements OnInit {
       this.errorMessage = "Failed Process: Incomplete Data"
       this.closeAlert();
     } else {
-      this.boardService.createBoard(this.boardData, this.workspaceId).subscribe(
+      this.boardService.createBoard(this.boardData, this.data.id).subscribe(
         (res: any) => {
           console.log(res);
           this.boardData = {};
@@ -55,6 +55,5 @@ export class SaveBoardComponent implements OnInit {
   closeX() {
     this.errorMessage = '';
   }
-
 
 }

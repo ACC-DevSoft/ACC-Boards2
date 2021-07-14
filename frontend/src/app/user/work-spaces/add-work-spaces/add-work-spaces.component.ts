@@ -13,6 +13,7 @@ import { WorkSpacesComponent } from "../work-spaces.component";
 })
 export class AddWorkSpacesComponent implements OnInit {
   public errorMessage:String;
+  public successMessage:String;
   public workspaceData: any;
   public userid : any;
   public userId :any
@@ -25,6 +26,7 @@ export class AddWorkSpacesComponent implements OnInit {
   ) {
     this.workspaceData = {};
     this.errorMessage = '';
+    this.successMessage = '';
     this.userid = this.activatedRoute.snapshot.params.id;
     this.userId = localStorage.getItem('current');
 
@@ -42,8 +44,10 @@ export class AddWorkSpacesComponent implements OnInit {
         (res: any) => {
           console.log(res);
           this.workspaceData = {};
+          this.successMessage = 'Success adding  workspace';
           this.closeDialog();
-          this.router.navigate(['/workSpaces', this.userId]);
+          this.loadWorkSpaces();
+          // this.router.navigate(['/workSpaces', this.userId]);
         },
         (err) => {
           console.log(err);
@@ -56,6 +60,8 @@ export class AddWorkSpacesComponent implements OnInit {
 
   closeDialog(){
     this.dialogRef.close();
+    this.router.navigate(['/workSpaces', this.userId]);
+    this.loadWorkSpaces();
   }
 
    closeAlert() {
@@ -67,6 +73,17 @@ export class AddWorkSpacesComponent implements OnInit {
   close() {
     this.errorMessage = '';
   }
+
+
+   loadWorkSpaces() {
+    this.workspace.listWorkSpacesByUser(this.userid).subscribe(
+      (res)=>{
+        console.log(res);
+      }
+    );
+
+  }
+
 
 
 }

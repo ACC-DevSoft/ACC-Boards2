@@ -82,6 +82,15 @@ router.put("/updateWorkSpace", Auth, async (req, res) => {
 	return res.status(200).send({ result });
 });
 
+router.delete("/deleteWorkSpace/:_id", async (req, res) => {
+	const validId = mongoose.Types.ObjectId.isValid(req.params._id);
+	if(!validId) return res.status(400).send("Process failed: Invalid id");
+
+	const workSpace = await Workspace.findByIdAndDelete(req.params._id);
+	if(!Workspace) return res.status(400).send("Procces failed: Work-Space no found");
+	return res.status(200).send({workSpace});
+});
+
 // members of workspace
 router.post("/addMember/:username?", Auth, async (req, res) => {
 	if (!req.body.username) return res.send("No hay nombre de usuario");
