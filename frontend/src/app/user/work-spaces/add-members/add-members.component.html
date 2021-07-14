@@ -1,5 +1,15 @@
 <h1 mat-dialog-title>Members </h1>
 <mat-dialog-content>
+    <div class="col-12 col-lg-12" *ngIf="successMessage">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <div class="alert-message">
+                {{ successMessage }}
+            </div>
+            <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
+                x
+            </button>
+        </div>
+    </div>
     <div class="col-12 col-lg-12" *ngIf="errorMessage">
         <div class="alert alert-danger alert-dismissible" role="alert">
             <div class="alert-message">
@@ -12,16 +22,17 @@
     </div>
     <div class="form-content-inputs">
         <mat-form-field>
-            <input matInput type="text" placeholder="username">
+            <mat-label>Username:</mat-label>
+            <input [(ngModel)]="userData.username" matInput type="text" placeholder="example: pepep">
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field>
             <mat-label>Rol:</mat-label>
             <mat-select>
                 <mat-option value="">Editor</mat-option>
                 <mat-option value="">Scrum</mat-option>
             </mat-select>
-        </mat-form-field>
-        <button mat-button mat-raised-button color="primary">
+        </mat-form-field> -->
+        <button mat-button mat-raised-button color="primary" (click)="addMember()">
             <mat-icon>add</mat-icon>
             <span>Add Member</span>
         </button>
@@ -41,8 +52,8 @@
                     <td>item</td>
                     <td>item</td>
                     <td>
-                        <button  mat-button mat-flat-button color="accent">
-                            <span> Remove</span>
+                        <button  mat-button mat-flat-button color="warn">
+                            <!-- <span> Remove</span> -->
                             <mat-icon>delete</mat-icon>
                         </button>
                     </td>

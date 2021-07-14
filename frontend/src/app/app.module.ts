@@ -104,6 +104,6 @@ import { SaveTaskComponent } from './tasks/save-task/save-task.component';
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents:[AddWorkSpacesComponent, SaveBoardComponent]
+  entryComponents:[AddWorkSpacesComponent, SaveBoardComponent, AddMembersComponent]
 })
 export class AppModule { }

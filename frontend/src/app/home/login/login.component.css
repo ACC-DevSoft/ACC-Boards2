@@ -35,7 +35,7 @@ mat-dialog-actions{
 .spacer {
   flex: 1 0 auto;
 }
-button { margin: 10px; background-color: var(--blue);}
+.btn { margin: 10px; background-color: var(--blue);}
 
 .content-img{
     margin-top:10px ;
