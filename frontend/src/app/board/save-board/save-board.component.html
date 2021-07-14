@@ -21,8 +21,9 @@
       <input [(ngModel)]="boardData.description" matInput placeholder="Description" required />
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <input [(ngModel)]="boardData.techleader" matInput placeholder="TechLeader" />
+    <mat-form-field >
+      <mat-label>Teach Leader:</mat-label>
+      <input [(ngModel)]="boardData.techleader" matInput placeholder="username" />
     </mat-form-field>
 
   </div>
