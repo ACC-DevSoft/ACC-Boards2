@@ -25,5 +25,5 @@ mat-card-title {
 }
 
 .colorButton {
-    background-color: #906868;
+    background-color: var(--blue);
 }
