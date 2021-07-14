@@ -16,4 +16,7 @@ export class NavPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  forAdmin(){
+    return this.auth.forAdmin()
+  }
 }
