@@ -15,7 +15,7 @@ router.post("/login", async (req, res) => {
     return res.status(400).send("Incorrect email or password");
   try {
     const jwtToken = user.generateJWT();
-    const { name } = await Role.findById('60d0bc7657fa52478c80d682');
+    const { name } = await Role.findById(`${user.roleId}`);
     const role = (name === "ADMIN") ? true : false;
     userSend = {
       workSpacesId: user.workSpacesId, 

@@ -53,8 +53,8 @@ export class AddUserComponent implements OnInit {
           console.log(res)
           this.successMessage = "User created successfully"
           this.registerData = {}
-          this.closeAlert()
-          this.closeDialog()
+          this.closeAlert();
+          this.closeDialog();
         },
         (err: any) => {
           console.log(err)
@@ -66,7 +66,7 @@ export class AddUserComponent implements OnInit {
     }
   }
   closeDialog() {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
   closeAlert(){}
   close(){}

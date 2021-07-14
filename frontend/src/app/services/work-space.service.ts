@@ -21,4 +21,10 @@ export class WorkSpaceService {
   createWorkspace(body: any, id: string) {
     return this.http.post(this.env + "workSpace/newWorkSpace/" + id, body);
   }
+
+  updateWorkspace(id :any){}
+
+  deleteWorkspace(id:any){
+    return this.http.delete(this.env + "workSpace/deleteWorkSpace/"+ id);
+  }
 }

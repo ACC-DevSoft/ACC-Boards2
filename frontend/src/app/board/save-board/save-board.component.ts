@@ -1,7 +1,9 @@
 import { CompilePipeMetadata } from "@angular/compiler";
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { BoardService } from "../../services/board.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {ListWorkspacesComponent} from "../../user/work-spaces/list-workspaces/list-workspaces.component";
 
 @Component({
   selector: 'app-save-board',
@@ -9,13 +11,17 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./save-board.component.css']
 })
 export class SaveBoardComponent implements OnInit {
+  public successMessage:String;
   public boardData: any;
   public errorMessage: String;
-  public workspaceId: string;
-  constructor(private boardService: BoardService, private router: Router, public ActivatedRoute: ActivatedRoute) {
+  public dataid: any;
+  constructor(private boardService: BoardService, private router: Router, private dialogRef: MatDialogRef<ListWorkspacesComponent>,
+    public ActivatedRoute: ActivatedRoute,
+    @Inject(MAT_DIALOG_DATA) public data:{id:any}) {
     this.boardData = {};
     this.errorMessage = "";
-    this.workspaceId = this.ActivatedRoute.snapshot.params.id;
+    this.successMessage = "";
+    this.dataid = data;
    }
 
   ngOnInit(): void {
@@ -27,12 +33,14 @@ export class SaveBoardComponent implements OnInit {
       this.errorMessage = "Failed Process: Incomplete Data"
       this.closeAlert();
     } else {
-      this.boardService.createBoard(this.boardData, this.workspaceId).subscribe(
+      this.boardService.createBoard(this.boardData, this.data.id).subscribe(
         (res: any) => {
           console.log(res);
           this.boardData = {};
+          this.successMessage ='Successful adding board';
           let current = localStorage.getItem('current')
-          this.router.navigate(['/workSpaces', current])
+          this.router.navigate(['/workSpaces', current]);
+          this.closeDialog();
         },
         (err) => {
           console.log(err);
@@ -41,6 +49,10 @@ export class SaveBoardComponent implements OnInit {
         }
       )
     }
+  }
+
+  closeDialog(){
+    this.dialogRef.close();
   }
 
   closeAlert() {
@@ -52,6 +64,5 @@ export class SaveBoardComponent implements OnInit {
   closeX() {
     this.errorMessage = '';
   }
-
 
 }

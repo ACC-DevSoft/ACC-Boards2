@@ -13,6 +13,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angu
   styleUrls: ['./list-workspaces.component.css']
 })
 export class ListWorkspacesComponent implements OnInit {
+  public successMessage :String;
   public errorMessage: String;
   public workspaceData: any;
   public wpBoards: any;
@@ -20,9 +21,11 @@ export class ListWorkspacesComponent implements OnInit {
   private userid: any
 
   constructor(private router: Router,
-     private workspace: WorkSpaceService,
+    private workspace: WorkSpaceService,
     private board: BoardService,
     private activatedRoute: ActivatedRoute, public dialog:MatDialog) { 
+
+    this.successMessage = '';
     this.errorMessage = '';
     this.workspaceData = [];
     this.wpBoards = [];
@@ -31,23 +34,23 @@ export class ListWorkspacesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadWorkSpaces();
     this.workspaces = this.workspaceData;
   }
-   loadWorkSpaces() {
 
+   loadWorkSpaces() {
     this.workspace.listWorkSpacesByUser(this.userid).subscribe(
       (res: any) => {
         console.log(res);
         const { workSpaces } = res;
+
         this.workspaceData = workSpaces.reverse();
         console.log('WorkSpaces', workSpaces);
 
         for (let i = 0; i < this.workspaceData.length; i++) {
           this.wpBoards.push(this.workspaceData[i].boards);
         }
-
         console.log('WpBoards', this.wpBoards);
-
       },
       (err) => {
         console.log(err.error);
@@ -58,11 +61,15 @@ export class ListWorkspacesComponent implements OnInit {
 
   }
 
-  openBoard():void{
+  openBoard(idWS: any){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '600px';
     dialogConfig.autoFocus = true;
+    dialogConfig.data = {id: idWS}
     const dialogRef = this.dialog.open(SaveBoardComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result=>{
+      this.router.navigate(['/workSpaces', this.userid]);
+    })
   }
 
   openMembers(){
@@ -71,10 +78,39 @@ export class ListWorkspacesComponent implements OnInit {
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(AddMembersComponent, dialogConfig);
   }
+
+  // Delete Work spaces
+  onDelete(id: any, name: String){
+    if(confirm("Are you sure to delete workSpace: "+ name + " ?")){
+      // alert("delete workspace");
+      this.workspace.deleteWorkspace(id).subscribe(
+        (res)=>{
+          console.log(res);
+          this.successMessage = 'Successful to  delete WorkSpaces';
+          this.closeAlert();
+          this.loadWorkSpaces();
+          this.router.navigate(['/workSpaces', this.userid]);
+        },
+        (err)=>{
+          console.log(err.error);
+          this.errorMessage = err.error;
+          this.closeAlert();
+          this.loadWorkSpaces();
+          this.router.navigate(['/workSpaces', this.userid]);
+        }
+      );
+    }
+  }
+
   closeAlert() {
     setTimeout(() => {
+        this.successMessage = '';
         this.errorMessage ='';
     }, 3000);
+  }
+  closeX(){
+    this.successMessage = '';
+    this.errorMessage = '';
   }
 
   callBoard() {}

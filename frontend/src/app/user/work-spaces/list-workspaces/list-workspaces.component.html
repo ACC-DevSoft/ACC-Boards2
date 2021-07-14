@@ -29,16 +29,37 @@
             <h2>No hay espacios para mostrar</h2>
         </div>
     </div>
-    <span>{{ errorMessage }}</span>
+<div class="col-12 col-lg-12" *ngIf="successMessage">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <div class="alert-message">
+            {{ successMessage }}
+        </div>
+
+        <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div>
+</div>
+<div class="col-12 col-lg-12" *ngIf="errorMessage">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert-message">
+            {{ errorMessage }}
+        </div>
+
+        <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div>
+</div>
 </div>
 <div class="wrap-cards">
     <mat-card *ngFor="let workspace of workspaceData; let wp = index">
         <div class="item-header">
             <div class="item-name">
-                <h2>{{ workspace.name }}</h2>
+                <h2>{{ workspace.name }}</h2>       
             </div>
             <div class="item-options">
-                <button mat-button mat-stroked-button color="primary" (click)="openBoard()">
+                <button mat-button mat-stroked-button color="primary" (click)="openBoard(workspace._id)">
                     <mat-icon>add</mat-icon><span>&nbsp;add Board</span>
                 </button>
                 <button mat-button mat-raised-button color="primary" (click)="openMembers()">
@@ -47,7 +68,7 @@
                 <button mat-button mat-raised-button color="accent">
                     <mat-icon>settings</mat-icon><span>&nbsp;settings</span>
                 </button>
-                <button mat-button mat-raised-button color="warn">
+                <button mat-button mat-raised-button color="warn" (click)="onDelete(workspace._id, workspace.name)">
                     <mat-icon>delete</mat-icon><span>&nbsp;delete</span>
                 </button>
                 <!-- <a href="" mat-button>
@@ -66,7 +87,7 @@
                                 <a [routerLink]="['/listTasks', board._id]" class="board-title">
                                 <div class="board-details">
                                     <p class="board-name text-uppercase">
-                                        {{ board._id }}
+                                        <!-- {{ board._id }} -->
                                         {{ board.name }}
                                     </p>
                                     <p>

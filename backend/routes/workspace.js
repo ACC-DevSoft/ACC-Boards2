@@ -9,9 +9,7 @@ const Admin = require("../middleware/admin");
 
 router.post("/newWorkSpace/:id", Auth, async (req, res) => {
 	const { id } = req.params;
-
-  req.body._id = id;
-
+  	req.body._id = id;
 	const validId = mongoose.Types.ObjectId.isValid(id);
 	if (!validId) return res.status(401).send("Process failed: Invalid id");
 
@@ -82,6 +80,15 @@ router.put("/updateWorkSpace", Auth, async (req, res) => {
 	const result = await workSpace.save();
 	if (!result) return res.status(400).send("Failed to update work-Space");
 	return res.status(200).send({ result });
+});
+
+router.delete("/deleteWorkSpace/:_id", async (req, res) => {
+	const validId = mongoose.Types.ObjectId.isValid(req.params._id);
+	if(!validId) return res.status(400).send("Process failed: Invalid id");
+
+	const workSpace = await Workspace.findByIdAndDelete(req.params._id);
+	if(!Workspace) return res.status(400).send("Procces failed: Work-Space no found");
+	return res.status(200).send({workSpace});
 });
 
 // members of workspace

@@ -1,5 +1,15 @@
 <h1 mat-dialog-title>Add board</h1>
 <mat-dialog-content>
+  <div class="col-12 col-lg-12" *ngIf="successMessage">
+    <div class="alert alert-successalert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ successMessage }}
+      </div>
+      <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
+        x
+      </button>
+    </div>
+  </div>
   <div class="col-12 col-lg-12" *ngIf="errorMessage">
     <div class="alert alert-danger alert-dismissible" role="alert">
       <div class="alert-message">
@@ -11,8 +21,9 @@
     </div>
   </div>
   <div class="form-content-inputs">
+    <!-- {{data.id}} -->
     <mat-form-field hidden>
-      <input [(ngModel)]="workspaceId" matInput placeholder="WorkSpace" readonly />
+      <input [(ngModel)]="data.id" matInput placeholder="WorkSpace" readonly />
     </mat-form-field>
     <mat-form-field>
       <input [(ngModel)]="boardData.name" matInput placeholder="Name" required />
