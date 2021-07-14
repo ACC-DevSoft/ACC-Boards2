@@ -33,7 +33,7 @@ export class WorkSpacesComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '500px';
-    dialogConfig.data = this.userId;
+    dialogConfig.data = {id: this.userId};
     const dialogRef= this.dialog.open(AddWorkSpacesComponent, dialogConfig);
   }
   

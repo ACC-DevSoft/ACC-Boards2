@@ -35,10 +35,10 @@
     <mat-card *ngFor="let workspace of workspaceData; let wp = index">
         <div class="item-header">
             <div class="item-name">
-                <h2>{{ workspace.name }}</h2>
+                <h2>{{ workspace.name }}</h2>       
             </div>
             <div class="item-options">
-                <button mat-button mat-stroked-button color="primary" (click)="openBoard()">
+                <button mat-button mat-stroked-button color="primary" (click)="openBoard(workspace._id)">
                     <mat-icon>add</mat-icon><span>&nbsp;add Board</span>
                 </button>
                 <button mat-button mat-raised-button color="primary" (click)="openMembers()">

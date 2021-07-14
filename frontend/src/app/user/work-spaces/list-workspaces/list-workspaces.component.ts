@@ -39,15 +39,14 @@ export class ListWorkspacesComponent implements OnInit {
       (res: any) => {
         console.log(res);
         const { workSpaces } = res;
+
         this.workspaceData = workSpaces.reverse();
         console.log('WorkSpaces', workSpaces);
 
         for (let i = 0; i < this.workspaceData.length; i++) {
           this.wpBoards.push(this.workspaceData[i].boards);
         }
-
         console.log('WpBoards', this.wpBoards);
-
       },
       (err) => {
         console.log(err.error);
@@ -58,10 +57,11 @@ export class ListWorkspacesComponent implements OnInit {
 
   }
 
-  openBoard():void{
+  openBoard(idWS: any){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '600px';
     dialogConfig.autoFocus = true;
+    dialogConfig.data = {id: idWS}
     const dialogRef = this.dialog.open(SaveBoardComponent, dialogConfig);
   }
 
