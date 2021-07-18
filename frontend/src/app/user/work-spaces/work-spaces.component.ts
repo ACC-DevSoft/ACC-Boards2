@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from "@angular/material/dialog";
 import { AddWorkSpacesComponent } from './add-work-spaces/add-work-spaces.component';
-import { Router , ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -11,32 +11,51 @@ import { AuthService } from "../../services/auth.service";
 })
 export class WorkSpacesComponent implements OnInit {
   public userid: any;
-  public userId:any;
-  
-  constructor(
-    private router:Router, private activated: ActivatedRoute,
-    private auth: AuthService,
-    public dialog:MatDialog,
-    //public dialogRef: MatDialogRef<AddWorkSpacesComponent>
-  ){ 
-    this.userid = this.activated.snapshot.params.id;
-     this.userId = localStorage.getItem('current');
+  public userId: any;
 
+  constructor(
+    private router: Router, private activated: ActivatedRoute,
+    private auth: AuthService,
+    public dialog: MatDialog,
+    
+  ) {
+    this.userid = this.activated.snapshot.params.id;
+    this.userId = localStorage.getItem('current');
   }
 
   ngOnInit(): void {
     console.log(this.userid);
-    
+
   }
-  openForm(): void{
+  openForm(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '500px';
-    dialogConfig.data = {id: this.userId};
-    const dialogRef= this.dialog.open(AddWorkSpacesComponent, dialogConfig);
+    dialogConfig.data = { id: this.userId };
+    const dialogRef = this.dialog.open(AddWorkSpacesComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      data => {
+        console.log("Dialog output:", data);
+
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate([currentUrl]);
+        });
+
+      }
+    );
   }
+
   
 
+  // escuchaPadre(e: any) {
+  //   console.log('flag PAdre:', e);
+  //   let currentUrl = this.router.url;
+  //   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+  //     this.router.navigate([currentUrl]);
+  //   });
+
+  // }
 
 }

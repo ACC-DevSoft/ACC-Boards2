@@ -1,108 +1,103 @@
-<!-- <div class="message" *ngIf="workspaceData.length == 0">
-    <h2>No tienes espacios de trabajo para mostrar</h2>
-</div>
 <div class="row">
-    <h2>Total espacios: {{ workspaceData.length }}</h2>
-    
-    <mat-card>
-            <mat-card-title>work-space</mat-card-title>
-            <hr/>
-        <mat-card-content>
-            
-            <div class="card-body">
-                body
-            </div>
-        </mat-card-content>
-    </mat-card>
-</div> -->
-<div class="row">
-    <div class="row">
-        <div class="col">
-            <h1>My Work Spaces</h1>
-        </div>
-        <div class="col">
-            <h2>{{ workspaceData.length }} - WorkSpaces </h2>
-        </div>
+  <div class="row">
+    <div class="col">
+      <h1>My Work Spaces</h1>
     </div>
-    <div class="d-flex justify-content-around ">
-        <div class="message" *ngIf="workspaceData.length == 0">
-            <h2>No hay espacios para mostrar</h2>
-        </div>
+    <div class="col">
+      <h2>{{ workspaceData.length }} - WorkSpaces</h2>
     </div>
-<div class="col-12 col-lg-12" *ngIf="successMessage">
+  </div>
+  <div class="d-flex justify-content-around">
+    <div class="message" *ngIf="workspaceData.length == 0">
+      <h2>No hay espacios para mostrar</h2>
+    </div>
+  </div>
+  <div class="col-12 col-lg-12" *ngIf="successMessage">
     <div class="alert alert-success alert-dismissible" role="alert">
-        <div class="alert-message">
-            {{ successMessage }}
-        </div>
+      <div class="alert-message">
+        {{ successMessage }}
+      </div>
 
-        <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">X</span>
-        </button>
+      <button
+        type="button"
+        class="close"
+        (click)="closeX()"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">X</span>
+      </button>
     </div>
-</div>
-<div class="col-12 col-lg-12" *ngIf="errorMessage">
+  </div>
+  <div class="col-12 col-lg-12" *ngIf="errorMessage">
     <div class="alert alert-danger alert-dismissible" role="alert">
-        <div class="alert-message">
-            {{ errorMessage }}
-        </div>
+      <div class="alert-message">
+        {{ errorMessage }}
+      </div>
 
-        <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">X</span>
-        </button>
+      <button
+        type="button"
+        class="close"
+        (click)="closeX()"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">X</span>
+      </button>
     </div>
-</div>
+  </div>
 </div>
 <div class="wrap-cards">
-    <mat-card *ngFor="let workspace of workspaceData; let wp = index">
-        <div class="item-header">
-            <div class="item-name">
-                <h2>{{ workspace.name }}</h2>       
-            </div>
-            <div class="item-options">
-                <button mat-button mat-stroked-button color="primary" (click)="openBoard(workspace._id)">
-                    <mat-icon>add</mat-icon><span>&nbsp;add Board</span>
-                </button>
-                <button mat-button mat-raised-button color="primary" (click)="openMembers()">
-                    <mat-icon>people</mat-icon><span>&nbsp;members</span>
-                </button>
-                <!-- <button mat-button mat-raised-button color="accent">
-                    <mat-icon>settings</mat-icon><span>&nbsp;settings</span>
-                </button> -->
-                <button mat-button mat-raised-button color="warn" (click)="onDelete(workspace._id, workspace.name)">
-                    <mat-icon>delete</mat-icon><span>&nbsp;delete</span>
-                </button>
-                <!-- <a href="" mat-button>
-                    <mat-icon>settings</mat-icon><span>&nbsp;settings</span>
-                </a> -->
-                <!-- <a href="" mat-button mat-flat-button color="primary">
-                    <mat-icon>delete</mat-icon> <span>&nbsp;delete</span>
-                </a> -->
-            </div>
-        </div>
-        <mat-card-content class="workspace-item" >
-                <div class="workspace-item-content ">
-                    <ul class="">
-                        <li class="text-center" *ngFor="let board of wpBoards[wp]">
-                            <!-- <a [routerLink]="/listTask/{{ board._id }}" class="board-title"> -->
-                                <a [routerLink]="['/listTasks', board._id]" class="board-title">
-                                <div class="board-details">
-                                    <p class="board-name text-uppercase">
-                                        <!-- {{ board._id }} -->
-                                        {{ board.name }}
-                                    </p>
-                                    <p>
-                                        {{ board.description }}
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-        </mat-card-content>
-        <mat-card-footer>
-            <!-- <div class="col-sm-12">
-                <a routerLink="" mat-button mat-flat-button color="primary">Ver</a>
-            </div> -->
-        </mat-card-footer>
-    </mat-card>
+  <mat-card *ngFor="let workspace of workspaceData; let wp = index">
+    <div class="item-header">
+      <div class="item-name">
+        <h2>{{ workspace.name }}</h2>
+      </div>
+      <div class="item-options">
+        <button
+          mat-button
+          mat-stroked-button
+          color="primary"
+          (click)="openBoard(workspace._id)"
+        >
+          <mat-icon>add</mat-icon><span>&nbsp;add Board</span>
+        </button>
+        <button
+          mat-button
+          mat-raised-button
+          color="primary"
+          (click)="openMembers()"
+        >
+          <mat-icon>people</mat-icon><span>&nbsp;members</span>
+        </button>
+
+        <button
+          mat-button
+          mat-raised-button
+          color="warn"
+          (click)="onDelete(workspace._id, workspace.name)"
+        >
+          <mat-icon>delete</mat-icon><span>&nbsp;delete</span>
+        </button>
+      </div>
+    </div>
+    <mat-card-content class="workspace-item">
+      <div class="workspace-item-content">
+        <ul class="d-flex justify-content-around flex-wrap">
+          <li class="text-center my-3" *ngFor="let board of wpBoards[wp]">
+            <a [routerLink]="['/listTasks', board._id]" class="board-title">
+              <div class="board-details">
+                <p class="board-name text-uppercase">
+                  {{ board.name }}
+                </p>
+                <p>
+                  {{ board.description }}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

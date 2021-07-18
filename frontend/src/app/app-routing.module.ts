@@ -13,6 +13,7 @@ import { SaveTaskComponent } from './tasks/save-task/save-task.component';
 import { ListTasksComponent } from './tasks/list-tasks/list-tasks.component';
 import { SaveBoardComponent } from './board/save-board/save-board.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -72,7 +73,6 @@ const routes: Routes = [
     path: 'saveBoard/:id',
     component: SaveBoardComponent
   },
-  
 
 ]
 

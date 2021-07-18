@@ -35,7 +35,7 @@ export class ListTasksComponent implements OnInit {
   ngOnInit(): void {
     console.log("el id es ", this.id);
 
-   }
+  }
 
   loadTask() {
     this.tasksService.listTask(this.id).subscribe(
@@ -88,8 +88,7 @@ export class ListTasksComponent implements OnInit {
       res => {
         console.log(res);
         this.changeImg();
-        this.loadTask();
-
+        this.refreshPage();
       }
     )
   }
@@ -147,17 +146,21 @@ export class ListTasksComponent implements OnInit {
 
   deleteTask(id: any) {
     this.tasksService.deleteTask(id).subscribe(
-      res => {
+      res => this.loadTask()
 
-        this.loadTask();
-
-      }
-    )
+    );
 
   }
 
   deleteImg() {
     this.readerImg = '/assets/imgs/no-image.jpg';
+  }
+
+  refreshPage() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 
 }

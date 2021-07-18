@@ -1,6 +1,6 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, DialogRole } from "@angular/material/dialog";
-import {Router,ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { WorkSpaceService } from "../../../services/work-space.service";
 import { AuthService } from "../../../services/auth.service";
 import { WorkSpacesComponent } from "../work-spaces.component";
@@ -12,17 +12,17 @@ import { WorkSpacesComponent } from "../work-spaces.component";
   styleUrls: ['./add-work-spaces.component.css']
 })
 export class AddWorkSpacesComponent implements OnInit {
-  public errorMessage:String;
-  public successMessage:String;
+  public errorMessage: String;
+  public successMessage: String;
   public workspaceData: any;
-  public userid : any;
-  public userId :any
+  public userid: any;
+  public userId: any
   constructor(
-    private router: Router, private workspace : WorkSpaceService,
+    private router: Router, private workspace: WorkSpaceService,
     private activatedRoute: ActivatedRoute,
     private auth: AuthService,
-    public dialogRef: MatDialogRef<WorkSpacesComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data:WorkSpacesComponent
+    public dialogRef: MatDialogRef<WorkSpacesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: WorkSpacesComponent
   ) {
     this.workspaceData = {};
     this.errorMessage = '';
@@ -30,24 +30,23 @@ export class AddWorkSpacesComponent implements OnInit {
     this.userid = this.activatedRoute.snapshot.params.id;
     this.userId = localStorage.getItem('current');
 
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  saveWorkSpace(){
-    if(!this.workspaceData.name){
+  saveWorkSpace() {
+    if (!this.workspaceData.name) {
       this.errorMessage = 'Incomplete Data';
       this.closeAlert();
-    }else{
+    } else {
       this.workspace.createWorkspace(this.workspaceData, this.userId).subscribe(
         (res: any) => {
           console.log(res);
           this.workspaceData = {};
           this.successMessage = 'Success adding  workspace';
           this.closeDialog();
-          this.loadWorkSpaces();
-          // this.router.navigate(['/workSpaces', this.userId]);
+
         },
         (err) => {
           console.log(err);
@@ -58,13 +57,12 @@ export class AddWorkSpacesComponent implements OnInit {
     }
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialogRef.close();
     this.router.navigate(['/workSpaces', this.userId]);
-    this.loadWorkSpaces();
   }
 
-   closeAlert() {
+  closeAlert() {
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);
@@ -73,17 +71,6 @@ export class AddWorkSpacesComponent implements OnInit {
   close() {
     this.errorMessage = '';
   }
-
-
-   loadWorkSpaces() {
-    this.workspace.listWorkSpacesByUser(this.userid).subscribe(
-      (res)=>{
-        console.log(res);
-      }
-    );
-
-  }
-
 
 
 }

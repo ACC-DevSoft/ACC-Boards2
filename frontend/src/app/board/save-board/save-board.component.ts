@@ -1,9 +1,9 @@
-import { CompilePipeMetadata } from "@angular/compiler";
 import { Component, OnInit, Inject} from '@angular/core';
 import { BoardService } from "../../services/board.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {ListWorkspacesComponent} from "../../user/work-spaces/list-workspaces/list-workspaces.component";
+import { WorkSpacesComponent } from '../../user/work-spaces/work-spaces.component';
 
 @Component({
   selector: 'app-save-board',
@@ -14,17 +14,24 @@ export class SaveBoardComponent implements OnInit {
   public successMessage:String;
   public boardData: any;
   public errorMessage: String;
-  public dataid: any;
-  constructor(private boardService: BoardService, private router: Router, private dialogRef: MatDialogRef<ListWorkspacesComponent>,
-    public ActivatedRoute: ActivatedRoute,
-    @Inject(MAT_DIALOG_DATA) public data:{id:any}) {
+  public dataId: any;
+  // public closeModal: number = 0;
+
+  constructor(private boardService: BoardService, 
+              private router: Router, 
+              public ActivatedRoute: ActivatedRoute,
+              private dialogRef: MatDialogRef<ListWorkspacesComponent>,
+              @Inject(MAT_DIALOG_DATA) data:any)
+ {
+    this.dataId = data.id
     this.boardData = {};
     this.errorMessage = "";
     this.successMessage = "";
-    this.dataid = data;
    }
 
   ngOnInit(): void {
+    console.log(this.dataId);
+    
   }
 
   saveBoard() {
@@ -33,13 +40,13 @@ export class SaveBoardComponent implements OnInit {
       this.errorMessage = "Failed Process: Incomplete Data"
       this.closeAlert();
     } else {
-      this.boardService.createBoard(this.boardData, this.data.id).subscribe(
+      this.boardService.createBoard(this.boardData, this.dataId).subscribe(
         (res: any) => {
           console.log(res);
           this.boardData = {};
           this.successMessage ='Successful adding board';
-          let current = localStorage.getItem('current')
-          this.router.navigate(['/workSpaces', current]);
+          // let current = localStorage.getItem('current')
+          // this.router.navigate(['/workSpaces', current]);
           this.closeDialog();
         },
         (err) => {
@@ -51,6 +58,8 @@ export class SaveBoardComponent implements OnInit {
     }
   }
 
+  
+  
   closeDialog(){
     this.dialogRef.close();
   }
