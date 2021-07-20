@@ -3,7 +3,8 @@ import { BoardService } from "../../services/board.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {ListWorkspacesComponent} from "../../user/work-spaces/list-workspaces/list-workspaces.component";
-import { WorkSpacesComponent } from '../../user/work-spaces/work-spaces.component';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-save-board',
@@ -45,8 +46,6 @@ export class SaveBoardComponent implements OnInit {
           console.log(res);
           this.boardData = {};
           this.successMessage ='Successful adding board';
-          // let current = localStorage.getItem('current')
-          // this.router.navigate(['/workSpaces', current]);
           this.closeDialog();
         },
         (err) => {

@@ -22,13 +22,17 @@ export class WorkSpaceService {
     return this.http.post(this.env + "workSpace/newWorkSpace/" + id, body);
   }
 
-  updateWorkspace(id :any){}
+  updateWorkspace(id: any) { }
 
-  deleteWorkspace(id:any){
-    return this.http.delete(this.env + "workSpace/deleteWorkSpace/"+ id);
+  updateArrayBoards(board: any) {
+    return this.http.put(this.env + "workSpace/updateArrayBoards/", board)
   }
 
-  addMember(id:string, user:any){
+  deleteWorkspace(id: any) {
+    return this.http.delete(this.env + "workSpace/deleteWorkSpace/" + id);
+  }
+
+  addMember(id: string, user: any) {
     return this.http.post(this.env + "addMember/" + id, user);
   }
 }

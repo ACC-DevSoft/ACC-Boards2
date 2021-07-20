@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { WorkSpaceService } from "../../../services/work-space.service";
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-add-members',
@@ -10,30 +11,30 @@ import { WorkSpaceService } from "../../../services/work-space.service";
 export class AddMembersComponent implements OnInit {
   public successMessage: String;
   public errorMessage: String;
-  public userData:any ;
+  public userData: any;
 
 
-  constructor(private service : WorkSpaceService, private router:  Router) { 
-    this.userData ={}
+  constructor(private workSpace: WorkSpaceService, private auth: AuthService, private router: Router) {
+    this.userData = {}
     this.successMessage = '';
     this.errorMessage = '';
   }
 
   ngOnInit(): void {
   }
-  addMember(){
-    if(!this.userData.username){
-      this.errorMessage ='Proccess Failed: Incomplete data';
+  addMember() {
+    if (!this.userData.username) {
+      this.errorMessage = 'Proccess Failed: Incomplete data';
       this.closeAlert();
-    }else{
+    } else {
       alert(this.userData.username);
     }
   }
-  closeAlert(){
+  closeAlert() {
     setTimeout(() => {
-        this.errorMessage = '';
+      this.errorMessage = '';
     }, 3000);
   }
-  closeX(){}
+  closeX() { }
 
 }

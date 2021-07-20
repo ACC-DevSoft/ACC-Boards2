@@ -7,6 +7,9 @@ import { AddMembersComponent } from '../add-members/add-members.component';
 import { SaveBoardComponent } from '../../../board/save-board/save-board.component';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
+import Swal from 'sweetalert2';
+import { AuthService } from '../../../services/auth.service';
+
 @Component({
   selector: 'app-list-workspaces',
   templateUrl: './list-workspaces.component.html',
@@ -14,17 +17,17 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 })
 export class ListWorkspacesComponent implements OnInit {
 
-  @Output() closeModal = new EventEmitter<boolean>();
-
   public successMessage: String;
   public errorMessage: String;
   public workspaceData: any;
   public wpBoards: any;
-  public workspaces: any[] = []
-  private userid: any
+  public workspaces: any[] = [];
+  private userid: any;
+  private userLogged: any;
 
   constructor(private router: Router,
     private workspace: WorkSpaceService,
+    private auth: AuthService,
     private board: BoardService,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog) {
@@ -80,6 +83,52 @@ export class ListWorkspacesComponent implements OnInit {
 
   }
 
+
+  deleteBoard(arrayBoards: any, workspaceId: any, id: string) {
+    console.log(arrayBoards);
+    console.log({ workspaceId });
+    console.log({ id });
+    let boards = arrayBoards.filter((board: any) => board._id != id);
+
+    console.log({ boards });
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.board.deleteBoard(id).subscribe(
+          (res) => {
+            console.log(res);
+            this.workspace.updateArrayBoards({ boards, workspaceId }).subscribe(
+              res => { console.log(res) },
+              err => { console.log(err) }
+            );
+            this.successMessage = 'Successful to  delete Board';
+            Swal.fire(
+              this.successMessage.toString()
+            );
+            this.refreshPage();
+          },
+          (err) => {
+            console.log(err.error);
+            this.errorMessage = err.error;
+            Swal.fire(
+              this.errorMessage.toString()
+            );
+          }
+        );
+      }
+    });
+
+  }
+
   openMembers() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '600px';
@@ -93,24 +142,60 @@ export class ListWorkspacesComponent implements OnInit {
     );
   }
 
-  // Delete Work spaces
-  onDelete(id: any, name: String) {
-    if (confirm("Are you sure to delete workSpace: " + name + " ?")) {
-      // alert("delete workspace");
-      this.workspace.deleteWorkspace(id).subscribe(
-        (res) => {
-          console.log(res);
-          this.successMessage = 'Successful to  delete WorkSpaces';
-          this.closeAlert();
-          this.refreshPage();
-        },
-        (err) => {
-          console.log(err.error);
-          this.errorMessage = err.error;
-          this.closeAlert();
-        }
-      );
-    }
+  // Delete Workspaces
+  onDelete(workSpace: any) {
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const { _id, Admin } = workSpace;
+        console.log({ _id });
+
+        this.auth.getUserById(Admin).subscribe(
+          (res: any) => {
+            console.log(res);
+            const { workSpacesId: wpList } = res;
+            console.log(wpList);
+
+            let workSpacesId = wpList.filter((wp: any) => wp != _id);
+
+            console.log('Nueno array wp', workSpacesId);
+
+            this.auth.updateArrayWorkspaces({ Admin, workSpacesId }).subscribe(
+              res => { console.log(res) }
+            )
+
+          },
+          err => { console.log(err) }
+        );
+
+        this.workspace.deleteWorkspace(_id).subscribe(
+          (res) => {
+            console.log(res);
+            this.successMessage = 'Successful to  delete WorkSpaces';
+            Swal.fire(
+              this.successMessage.toString()
+            );
+            this.refreshPage();
+          },
+          (err) => {
+            console.log(err.error);
+            this.errorMessage = err.error;
+            Swal.fire(
+              this.errorMessage.toString()
+            );
+          }
+        );
+
+      }
+    });
   }
 
   refreshPage() {

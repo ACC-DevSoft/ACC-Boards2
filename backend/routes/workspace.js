@@ -1,20 +1,20 @@
-const expres = require("express");
+const expres = require('express');
 const router = expres.Router();
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const User = require("../models/user");
-const Workspace = require("../models/workspace");
-const Auth = require("../middleware/auth");
-const Admin = require("../middleware/admin");
+const User = require('../models/user');
+const Workspace = require('../models/workspace');
+const Auth = require('../middleware/auth');
+const Admin = require('../middleware/admin');
 
-router.post("/newWorkSpace/:id", Auth, async (req, res) => {
+router.post('/newWorkSpace/:id', Auth, async (req, res) => {
 	const { id } = req.params;
-  	req.body._id = id;
+	req.body._id = id;
 	const validId = mongoose.Types.ObjectId.isValid(id);
-	if (!validId) return res.status(401).send("Process failed: Invalid id");
+	if (!validId) return res.status(401).send('Process failed: Invalid id');
 
 	if (!req.body._id || !req.body.name)
-		return res.status(400).send("Incomplete Data.");
+		return res.status(400).send('Incomplete Data.');
 
 	const user = await User.findById({ _id: req.body._id });
 
@@ -23,9 +23,9 @@ router.post("/newWorkSpace/:id", Auth, async (req, res) => {
 	const workSpaceById = await Workspace.find({ Admin: user._id });
 
 	const workSpaceExist = await Workspace.findOne({ name: req.body.name });
-	
+
 	if (workSpaceExist)
-		return res.status(400).send("the workSpace already exists");
+		return res.status(400).send('the workSpace already exists');
 
 	const workSpace = new Workspace({
 		Admin: req.user._id,
@@ -36,33 +36,29 @@ router.post("/newWorkSpace/:id", Auth, async (req, res) => {
 		status: true,
 	});
 	const result = await workSpace.save();
-	if (!result) return res.status().send("Failed to add workSpace");
+	if (!result) return res.status().send('Failed to add workSpace');
 
 	user.workSpacesId.push(result);
 	await user.save();
 	return res.status(200).send({ result });
 });
 
-router.get("/listWorkSpaces/:_id?", Auth, async (req, res) => {
-	/* const workSpaces = await Workspace.find({ Admin: new RegExp(req.params["_id"], 'i')})
-    .populate("board")
-    .exec(); */
-	const workSpaces = await Workspace.find({ Admin: req.params["_id"] });
-	
+router.get('/listWorkSpaces/:_id?', Auth, async (req, res) => {
+	const workSpaces = await Workspace.find({ Admin: req.params['_id'] });
 
-	if (!workSpaces) return res.status(401).send("No Work Spaces");
+	if (!workSpaces) return res.status(401).send('No Work Spaces');
 	return res.status(200).send({ workSpaces });
 });
 
-router.put("/updateWorkSpace", Auth, async (req, res) => {
+router.put('/updateWorkSpace', Auth, async (req, res) => {
 	if (!req.body._id || !req.body.name)
-		return res.status(400).send("Incomplete data");
+		return res.status(400).send('Incomplete data');
 
 	const validId = mongoose.Types.ObjectId.isValid(req.body._id);
-	if (!validId) return res.status(400).send("Process Failed: Invalid Id.");
+	if (!validId) return res.status(400).send('Process Failed: Invalid Id.');
 
-	if (req.body.description == " ") {
-		req.body.description = " ";
+	if (req.body.description == ' ') {
+		req.body.description = ' ';
 	} else {
 		req.body.description = req.body.description;
 	}
@@ -78,39 +74,62 @@ router.put("/updateWorkSpace", Auth, async (req, res) => {
 	});
 
 	const result = await workSpace.save();
-	if (!result) return res.status(400).send("Failed to update work-Space");
+	if (!result) return res.status(400).send('Failed to update work-Space');
 	return res.status(200).send({ result });
 });
 
-router.delete("/deleteWorkSpace/:_id", async (req, res) => {
+
+router.put('/updateArrayBoards',  async (req, res) => {
+	
+	const { boards, workspaceId } = req.body;
+	if( !boards || !workspaceId) return res.status(400).send('No boards or no workspaceId');
+
+	 await Workspace.findByIdAndUpdate(workspaceId, {boards}, { new: true });
+
+	 return res.status(200).send({ msg: 'Deleted board in workspaces'});
+
+});
+
+router.put('/updateArrayMembers',  async (req, res) => {
+	
+	const { boards, workspaceId } = req.body;
+	if( !boards || !workspaceId) return res.status(400).send('No boards or no workspaceId');
+
+	 await Workspace.findByIdAndUpdate(workspaceId, {boards}, { new: true });
+
+	res.end('Deleted member');
+
+});
+
+router.delete('/deleteWorkSpace/:_id', async (req, res) => {
 	const validId = mongoose.Types.ObjectId.isValid(req.params._id);
-	if(!validId) return res.status(400).send("Process failed: Invalid id");
+	if (!validId) return res.status(400).send('Process failed: Invalid id');
 
 	const workSpace = await Workspace.findByIdAndDelete(req.params._id);
-	if(!Workspace) return res.status(400).send("Procces failed: Work-Space no found");
-	return res.status(200).send({workSpace});
+	if (!Workspace)
+		return res.status(400).send('Procces failed: Work-Space no found');
+	return res.status(200).send({ workSpace });
 });
 
 // members of workspace
-router.post("/addMember/:username?", Auth, async (req, res) => {
-	if (!req.body.username) return res.send("No hay nombre de usuario");
+router.post('/addMember/:username?', Auth, async (req, res) => {
+	if (!req.body.username) return res.send('No hay nombre de usuario');
 
 	const workSpace = await Workspace.findById(req.body._id);
-	
-	if (!workSpace) return res.send("no se encontro espacio de trabajo.");
+
+	if (!workSpace) return res.send('no se encontro espacio de trabajo.');
 
 	// search members
 	const user = await User.findOne({ userName: req.body.username });
-	if (!user) return res.status(400).send("No se encontro el nombre de usuario");
-	
+	if (!user) return res.status(400).send('No se encontro el nombre de usuario');
 
 	workSpace.members.push(user);
 	const result = await workSpace.save();
-	if (!result) return res.status(400).send("No se pudo agregar el usuario");
-	
+	if (!result) return res.status(400).send('No se pudo agregar el usuario');
+
 	user.workSpacesId.push(result);
 	await user.save();
-	res.status(200).send("Usuario agregado con exito.");
+	res.status(200).send('Usuario agregado con exito.');
 });
 
 module.exports = router;

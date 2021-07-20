@@ -12,7 +12,7 @@
       <h2>No hay espacios para mostrar</h2>
     </div>
   </div>
-  <div class="col-12 col-lg-12" *ngIf="successMessage">
+  <!-- <div class="col-12 col-lg-12" *ngIf="successMessage">
     <div class="alert alert-success alert-dismissible" role="alert">
       <div class="alert-message">
         {{ successMessage }}
@@ -45,7 +45,7 @@
         <span aria-hidden="true">X</span>
       </button>
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="wrap-cards">
   <mat-card *ngFor="let workspace of workspaceData; let wp = index">
@@ -75,7 +75,7 @@
           mat-button
           mat-raised-button
           color="warn"
-          (click)="onDelete(workspace._id, workspace.name)"
+          (click)="onDelete(workspace)"
         >
           <mat-icon>delete</mat-icon><span>&nbsp;delete</span>
         </button>
@@ -84,7 +84,8 @@
     <mat-card-content class="workspace-item">
       <div class="workspace-item-content">
         <ul class="d-flex justify-content-around flex-wrap">
-          <li class="text-center my-3" *ngFor="let board of wpBoards[wp]">
+          <li class="board text-center my-3" *ngFor="let board of wpBoards[wp]">
+            <div class="closeBoard" (click)="deleteBoard( wpBoards[wp], workspace._id, board._id)"> <mat-icon>clear</mat-icon></div>
             <a [routerLink]="['/listTasks', board._id]" class="board-title">
               <div class="board-details">
                 <p class="board-name text-uppercase">
@@ -95,6 +96,7 @@
                 </p>
               </div>
             </a>
+            <div class="editBoard"><mat-icon>edit</mat-icon></div>
           </li>
         </ul>
       </div>

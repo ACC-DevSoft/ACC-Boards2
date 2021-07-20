@@ -36,10 +36,15 @@
   position: relative;
 }
   
-.img-container .delImg{
+.delImg{
   position: absolute;
-  top: 35px;
+  top: 15px;
   right: 0;
+  opacity: 0;
+}
+
+.delImg:hover {
+  opacity: 1;
 }
   
   .imgTask {

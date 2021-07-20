@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '../../services/tasks.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-list-tasks',
   templateUrl: './list-tasks.component.html',
@@ -34,7 +36,6 @@ export class ListTasksComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("el id es ", this.id);
-
   }
 
   loadTask() {
@@ -145,11 +146,25 @@ export class ListTasksComponent implements OnInit {
   }
 
   deleteTask(id: any) {
-    this.tasksService.deleteTask(id).subscribe(
-      res => this.loadTask()
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-    );
-
+        this.tasksService.deleteTask(id).subscribe(
+          res => {
+            Swal.fire('Task has been deleted');
+            this.loadTask();
+          }
+        );
+      }
+    });
   }
 
   deleteImg() {

@@ -22,7 +22,7 @@ export class BoardService {
   updateBoard(board:any){
     return this.http.put(this.env + "board/update", board)
   }
-
+ 
   deleteBoard(boardId:any){
     return this.http.delete(this.env + "board/delete/" + boardId)
   }

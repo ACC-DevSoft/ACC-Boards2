@@ -20,15 +20,13 @@ export class AuthService {
   registerUser(user: any) {
     return this.http.post(this.env + 'user/registerUser/', user)
   }
-  
-  login(user:any){
+
+  login(user: any) {
     return this.http.post(this.env + 'auth/login', user)
   }
-  // login(user: any) {
-  //   return this.http.post(this.env + "auth/login?include=", user);
-  // }
+
   isAdmin() {
-    this.Admin = true; 
+    this.Admin = true;
   }
 
   forAdmin() {
@@ -59,5 +57,14 @@ export class AuthService {
   logOut() {
     localStorage.clear();
     this.router.navigate(['/']);
+  }
+
+  getUserById(userId: string ){
+    return this.http.get(this.env + 'user/userLogged/'+ userId );
+  }
+
+  updateArrayWorkspaces(body: any) {
+    return this.http.put(this.env + 'user/updateArrayWorkspaces/', body );
+
   }
 }

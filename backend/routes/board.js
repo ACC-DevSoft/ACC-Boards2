@@ -41,14 +41,10 @@ router.post("/create/:id", Auth, async (req, res) => {
 	try {
 		const saveboard = await board.save();
 		if(!saveboard) return res.status(401).send("Failed process")
-
-		// res.status(200).send('board created');
-		// console.log(saveboard);
+		
 		await Workspace.findByIdAndUpdate(req.body.workspace, {
 			$push: { boards: { $each: [saveboard] } },
 		});
-		// workspace.boards.push({saveboard});
-		// await workspace.save();
 		return res.status(200).send({ saveboard });
 	} catch (err) {
 		res.status(400).send("Error: board no create" + err);
@@ -85,13 +81,15 @@ router.put("/update", Auth, Scrum, async (req, res) => {
 	res.status(200).send("Board Update: " + board);
 });
 
-router.delete("/delete/:board", Auth, Scrum, async (req, res) => {
-	if (!req.params.board) return res.status(400).send("Incomplete Data");
-	const findBoard = await Board.findById(req.params.board);
-	if (!findBoard) return res.status(400).send("Board no exist");
-	const board = await Board.findByIdAndDelete(req.params.board);
-	if (!board) return res.status(400).send("Board no delete");
-	res.status(200).send("Board deleted " + board);
+router.delete("/delete/:boardId", Auth, async (req, res) => {
+	const { boardId } = req.params;
+
+	const validId = mongoose.Types.ObjectId.isValid(boardId);
+	if (!validId) return res.status(401).send("Process failed: Invalid id");
+
+	const board = await Board.findByIdAndDelete(boardId);
+	if (!board) return res.status(400).send("Process failed: Board not found");
+	res.status(200).send({board});
 });
 
 module.exports = router;

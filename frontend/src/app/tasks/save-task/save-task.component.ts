@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '../../services/tasks.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-save-task',
   templateUrl: './save-task.component.html',
@@ -27,15 +29,18 @@ export class SaveTaskComponent implements OnInit {
   uploadImg(event: any) {
     console.log(event);
     this.selectedFile = <File>event.target.files[0];
-    console.log("el id es ", this.id);
-    
+    console.log("El id es ", this.id);
+
   }
 
   addTaskImg() {
     if (!this.taskData.name || !this.taskData.description) {
       console.log('Failed process: Incomplete data');
       this.errorMessage = 'Failed process: Incomplete data';
-      this.closeAlert();
+      Swal.fire({
+        text: this.errorMessage.toString(),
+        icon:'warning'
+      } );
 
     } else {
 
@@ -47,30 +52,25 @@ export class SaveTaskComponent implements OnInit {
 
       this.tasksService.addTaskImg(data).subscribe(
         (res) => {
-          this.router.navigate(['/listTasks', this.id]);
+          Swal.fire('Task has been created').then(
+            result => {
+              if (result.isConfirmed) {
+
+                this.router.navigate(['/listTasks', this.id]);
+              }
+            }
+          );
 
         },
         (err) => {
           console.log(err.error);
           this.errorMessage = err.error;
-          this.closeAlert();
+          Swal.fire(this.errorMessage.toString());
 
         }
       );
 
     }
   }
-
-  closeAlert() {
-    setTimeout(() => {
-
-      this.errorMessage = '';
-    }, 3000);
-  }
-
-  closeX() {
-    this.errorMessage = '';
-  }
-
 }
 
