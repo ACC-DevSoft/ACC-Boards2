@@ -86,7 +86,7 @@ router.get('/listUsers/:userName?', Auth, UserAuth, Admin, async (req, res) => {
 		.exec();
 
 	if (!users) return res.status(401).send('There are no users to list');
-	return res.status(200).send({ users });
+	return res.status(200).send( users );
 });
 
 router.get('/loadUser/:_id', Auth, UserAuth, Admin, async (req, res) => {

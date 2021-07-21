@@ -23,20 +23,18 @@
     <div class="form-content-inputs">
         <mat-form-field>
             <mat-label>Username:</mat-label>
-            <input [(ngModel)]="userData.username" matInput type="text" placeholder="example: pepep">
+            <input [(ngModel)]="userData.username" #search (ngModelChange)="searchUser(search.value)" matInput type="text" placeholder="example: pepe">
         </mat-form-field>
-        <!-- <mat-form-field>
-            <mat-label>Rol:</mat-label>
-            <mat-select>
-                <mat-option value="">Editor</mat-option>
-                <mat-option value="">Scrum</mat-option>
-            </mat-select>
-        </mat-form-field> -->
         <button mat-button mat-raised-button color="primary" (click)="addMember()">
             <mat-icon>add</mat-icon>
             <span>Add Member</span>
         </button>
     </div><hr/>
+    <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let member of arrayMembers">
+          {{member.userName}}
+        </mat-list-option>
+      </mat-selection-list>
     <div class="content-members">
         <h2>List of members</h2>
         <table>
@@ -53,7 +51,6 @@
                     <td>item</td>
                     <td>
                         <button  mat-button mat-flat-button color="warn">
-                            <!-- <span> Remove</span> -->
                             <mat-icon>delete</mat-icon>
                         </button>
                     </td>

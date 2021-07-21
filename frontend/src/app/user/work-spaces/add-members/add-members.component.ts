@@ -12,16 +12,33 @@ export class AddMembersComponent implements OnInit {
   public successMessage: String;
   public errorMessage: String;
   public userData: any;
-
+  public arrayMembers: any[]
 
   constructor(private workSpace: WorkSpaceService, private auth: AuthService, private router: Router) {
     this.userData = {}
     this.successMessage = '';
     this.errorMessage = '';
+    this.arrayMembers = []
+
   }
 
   ngOnInit(): void {
+
   }
+
+  searchUser(user: string) {
+
+    this.auth.getUsersByName(user).subscribe(
+      (res:any) => {
+        this.arrayMembers = res;
+        console.log('arraymembers:', this.arrayMembers);
+        
+
+      }
+    );
+
+  }
+
   addMember() {
     if (!this.userData.username) {
       this.errorMessage = 'Proccess Failed: Incomplete data';

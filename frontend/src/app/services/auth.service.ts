@@ -63,6 +63,10 @@ export class AuthService {
     return this.http.get(this.env + 'user/userLogged/'+ userId );
   }
 
+  getUsersByName(userName?: string ){
+    return this.http.get(this.env + 'user/listUsers/'+ userName );
+  }
+
   updateArrayWorkspaces(body: any) {
     return this.http.put(this.env + 'user/updateArrayWorkspaces/', body );
 
