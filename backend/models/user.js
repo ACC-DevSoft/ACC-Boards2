@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   roleId: { type: mongoose.Schema.ObjectId, ref: "role" },
-  workSpacesId: [{ type: mongoose.Schema.ObjectId, ref: "worksSpaces" }],
+  workSpacesId: [{ type: mongoose.Schema.ObjectId, ref: "workspace" }],
   assignedTaskId: [{ type: mongoose.Schema.ObjectId, ref: "task" }],
   date: { type: Date, default: Date.now },
   status: Boolean,

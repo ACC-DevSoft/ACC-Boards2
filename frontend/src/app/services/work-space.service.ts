@@ -13,6 +13,9 @@ export class WorkSpaceService {
     this.env = environment.APP_URL;
   }
 
+  listWorkSpacesById( id: String ){
+    return this.http.get(this.env + "workSpace/listWorkSpacesById/" + id);
+  }
 
   listWorkSpacesByUser(id: String) {
     return this.http.get(this.env + "workSpace/listWorkSpaces/" + id);
@@ -24,8 +27,12 @@ export class WorkSpaceService {
 
   updateWorkspace(id: any) { }
 
-  updateArrayBoards(board: any) {
-    return this.http.put(this.env + "workSpace/updateArrayBoards/", board)
+  updateArrayBoards(boards: any) {
+    return this.http.put(this.env + "workSpace/updateArrayBoards/", boards)
+  }
+
+  updateArrayMembers(body: any) {
+    return this.http.put(this.env + "workSpace/updateArrayMembers/", body)
   }
 
   deleteWorkspace(id: any) {

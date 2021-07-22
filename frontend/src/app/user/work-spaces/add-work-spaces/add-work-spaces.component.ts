@@ -15,11 +15,11 @@ export class AddWorkSpacesComponent implements OnInit {
   public errorMessage: String;
   public successMessage: String;
   public workspaceData: any;
-  public userid: any;
-  public userId: any
+  public user: any;
+  public userId: any;
+
   constructor(
     private router: Router, private workspace: WorkSpaceService,
-    private activatedRoute: ActivatedRoute,
     private auth: AuthService,
     public dialogRef: MatDialogRef<WorkSpacesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WorkSpacesComponent
@@ -27,7 +27,6 @@ export class AddWorkSpacesComponent implements OnInit {
     this.workspaceData = {};
     this.errorMessage = '';
     this.successMessage = '';
-    this.userid = this.activatedRoute.snapshot.params.id;
     this.userId = localStorage.getItem('current');
 
   }
@@ -39,10 +38,36 @@ export class AddWorkSpacesComponent implements OnInit {
     if (!this.workspaceData.name) {
       this.errorMessage = 'Incomplete Data';
       this.closeAlert();
+
     } else {
-      this.workspace.createWorkspace(this.workspaceData, this.userId).subscribe(
+      this.auth.getUserById(this.userId).subscribe(
         (res: any) => {
-          console.log(res);
+          this.user = res;
+        }
+      );
+      this.workspace.createWorkspace(this.workspaceData, this.userId).subscribe(
+
+        (res: any) => {
+          console.log('WP CREADO', res);
+          const { result } = res;
+          const { members, _id } = result;
+
+
+          console.log('USER;', this.user);
+
+          console.log('RESULT: ', result);
+          result.members.push(this.user);
+
+          console.log('MEMBERs: ', members);
+
+          this.workspace.updateArrayMembers({ members, _id }).subscribe(
+            (res: any) => {
+              console.log('ARRAY NUEVo MEMbers', res);
+
+            }
+          )
+
+
           this.workspaceData = {};
           this.successMessage = 'Success adding  workspace';
           this.closeDialog();

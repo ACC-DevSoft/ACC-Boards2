@@ -5,7 +5,7 @@ const workspaceSchema = new mongoose.Schema({
     Admin: {type: mongoose.Schema.ObjectId, ref: 'user'},
     name: String,
     description: String,
-    members: [{type: mongoose.Schema.ObjectId, ref:'user'}],
+    members: [{type:Object, ref: 'user'}],
     boards: [{type:Object, ref: 'board'}], 
     status: Boolean,
     date: {type: Date, default: Date.now}

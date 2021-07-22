@@ -110,7 +110,10 @@ mat-card-content {
 .editBoard {
   bottom: 5px;
 }
-.closeBoard:hover,
-.editBoard:hover {
+.board:hover .closeBoard {
   opacity: 1;
 }
+.board:hover .editBoard {
+  opacity: 1;
+}
+

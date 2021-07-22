@@ -24,6 +24,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -93,7 +94,8 @@ import { SaveTaskComponent } from './tasks/save-task/save-task.component';
     MatDialogModule,
     MatListModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   providers: [AuthService,
     AuthGuard,

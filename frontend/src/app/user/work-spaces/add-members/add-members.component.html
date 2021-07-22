@@ -1,64 +1,87 @@
-<h1 mat-dialog-title>Members </h1>
+<h1 mat-dialog-title>Members</h1>
 <mat-dialog-content>
-    <div class="col-12 col-lg-12" *ngIf="successMessage">
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <div class="alert-message">
-                {{ successMessage }}
-            </div>
-            <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
-                x
+  <div class="col-12 col-lg-12" *ngIf="successMessage">
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ successMessage }}
+      </div>
+      <button
+        type="button"
+        class="close"
+        (click)="closeX()"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        x
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-lg-12" *ngIf="errorMessage">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <div class="alert-message">
+        {{ errorMessage }}
+      </div>
+      <button
+        type="button"
+        class="close"
+        (click)="closeX()"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        x
+      </button>
+    </div>
+  </div>
+  <div class="form-content-inputs">
+    <mat-form-field>
+      <mat-label>Username:</mat-label>
+      <input
+        type="text"
+        matInput
+        [matAutocomplete]="auto"
+        [formControl]="members"
+        placeholder="example: pepe"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let search of searchMembers" [value]="search.userName">
+          {{ search.userName }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <button mat-button mat-raised-button color="primary" (click)="addMember()">
+      <mat-icon>add</mat-icon>
+      <span>Add Member</span>
+    </button>
+  </div>
+  <hr />
+
+  <div class="content-members">
+    <h2>List of members</h2>
+    <table>
+      <thead>
+        <th>name</th>
+        <th>username</th>
+        <th>rol</th>
+        <th>actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of arrayMembersTemp">
+          <td>{{ member.name }}</td>
+          <td>{{ member.userName }}</td>
+          <td>{{ member.roleId.name }}</td>
+          <td>
+            <button mat-button mat-flat-button color="warn">
+              <mat-icon (click)="delMember(member.userName)">delete</mat-icon>
             </button>
-        </div>
-    </div>
-    <div class="col-12 col-lg-12" *ngIf="errorMessage">
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div class="alert-message">
-                {{ errorMessage }}
-            </div>
-            <button type="button" class="close" (click)="closeX()" data-dismiss="alert" aria-label="Close">
-                x
-            </button>
-        </div>
-    </div>
-    <div class="form-content-inputs">
-        <mat-form-field>
-            <mat-label>Username:</mat-label>
-            <input [(ngModel)]="userData.username" #search (ngModelChange)="searchUser(search.value)" matInput type="text" placeholder="example: pepe">
-        </mat-form-field>
-        <button mat-button mat-raised-button color="primary" (click)="addMember()">
-            <mat-icon>add</mat-icon>
-            <span>Add Member</span>
-        </button>
-    </div><hr/>
-    <mat-selection-list #shoes>
-        <mat-list-option *ngFor="let member of arrayMembers">
-          {{member.userName}}
-        </mat-list-option>
-      </mat-selection-list>
-    <div class="content-members">
-        <h2>List of members</h2>
-        <table>
-            <thead>
-                <th>name</th>
-                <th>username</th>
-                <th>rol</th>
-                <th>actions</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>item</td>
-                    <td>item</td>
-                    <td>item</td>
-                    <td>
-                        <button  mat-button mat-flat-button color="warn">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button ma-raised-button mat-dialog-close class="btn gray">Close</button>
+  <button mat-button ma-raised-button mat-dialog-close class="btn gray" (click)="closeMembers()">
+    Close
+  </button>
 </mat-dialog-actions>

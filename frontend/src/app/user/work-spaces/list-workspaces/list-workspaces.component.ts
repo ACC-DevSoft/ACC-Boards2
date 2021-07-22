@@ -47,12 +47,14 @@ export class ListWorkspacesComponent implements OnInit {
 
   loadWorkSpaces() {
     this.workspace.listWorkSpacesByUser(this.userid).subscribe(
-      (res: any) => {
-        console.log(res);
-        const { workSpaces } = res;
 
-        this.workspaceData = workSpaces.reverse();
-        console.log('WorkSpaces', workSpaces);
+      (res: any) => {
+        console.log('RES', res.workSpacesId);
+        const { workSpacesId } = res;
+        console.log(workSpacesId);
+
+        this.workspaceData = workSpacesId.reverse();
+        console.log('WorkSpaces', workSpacesId);
 
         for (let i = 0; i < this.workspaceData.length; i++) {
           this.wpBoards.push(this.workspaceData[i].boards);
@@ -64,6 +66,26 @@ export class ListWorkspacesComponent implements OnInit {
         this.errorMessage = err.error;
         this.closeAlert();
       }
+
+      //   console.log('WorkSpaces', workSpaces);
+      // (res: any) => {
+      //   console.log(res);
+
+      //   const { workSpaces } = res;
+
+      //   this.workspaceData = workSpaces.reverse();
+      //   console.log('WorkSpaces', workSpaces);
+
+      //   for (let i = 0; i < this.workspaceData.length; i++) {
+      //     this.wpBoards.push(this.workspaceData[i].boards);
+      //   }
+      //   console.log('WpBoards', this.wpBoards);
+      // },
+      // (err) => {
+      //   console.log(err.error);
+      //   this.errorMessage = err.error;
+      //   this.closeAlert();
+      // }
     );
 
   }
@@ -129,10 +151,11 @@ export class ListWorkspacesComponent implements OnInit {
 
   }
 
-  openMembers() {
+  openMembers(workspaceId) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '600px';
     dialogConfig.autoFocus = true;
+    dialogConfig.data = { workspaceId };
     const dialogRef = this.dialog.open(AddMembersComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
       data => {

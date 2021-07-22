@@ -66,17 +66,16 @@ router.post('/registerUser', async (req, res) => {
 	}
 });
 
-router.get('/userLogged/:id', async(req, res) => {
-  const { id } = req.params;
+router.get('/userLogged/:id', async (req, res) => {
+	const { id } = req.params;
 
 	const validId = mongoose.Types.ObjectId.isValid(id);
-	if (!validId) return res.status(401).send("Process failed: Invalid id");
+	if (!validId) return res.status(401).send('Process failed: Invalid id');
 
-	const user = await User.findById(id);
-	if (!user) return res.status(401).send("There are not user");
-	return res.status(200).send( user );
+	const user = await User.findById(id).populate('roleId').exec();
+	if (!user) return res.status(401).send('There are not user');
+	return res.status(200).send(user);
 });
-
 
 router.get('/listUsers/:userName?', Auth, UserAuth, Admin, async (req, res) => {
 	const users = await User.find({
@@ -86,7 +85,7 @@ router.get('/listUsers/:userName?', Auth, UserAuth, Admin, async (req, res) => {
 		.exec();
 
 	if (!users) return res.status(401).send('There are no users to list');
-	return res.status(200).send( users );
+	return res.status(200).send(users);
 });
 
 router.get('/loadUser/:_id', Auth, UserAuth, Admin, async (req, res) => {
@@ -195,8 +194,15 @@ router.put('/updateArrayWorkspaces', async (req, res) => {
 
 	await User.findByIdAndUpdate(Admin, { workSpacesId }, { new: true });
 
-	return res.status(200).send({ msg: 'Deleted workspacesId in user'});
-
+	return res.status(200).send({ msg: 'Updated workspacesId in user' });
 });
+// router.put('/updateUserWorkspaces', async (req, res) => {
+// 	const { userId, workSpacesId } = req.body;
+// 	if (!userId) return res.status(400).send('No exist userId');
+
+// 	await User.findByIdAndUpdate(userId, { workSpacesId }, { new: true });
+
+// 	return res.status(200).send({ msg: 'Updated workspacesId in user' });
+// });
 
 module.exports = router;

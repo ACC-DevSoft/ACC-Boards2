@@ -18,8 +18,6 @@ router.post('/newWorkSpace/:id', Auth, async (req, res) => {
 
 	const user = await User.findById({ _id: req.body._id });
 
-	// consultar los espacios de trabajo por usuario
-	// const workSpaceById = await Workspace.find({Admin: req.body._id});
 	const workSpaceById = await Workspace.find({ Admin: user._id });
 
 	const workSpaceExist = await Workspace.findOne({ name: req.body.name });
@@ -43,12 +41,39 @@ router.post('/newWorkSpace/:id', Auth, async (req, res) => {
 	return res.status(200).send({ result });
 });
 
-router.get('/listWorkSpaces/:_id?', Auth, async (req, res) => {
-	const workSpaces = await Workspace.find({ Admin: req.params['_id'] });
+router.get('/listWorkSpaces/:_id', Auth, async (req, res) => {
+
+	const{ _id } = req.params;
+	const validId = mongoose.Types.ObjectId.isValid(_id);
+	if (!validId) return res.status(400).send('Process failed: Invalid id');
+
+	const workSpaces = await User.findById(_id ,{workSpacesId: 1}).populate('workSpacesId')
+	.exec();;
 
 	if (!workSpaces) return res.status(401).send('No Work Spaces');
-	return res.status(200).send({ workSpaces });
+	return res.status(200).send( workSpaces );
 });
+
+
+// router.get('/listWorkSpaces/:_id?', Auth, async (req, res) => {
+// 	const workSpaces = await Workspace.find({ Admin: req.params['_id'] });
+
+// 	if (!workSpaces) return res.status(401).send('No Work Spaces');
+// 	return res.status(200).send({ workSpaces });
+// });
+
+router.get('/listWorkSpacesById/:id', async( req, res )=> {
+	const{ id } = req.params;
+	const validId = mongoose.Types.ObjectId.isValid(id);
+	if (!validId) return res.status(400).send('Process failed: Invalid id');
+
+	const workspace = await  Workspace.findById(id);
+
+	if (!workspace) return res.status(400).send('No exist workspace');
+
+	return res.status(200).send( workspace );
+
+} )
 
 router.put('/updateWorkSpace', Auth, async (req, res) => {
 	if (!req.body._id || !req.body.name)
@@ -78,27 +103,24 @@ router.put('/updateWorkSpace', Auth, async (req, res) => {
 	return res.status(200).send({ result });
 });
 
-
-router.put('/updateArrayBoards',  async (req, res) => {
-	
+router.put('/updateArrayBoards', async (req, res) => {
 	const { boards, workspaceId } = req.body;
-	if( !boards || !workspaceId) return res.status(400).send('No boards or no workspaceId');
+	if (!boards || !workspaceId)
+		return res.status(400).send('No boards or no workspaceId');
 
-	 await Workspace.findByIdAndUpdate(workspaceId, {boards}, { new: true });
+	await Workspace.findByIdAndUpdate(workspaceId, { boards }, { new: true });
 
-	 return res.status(200).send({ msg: 'Deleted board in workspaces'});
-
+	return res.status(200).send({ msg: 'Deleted board in workspaces' });
 });
 
-router.put('/updateArrayMembers',  async (req, res) => {
-	
-	const { boards, workspaceId } = req.body;
-	if( !boards || !workspaceId) return res.status(400).send('No boards or no workspaceId');
+router.put('/updateArrayMembers', async (req, res) => {
+	const { members,  _id } = req.body;
+	if (!members || !_id)
+		return res.status(400).send('No members or no workspaceId');
 
-	 await Workspace.findByIdAndUpdate(workspaceId, {boards}, { new: true });
+	await Workspace.findByIdAndUpdate(_id, { members }, { new: true });
 
-	res.end('Deleted member');
-
+	return res.status(200).send({ msg: 'updated members in workspaces' });
 });
 
 router.delete('/deleteWorkSpace/:_id', async (req, res) => {
