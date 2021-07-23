@@ -26,8 +26,8 @@ export class ListUsersComponent implements OnInit {
     this.admin.listUsers().subscribe(
       (res:any)=>{
         console.log(res);
-        this.userData = res.users; 
-        console.log(this.userData);
+        this.userData = res;
+        console.log('userData', this.userData);
       }, 
       (err) =>{
         this.errorMessage = err.error;

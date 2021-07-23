@@ -107,9 +107,6 @@ export class ListWorkspacesComponent implements OnInit {
 
 
   deleteBoard(arrayBoards: any, workspaceId: any, id: string) {
-    console.log(arrayBoards);
-    console.log({ workspaceId });
-    console.log({ id });
     let boards = arrayBoards.filter((board: any) => board._id != id);
 
     console.log({ boards });
@@ -178,10 +175,10 @@ export class ListWorkspacesComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        const { _id, Admin } = workSpace;
+        const { _id  } = workSpace;
         console.log({ _id });
 
-        this.auth.getUserById(Admin).subscribe(
+        this.auth.getUserById(this.userid).subscribe(
           (res: any) => {
             console.log(res);
             const { workSpacesId: wpList } = res;
@@ -191,7 +188,7 @@ export class ListWorkspacesComponent implements OnInit {
 
             console.log('Nueno array wp', workSpacesId);
 
-            this.auth.updateArrayWorkspaces({ Admin, workSpacesId }).subscribe(
+            this.auth.updateArrayWorkspaces({ Admin: this.userid, workSpacesId }).subscribe(
               res => { console.log(res) }
             )
 
